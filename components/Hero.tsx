@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { CheckIcon, ArrowRightIcon } from "./Icons";
 
 const heroChecks = [
@@ -76,22 +75,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right — Pain point card + floating dashboard mockup */}
+          {/* Right — Pain point card */}
           <div className="relative hidden lg:block">
-            {/* Dashboard mockup - floating above */}
-            <div className="absolute -top-8 -right-6 w-[280px] z-10 drop-shadow-2xl">
-              <Image
-                src="/dashboard-mockup.png"
-                alt="Digitales Eigentümerportal"
-                width={800}
-                height={600}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
-
-            {/* Pain point stats card */}
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 space-y-6 mt-12">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 space-y-6">
               <div className="text-sm font-semibold text-text-light uppercase tracking-wide">
                 Warum Eigentümer ihre Verwaltung wechseln
               </div>
