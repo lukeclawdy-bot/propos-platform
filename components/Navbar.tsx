@@ -16,6 +16,7 @@ export function Navbar() {
           <a href="#leistungen" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Leistungen</a>
           <a href="#preise" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Preise</a>
           <a href="#so-funktionierts" className="text-text-light hover:text-navy text-sm font-medium transition-colors">So funktioniert&apos;s</a>
+          <a href="#nachfolge" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Nachfolge</a>
           <a href="#kontakt" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Kontakt</a>
           <a href="#kontakt" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
             Kostenlose Beratung

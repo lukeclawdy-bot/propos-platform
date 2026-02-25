@@ -7,6 +7,13 @@ const heroChecks = [
   "Hamburger Unternehmen, kein anonymes Callcenter",
 ];
 
+const painPoints = [
+  { label: "Telefonisch nie erreichbar", pct: 78 },
+  { label: "Keine Transparenz bei Kosten", pct: 71 },
+  { label: "Abrechnung kam zu spät", pct: 63 },
+  { label: "Handwerker-Probleme ungeklärt", pct: 55 },
+];
+
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center bg-warm-white pt-16 overflow-hidden">
@@ -69,24 +76,48 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right — Hamburg hero image */}
+          {/* Right — Pain point card + floating dashboard mockup */}
           <div className="relative hidden lg:block">
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            {/* Dashboard mockup - floating above */}
+            <div className="absolute -top-8 -right-6 w-[280px] z-10 drop-shadow-2xl">
               <Image
-                src="/hero-hamburg.png"
-                alt="Hamburg HafenCity — Standort von einfach verwaltet."
-                width={1408}
-                height={768}
+                src="/dashboard-mockup.png"
+                alt="Digitales Eigentümerportal"
+                width={800}
+                height={600}
+                className="w-full h-auto"
                 priority
-                className="w-full h-auto object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-xl px-5 py-3 shadow-lg border border-gray-100">
-              <div className="text-xs font-medium text-text-light">Ab sofort in Hamburg</div>
-              <div className="text-xl font-bold text-navy">ab €24<span className="text-sm font-normal text-text-light">/Einheit/Monat</span></div>
+
+            {/* Pain point stats card */}
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 space-y-6 mt-12">
+              <div className="text-sm font-semibold text-text-light uppercase tracking-wide">
+                Warum Eigentümer ihre Verwaltung wechseln
+              </div>
+              {painPoints.map((p) => (
+                <div key={p.label}>
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-sm text-navy font-medium">{p.label}</span>
+                    <span className="text-sm font-bold text-amber">{p.pct}%</span>
+                  </div>
+                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-teal to-navy rounded-full"
+                      style={{ width: `${p.pct}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+              <div className="pt-2 border-t border-gray-100 text-xs text-text-light">
+                Basierend auf Google-Rezensionen Hamburger Hausverwaltungen [Analyse, 2026]
+              </div>
             </div>
-            <div className="absolute -top-3 -right-3 bg-teal text-white rounded-xl px-4 py-2 shadow-lg">
-              <div className="text-xs font-semibold">✓ 24h Antwortgarantie</div>
+
+            {/* Price badge */}
+            <div className="absolute -bottom-4 -left-4 bg-amber text-white rounded-xl px-4 py-2 shadow-lg">
+              <div className="text-xs font-medium">Ab sofort in Hamburg</div>
+              <div className="text-lg font-bold">ab €24/Einheit</div>
             </div>
           </div>
         </div>
