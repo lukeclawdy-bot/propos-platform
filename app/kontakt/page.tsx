@@ -21,7 +21,7 @@ export default function KontaktPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-24">
+      <main className="pt-16">
         <div className="py-10 bg-navy text-center">
           <h1 className="text-4xl font-bold text-white font-serif">Kontakt aufnehmen</h1>
           <p className="text-white/70 mt-2">Kostenloses Erstgespräch — Rückmeldung noch heute.</p>

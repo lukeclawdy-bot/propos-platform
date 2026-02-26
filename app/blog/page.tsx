@@ -72,7 +72,7 @@ export default function BlogIndex() {
   return (
     <>
       <Navbar />
-      <main className="bg-warm-white min-h-screen">
+      <main className="bg-warm-white min-h-screen pt-16">
         {/* Hero */}
         <section className="bg-navy text-white py-16 px-4">
           <div className="max-w-4xl mx-auto">

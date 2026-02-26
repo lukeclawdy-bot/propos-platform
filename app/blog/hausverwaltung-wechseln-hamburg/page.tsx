@@ -48,7 +48,7 @@ export default function Post() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      <main className="bg-warm-white min-h-screen">
+      <main className="bg-warm-white min-h-screen pt-16">
         <article className="max-w-3xl mx-auto px-4 py-16">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
