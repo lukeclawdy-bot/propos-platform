@@ -22,6 +22,51 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "eigenbedarfskuendigung-fristen",
+    title: "Eigenbedarfskündigung: Voraussetzungen und Fristen nach §573 BGB",
+    description:
+      "Eigenbedarfskündigung richtig durchführen: Fristen (3/6/9 Monate), berechtigtes Interesse, Angehörige, soziale Härte — der komplette Leitfaden für Vermieter.",
+    keyword: "Eigenbedarfskündigung",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietkaution-vermieter",
+    title: "Mietkaution: Was Vermieter und Mieter wissen müssen (3 Monatsmieten Regel)",
+    description:
+      "Mietkaution nach §551 BGB: Höchstbetrag 3 Monatsmieten, Kautionskonto-Pflicht, Rückzahlung, Verzinsung — alles was Vermieter beachten müssen.",
+    keyword: "Mietkaution Vermieter",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "energieausweis-kosten-2026",
+    title: "Energieausweis Kosten 2026: Was kostet ein Energieausweis in Deutschland?",
+    description:
+      "Energieausweis Kosten 2026: Bedarfsausweis €300-500, Verbrauchsausweis €100-200. §16a GEG Compliance, Bußgeld bis €10.000 — was Eigentümer wissen müssen.",
+    keyword: "Energieausweis Kosten",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "whatsapp-mieter-kommunikation",
+    title: "WhatsApp für Mieter: Wie moderne Hausverwaltungen kommunizieren",
+    description:
+      "Mieterkommunikation 2026: Schnelle Bearbeitung, sofortige Rückmeldung, 24/7 Erreichbarkeit — das erwarten Mieter heute von ihrer Hausverwaltung.",
+    keyword: "Hausverwaltung WhatsApp Mieter",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-muenchen-2026",
+    title: "Hausverwaltung München 2026: Kosten, Vergleich und was Eigentümer wissen müssen",
+    description:
+      "Hausverwaltung München 2026: Kosten €24-38/Einheit, Marktvergleich mit Hamburg, lokale Regulierungen. Was Eigentümer bei der Verwalterwahl beachten müssen.",
+    keyword: "Hausverwaltung München",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
     slug: "vermieter-pflichten-heizung",
     title: "Vermieter Pflichten Heizung: Mindesttemperaturen und Heizperiode",
     description:
