@@ -1,264 +1,458 @@
 'use client';
 
-import { useState } from 'react';
-
 /**
- * Nebenkostenabrechnung Generator — Portal Page
- * /portal/abrechnung/nka
- * 
- * Allows landlords to generate NKA documents for their properties.
- * Uses the NKA PDF generator API route.
+ * /portal/abrechnung/nka — Nebenkostenabrechnung Generator
+ *
+ * Übersicht aller verwalteten Objekte mit Mieter-Liste.
+ * Per Klick wird eine NKA als druckfertiges HTML generiert und im neuen Tab geöffnet.
+ * „Alle generieren" öffnet alle NKAs des ausgewählten Jahres sequenziell.
  */
 
-// Demo properties for MVP
-const DEMO_PROPERTIES = [
+import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface TenantRow {
+  id: string;
+  unitId: string;
+  firstName: string;
+  lastName: string;
+  unitDesignation: string;
+  areaM2: number | null;
+  status: 'ausstehend' | 'erstellt';
+  generatedAt?: string;
+}
+
+interface PropertyRow {
+  id: string;
+  address: string;
+  postalCode: string;
+  city: string;
+  tenants: TenantRow[];
+}
+
+type GenerationState = 'idle' | 'loading' | 'done' | 'error';
+
+// ─── Demo data ─────────────────────────────────────────────────────────────
+
+const DEMO_PROPERTIES: PropertyRow[] = [
   {
-    id: 'demo-1',
+    id: 'demo-prop-1',
     address: 'Musterstraße 7',
+    postalCode: '20099',
     city: 'Hamburg',
-    units: [
-      { id: 'u1', designation: 'EG links', tenant: 'Familie Schmidt', area: 72.5 },
-      { id: 'u2', designation: 'EG rechts', tenant: 'Herr Müller', area: 58.0 },
-      { id: 'u3', designation: '1. OG links', tenant: 'Frau Weber', area: 85.3 },
-      { id: 'u4', designation: '1. OG rechts', tenant: 'Herr & Frau Chen', area: 65.0 },
+    tenants: [
+      { id: 'demo-tenant-1', unitId: 'demo-unit-1', firstName: 'Maria', lastName: 'Bergmann',  unitDesignation: 'EG links',    areaM2: 72.5, status: 'ausstehend' },
+      { id: 'demo-tenant-2', unitId: 'demo-unit-2', firstName: 'Hans',  lastName: 'Fischer',   unitDesignation: 'EG rechts',   areaM2: 65.0, status: 'ausstehend' },
+      { id: 'demo-tenant-3', unitId: 'demo-unit-3', firstName: 'Lena',  lastName: 'Hoffmann',  unitDesignation: '1. OG Mitte', areaM2: 88.0, status: 'ausstehend' },
     ],
   },
   {
-    id: 'demo-2',
-    address: 'Eppendorfer Weg 42',
+    id: 'demo-prop-2',
+    address: 'Alsterblick 5',
+    postalCode: '22303',
     city: 'Hamburg',
-    units: [
-      { id: 'u5', designation: 'EG', tenant: 'Herr Becker', area: 55.0 },
-      { id: 'u6', designation: '1. OG', tenant: 'Frau Hansen', area: 68.0 },
-      { id: 'u7', designation: '2. OG', tenant: 'Familie Yılmaz', area: 68.0 },
+    tenants: [
+      { id: 'demo-tenant-4', unitId: 'demo-unit-4', firstName: 'Klaus', lastName: 'Zimmermann', unitDesignation: 'Whg. 1', areaM2: 58.0, status: 'ausstehend' },
+      { id: 'demo-tenant-5', unitId: 'demo-unit-5', firstName: 'Petra', lastName: 'Schulze',    unitDesignation: 'Whg. 2', areaM2: 70.0, status: 'ausstehend' },
     ],
   },
 ];
 
-export default function NKAGeneratorPage() {
-  const [selectedProperty, setSelectedProperty] = useState('');
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear() - 1);
-  const [generating, setGenerating] = useState<string | null>(null);
-  const [generatedDocs, setGeneratedDocs] = useState<Record<string, boolean>>({});
+// ─── Sidebar ─────────────────────────────────────────────────────────────────
 
-  const property = DEMO_PROPERTIES.find((p) => p.id === selectedProperty);
-
-  async function handleGenerateNKA(tenantId: string, tenantName: string) {
-    setGenerating(tenantId);
-    try {
-      const res = await fetch('/api/portal/nka/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          propertyId: selectedProperty,
-          tenantId,
-          year: selectedYear,
-        }),
-      });
-
-      if (!res.ok) throw new Error('Fehler bei der Erstellung');
-
-      const html = await res.text();
-      // Open in new tab for print-to-PDF
-      const blob = new Blob([html], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-
-      setGeneratedDocs((prev) => ({ ...prev, [tenantId]: true }));
-    } catch (err) {
-      alert('Fehler: ' + (err instanceof Error ? err.message : 'Unbekannter Fehler'));
-    } finally {
-      setGenerating(null);
-    }
-  }
-
-  async function handleGenerateAll() {
-    if (!property) return;
-    for (const unit of property.units) {
-      await handleGenerateNKA(unit.id, unit.tenant);
-    }
-  }
-
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 5 }, (_, i) => currentYear - 1 - i);
+function Sidebar() {
+  const navItems = [
+    { label: 'Übersicht',   href: '/portal/dashboard' },
+    { label: 'Einheiten',   href: '/portal/einheiten' },
+    { label: 'Mieter',      href: '/portal/mieter' },
+    { label: 'Tickets',     href: '/portal/tickets' },
+    { label: 'Dokumente',   href: '/portal/dokumente' },
+    { label: 'Finanzen',    href: '/portal/finanzen' },
+    { label: 'Abrechnung',  href: '/portal/abrechnung', active: true },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-[#0a3d62] text-white px-6 py-8">
-        <div className="max-w-5xl mx-auto">
-          <nav className="text-sm mb-3 text-white/60">
-            <a href="/portal/dashboard" className="hover:text-white">Dashboard</a>
-            <span className="mx-2">›</span>
-            <a href="/portal/abrechnung" className="hover:text-white">Abrechnung</a>
-            <span className="mx-2">›</span>
-            <span className="text-white">Nebenkostenabrechnung</span>
-          </nav>
-          <h1 className="text-2xl font-bold">Nebenkostenabrechnung erstellen</h1>
-          <p className="text-white/80 mt-1">
-            Erstellen Sie rechtskonforme Nebenkostenabrechnungen gemäß §556 BGB
-          </p>
-        </div>
-      </div>
-
-      <div className="max-w-5xl mx-auto px-6 py-8">
-        {/* Step 1: Select property + year */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
-            1. Objekt und Abrechnungsjahr auswählen
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">
-                Objekt
-              </label>
-              <select
-                value={selectedProperty}
-                onChange={(e) => {
-                  setSelectedProperty(e.target.value);
-                  setGeneratedDocs({});
-                }}
-                className="w-full border rounded-lg px-3 py-2.5 text-gray-800 bg-white focus:ring-2 focus:ring-[#0a3d62] focus:border-[#0a3d62] outline-none"
-              >
-                <option value="">Objekt auswählen...</option>
-                {DEMO_PROPERTIES.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.address}, {p.city} — {p.units.length} Einheiten
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-600 mb-1">
-                Abrechnungsjahr
-              </label>
-              <select
-                value={selectedYear}
-                onChange={(e) => {
-                  setSelectedYear(parseInt(e.target.value));
-                  setGeneratedDocs({});
-                }}
-                className="w-full border rounded-lg px-3 py-2.5 text-gray-800 bg-white focus:ring-2 focus:ring-[#0a3d62] focus:border-[#0a3d62] outline-none"
-              >
-                {years.map((y) => (
-                  <option key={y} value={y}>
-                    {y}
-                  </option>
-                ))}
-              </select>
-            </div>
+    <aside className="w-56 bg-navy min-h-screen flex flex-col fixed left-0 top-0 bottom-0">
+      <div className="px-5 py-5 border-b border-white/10">
+        <a href="/" className="flex items-center gap-2">
+          <div className="w-7 h-7 bg-teal rounded-md flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
           </div>
-        </div>
+          <span className="text-white text-sm font-bold">
+            einfach <span className="text-teal">verwaltet.</span>
+          </span>
+        </a>
+      </div>
+      <nav className="flex-1 px-3 py-4 space-y-1">
+        {navItems.map(item => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors
+              ${'active' in item && item.active
+                ? 'bg-teal/20 text-teal font-medium'
+                : 'text-white/60 hover:bg-white/5 hover:text-white'}`}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+      <div className="px-4 py-4 border-t border-white/10 space-y-2">
+        <a href="/api/portal/auth/logout" className="block text-white/40 hover:text-white/70 text-xs transition-colors">
+          Abmelden
+        </a>
+        <p className="text-white/30 text-xs">einfach verwaltet. v1</p>
+      </div>
+    </aside>
+  );
+}
 
-        {/* Step 2: Unit list with generate buttons */}
-        {property && (
-          <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-800">
-                2. Abrechnungen erstellen — {property.address}
-              </h2>
+// ─── Status badge ─────────────────────────────────────────────────────────────
+
+function StatusBadge({ status }: { status: 'ausstehend' | 'erstellt' | 'loading' | 'error' }) {
+  const cfg = {
+    ausstehend: { cls: 'bg-amber-50 text-amber-700 border-amber-200',  label: 'Ausstehend' },
+    erstellt:   { cls: 'bg-green-50 text-green-700 border-green-200',  label: 'Erstellt' },
+    loading:    { cls: 'bg-blue-50 text-blue-700 border-blue-200',     label: 'Generiere …' },
+    error:      { cls: 'bg-red-50 text-red-700 border-red-200',        label: 'Fehler' },
+  }[status];
+
+  return (
+    <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium border ${cfg.cls}`}>
+      {cfg.label}
+    </span>
+  );
+}
+
+// ─── Main Page ────────────────────────────────────────────────────────────────
+
+export default function NKAPage() {
+  const currentYear = new Date().getFullYear();
+  const defaultYear = currentYear - 1; // Vorjahr als Standard
+
+  const [year, setYear] = useState<number>(defaultYear);
+  const [properties, setProperties] = useState<PropertyRow[]>(DEMO_PROPERTIES);
+  const [generationStates, setGenerationStates] = useState<Record<string, GenerationState>>({});
+  const [batchRunning, setBatchRunning] = useState(false);
+
+  // Fetch real properties once mounted (falls vorhanden)
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await fetch('/api/portal/properties?landlordId=me');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data?.properties?.length) {
+          // Map to PropertyRow format (simplified — real API would include tenants)
+          setProperties(data.properties);
+        }
+      } catch {
+        // Fall back to demo data silently
+      }
+    }
+    load();
+  }, []);
+
+  // Generate single NKA
+  const generateNKA = useCallback(
+    async (propertyId: string, tenantId: string, tenantName: string) => {
+      const key = `${propertyId}:${tenantId}`;
+      setGenerationStates(prev => ({ ...prev, [key]: 'loading' }));
+
+      try {
+        const res = await fetch('/api/portal/nka/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ propertyId, tenantId, year }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error ?? 'Unbekannter Fehler');
+        }
+
+        const html = await res.text();
+        // Öffne in neuem Tab — Browser kann via Strg+P als PDF speichern
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const win = window.open(url, '_blank');
+        if (win) {
+          win.addEventListener('load', () => URL.revokeObjectURL(url), { once: true });
+        }
+
+        setGenerationStates(prev => ({ ...prev, [key]: 'done' }));
+
+        // Update tenant row status
+        setProperties(prev =>
+          prev.map(p => ({
+            ...p,
+            tenants: p.tenants.map(t =>
+              t.id === tenantId
+                ? { ...t, status: 'erstellt' as const, generatedAt: new Date().toISOString() }
+                : t,
+            ),
+          })),
+        );
+      } catch (e) {
+        console.error('[NKA] Fehler:', e);
+        setGenerationStates(prev => ({ ...prev, [key]: 'error' }));
+      }
+    },
+    [year],
+  );
+
+  // Alle NKAs generieren (sequenziell, um Server nicht zu überlasten)
+  const generateAll = useCallback(async () => {
+    setBatchRunning(true);
+    for (const prop of properties) {
+      for (const tenant of prop.tenants) {
+        await generateNKA(prop.id, tenant.id, `${tenant.firstName} ${tenant.lastName}`);
+        // Kurze Pause zwischen den Anfragen
+        await new Promise(r => setTimeout(r, 300));
+      }
+    }
+    setBatchRunning(false);
+  }, [properties, generateNKA]);
+
+  const totalTenants = properties.reduce((s, p) => s + p.tenants.length, 0);
+  const doneCount = Object.values(generationStates).filter(s => s === 'done').length;
+
+  return (
+    <div className="min-h-screen bg-light-gray flex">
+      <Sidebar />
+
+      <div className="flex-1 ml-56">
+        <div className="max-w-5xl mx-auto px-8 py-8">
+
+          {/* ── Header ── */}
+          <div className="mb-8 flex items-start justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Link href="/portal/abrechnung" className="text-sm text-text-light hover:text-navy transition-colors">
+                  Abrechnung
+                </Link>
+                <span className="text-text-light/50">›</span>
+                <span className="text-sm text-navy font-medium">Nebenkostenabrechnung</span>
+              </div>
+              <h1 className="text-2xl font-bold text-navy">Nebenkostenabrechnung</h1>
+              <p className="text-text-light text-sm mt-0.5">
+                Betriebskostenabrechnung gemäß §2 BetrKV für alle Mieter erstellen.
+              </p>
+            </div>
+
+            {/* Jahr-Auswahl + Alle generieren */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <label className="text-sm text-text-light font-medium whitespace-nowrap">
+                  Abrechnungsjahr:
+                </label>
+                <select
+                  value={year}
+                  onChange={e => setYear(Number(e.target.value))}
+                  className="border border-gray-200 rounded-lg px-3 py-2 text-sm text-navy bg-white focus:outline-none focus:ring-2 focus:ring-teal/30"
+                >
+                  {[currentYear - 1, currentYear - 2, currentYear - 3].map(y => (
+                    <option key={y} value={y}>{y}</option>
+                  ))}
+                </select>
+              </div>
               <button
-                onClick={handleGenerateAll}
-                disabled={generating !== null}
-                className="bg-[#0a3d62] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#0a3d62]/90 disabled:opacity-50 transition"
+                onClick={generateAll}
+                disabled={batchRunning}
+                className="flex items-center gap-2 px-4 py-2 bg-navy text-white text-sm font-medium rounded-xl hover:bg-navy/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Alle generieren
+                {batchRunning ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                    </svg>
+                    Generiere …
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Alle generieren ({totalTenants})
+                  </>
+                )}
               </button>
             </div>
+          </div>
 
-            {/* Info banner */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-sm text-blue-800">
-              <strong>Hinweis:</strong> Die Abrechnung wird als druckbare HTML-Seite geöffnet.
-              Nutzen Sie <kbd className="bg-white px-1.5 py-0.5 rounded border text-xs">Strg+P</kbd> (oder <kbd className="bg-white px-1.5 py-0.5 rounded border text-xs">⌘+P</kbd>) um als PDF zu speichern.
-            </div>
-
-            <div className="divide-y">
-              {property.units.map((unit) => (
+          {/* ── Progress bar (batch) ── */}
+          {batchRunning && (
+            <div className="mb-6 bg-white rounded-xl border border-gray-100 p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium text-navy">Generierung läuft …</span>
+                <span className="text-sm text-text-light">{doneCount} / {totalTenants}</span>
+              </div>
+              <div className="w-full bg-gray-100 rounded-full h-1.5">
                 <div
-                  key={unit.id}
-                  className="flex items-center justify-between py-4"
-                >
+                  className="bg-teal h-1.5 rounded-full transition-all duration-300"
+                  style={{ width: `${totalTenants > 0 ? (doneCount / totalTenants) * 100 : 0}%` }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* ── Hinweis §556 Abs. 3 BGB ── */}
+          <div className="mb-6 bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3">
+            <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <div>
+              <p className="text-sm font-semibold text-amber-800">Abrechnungsfrist beachten (§556 Abs. 3 BGB)</p>
+              <p className="text-xs text-amber-700 mt-0.5">
+                Die Abrechnung für {year} muss spätestens bis zum{' '}
+                <strong>31.12.{year + 1}</strong> beim Mieter eingegangen sein.
+                Nach Ablauf der Frist sind Nachforderungen ausgeschlossen.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Eigenschaften ── */}
+          <div className="space-y-6">
+            {properties.map(prop => (
+              <div key={prop.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                {/* Property header */}
+                <div className="px-6 py-4 border-b border-gray-50 flex items-center justify-between">
                   <div>
-                    <div className="font-medium text-gray-800">
-                      {unit.tenant}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {unit.designation} · {unit.area} m²
-                    </div>
+                    <h2 className="font-bold text-navy">{prop.address}</h2>
+                    <p className="text-xs text-text-light mt-0.5">
+                      {prop.postalCode} {prop.city} · {prop.tenants.length} Mieter
+                    </p>
                   </div>
-                  <div className="flex items-center gap-3">
-                    {generatedDocs[unit.id] && (
-                      <span className="text-sm text-green-600 font-medium flex items-center gap-1">
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        Erstellt
-                      </span>
-                    )}
-                    <button
-                      onClick={() => handleGenerateNKA(unit.id, unit.tenant)}
-                      disabled={generating !== null}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                        generating === unit.id
-                          ? 'bg-gray-200 text-gray-500'
-                          : 'bg-teal-600 text-white hover:bg-teal-700'
-                      }`}
-                    >
-                      {generating === unit.id ? (
-                        <span className="flex items-center gap-2">
-                          <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                          </svg>
-                          Wird erstellt...
-                        </span>
-                      ) : (
-                        'NKA generieren'
-                      )}
-                    </button>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-text-light">
+                      {prop.tenants.filter(t => t.status === 'erstellt').length} / {prop.tenants.length} erstellt
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Deadline info */}
-            <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800">
-              <strong>§556 Abs. 3 BGB Frist:</strong> Die Abrechnung für {selectedYear} muss dem Mieter
-              bis spätestens {new Date(selectedYear + 2, 0, 1).toLocaleDateString('de-DE')} zugegangen sein.
-              Danach kann keine Nachforderung mehr geltend gemacht werden.
-            </div>
-          </div>
-        )}
+                {/* Tenants table */}
+                {prop.tenants.length === 0 ? (
+                  <div className="px-6 py-10 text-center text-text-light text-sm">
+                    Keine Mieter für dieses Objekt erfasst.
+                  </div>
+                ) : (
+                  <table className="w-full">
+                    <thead>
+                      <tr className="text-xs text-text-light uppercase tracking-wide bg-gray-50/80">
+                        <th className="px-6 py-3 text-left">Mieter</th>
+                        <th className="px-6 py-3 text-left">Wohneinheit</th>
+                        <th className="px-6 py-3 text-left">Fläche</th>
+                        <th className="px-6 py-3 text-left">Status</th>
+                        <th className="px-6 py-3 text-left">Erstellt am</th>
+                        <th className="px-6 py-3 text-right">Aktion</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {prop.tenants.map(tenant => {
+                        const key = `${prop.id}:${tenant.id}`;
+                        const genState = generationStates[key] ?? 'idle';
+                        const isLoading = genState === 'loading';
+                        const isError = genState === 'error';
+                        const displayStatus = isLoading ? 'loading' : isError ? 'error' : tenant.status;
 
-        {/* Step 3: History (placeholder) */}
-        {property && (
-          <div className="bg-white rounded-xl shadow-sm border p-6">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">
-              3. Erstellte Abrechnungen
-            </h2>
-            {Object.keys(generatedDocs).length === 0 ? (
-              <p className="text-gray-500 text-sm">
-                Noch keine Abrechnungen erstellt. Wählen Sie oben einen Mieter oder klicken Sie auf &ldquo;Alle generieren&rdquo;.
-              </p>
-            ) : (
-              <div className="text-sm text-gray-600">
-                <p>
-                  {Object.keys(generatedDocs).length} von {property.units.length} Abrechnungen
-                  für {selectedYear} erstellt.
-                </p>
+                        return (
+                          <tr key={tenant.id} className="border-t border-gray-50 hover:bg-gray-50/50 transition-colors">
+                            <td className="px-6 py-4 text-sm font-medium text-navy">
+                              {tenant.firstName} {tenant.lastName}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-text-light">
+                              {tenant.unitDesignation}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-text-light">
+                              {tenant.areaM2 != null
+                                ? `${Number(tenant.areaM2).toLocaleString('de-DE')} m²`
+                                : '—'}
+                            </td>
+                            <td className="px-6 py-4">
+                              <StatusBadge status={displayStatus as 'ausstehend' | 'erstellt' | 'loading' | 'error'} />
+                            </td>
+                            <td className="px-6 py-4 text-sm text-text-light">
+                              {tenant.generatedAt
+                                ? new Date(tenant.generatedAt).toLocaleDateString('de-DE')
+                                : '—'}
+                            </td>
+                            <td className="px-6 py-4 text-right">
+                              <button
+                                disabled={isLoading || batchRunning}
+                                onClick={() =>
+                                  generateNKA(prop.id, tenant.id, `${tenant.firstName} ${tenant.lastName}`)
+                                }
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
+                                  bg-teal/10 text-teal hover:bg-teal/20 transition-colors
+                                  disabled:opacity-50 disabled:cursor-not-allowed"
+                              >
+                                {isLoading ? (
+                                  <>
+                                    <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                                    </svg>
+                                    Generiere …
+                                  </>
+                                ) : (
+                                  <>
+                                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    NKA generieren
+                                  </>
+                                )}
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                )}
               </div>
-            )}
+            ))}
           </div>
-        )}
 
-        {/* Back link */}
-        <div className="mt-6">
-          <a
-            href="/portal/abrechnung"
-            className="text-[#0a3d62] hover:underline text-sm"
-          >
-            ← Zurück zur Abrechnungsübersicht
-          </a>
+          {/* ── Empty state ── */}
+          {properties.length === 0 && (
+            <div className="bg-white rounded-2xl border border-gray-100 px-8 py-16 text-center">
+              <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-navy mb-1">Keine Objekte vorhanden</h3>
+              <p className="text-sm text-text-light">
+                Fügen Sie zuerst Objekte und Mieter im Portal hinzu.
+              </p>
+            </div>
+          )}
+
+          {/* ── Info box ── */}
+          <div className="mt-8 bg-white rounded-xl border border-gray-100 p-5">
+            <h3 className="text-sm font-bold text-navy mb-2">So funktioniert die NKA-Generierung</h3>
+            <ol className="text-xs text-text-light space-y-1.5 list-decimal list-inside">
+              <li>Wählen Sie das Abrechnungsjahr (Standard: Vorjahr).</li>
+              <li>Klicken Sie auf „NKA generieren" – das Dokument öffnet sich in einem neuen Tab.</li>
+              <li>Drucken Sie das Dokument (Strg+P / ⌘+P) und wählen Sie „Als PDF speichern".</li>
+              <li>Senden Sie die NKA per Post oder E-Mail an den Mieter.</li>
+            </ol>
+            <p className="text-xs text-text-light mt-3 border-t border-gray-50 pt-3">
+              Rechtsgrundlage: §556 BGB (Nebenkostenabrechnung) · §556a BGB (Verteilungsmaßstäbe) · §2 BetrKV (Betriebskosten)
+            </p>
+          </div>
+
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ import {
   BKACostCategoryLabels,
   AllocationKeyLabels,
   BKACostCategory,
-} from '@/lib/bka-engine/types';
+} from '../bka-engine/types';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 

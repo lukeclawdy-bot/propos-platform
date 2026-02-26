@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-const STEPS = [
+const PRIVAT_STEPS = [
   "/portal/onboarding",
   "/portal/onboarding/privat/schritt-2",
   "/portal/onboarding/privat/schritt-3",
@@ -11,11 +11,21 @@ const STEPS = [
   "/portal/onboarding/privat/schritt-6",
   "/portal/onboarding/privat/schritt-7",
 ];
+const PROFI_STEPS = [
+  "/portal/onboarding",
+  "/portal/onboarding/profi/schritt-2",
+  "/portal/onboarding/profi/schritt-3",
+  "/portal/onboarding/profi/schritt-4",
+  "/portal/onboarding/profi/schritt-5",
+  "/portal/onboarding/profi/schritt-6",
+];
 
 export function OnboardingShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const isProfi = pathname.includes("/profi/");
+  const STEPS = isProfi ? PROFI_STEPS : PRIVAT_STEPS;
   const current = STEPS.indexOf(pathname) + 1 || 1;
-  const total = 7;
+  const total = STEPS.length;
   const pct = Math.round((current / total) * 100);
 
   return (
