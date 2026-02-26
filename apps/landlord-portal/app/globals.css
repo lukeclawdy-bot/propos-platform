@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  /* einfach verwaltet. Brand Colors */
+  --color-navy: #1B3A5C;
+  --color-teal: #2A7F7F;
+  --color-teal-dark: #236B6B;
+  --color-warm-white: #FAFAF8;
+  --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-amber: #D4840A;
+  --color-green: #2D7D4A;
+  --color-red: #DC2626;
+  --color-text-main: #1E293B;
+  --color-text-muted: #64748B;
+  --color-text-light: #94A3B8;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #FAFAF8;
+  color: #1E293B;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0EFED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A7F7F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #236B6B;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Focus styles */
+.focus-ring:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #2A7F7F;
+  ring-offset: 2px;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-navy {
+  background: linear-gradient(135deg, #1B3A5C 0%, #2A4A6C 100%);
+}
+
+.bg-gradient-teal {
+  background: linear-gradient(135deg, #2A7F7F 0%, #3A9F9F 100%);
+}
