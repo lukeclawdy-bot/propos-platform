@@ -1,7 +1,7 @@
 import { BoltIcon, MapPinIcon, ShieldIcon, StarIcon } from "./Icons";
 
 const proofPoints = [
-  { icon: BoltIcon, value: "Sofort", label: "Reaktionszeit — garantiert" },
+  { icon: BoltIcon, value: "< 5 Min", label: "Reaktionszeit — garantiert" },
   { icon: MapPinIcon, value: "Hamburg", label: "Verwurzelt & vor Ort" },
   { icon: ShieldIcon, value: "§34c", label: "GewO zugelassen" },
   { icon: StarIcon, value: "100%", label: "Preistransparenz" },

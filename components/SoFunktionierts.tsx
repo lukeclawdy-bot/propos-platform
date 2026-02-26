@@ -1,7 +1,7 @@
 import { ClockIcon, HandshakeIcon, StarIcon } from "./Icons";
 
 const steps = [
-  { num: "01", time: "Sofort", title: "Kostenloses Erstgespräch", desc: "Sie schildern Ihre Situation — wir hören zu. Kein Verkaufsgespräch, keine Überrumpelung. Direkt telefonisch oder in Hamburg." },
+  { num: "01", time: "< 5 Min", title: "Kostenloses Erstgespräch", desc: "Sie schildern Ihre Situation — wir hören zu. Kein Verkaufsgespräch, keine Überrumpelung. Direkt telefonisch oder in Hamburg." },
   { num: "02", time: "24 Std", title: "Ihr individuelles Angebot", desc: "Am nächsten Tag liegt Ihr schriftliches Angebot vor — mit klaren Preisen, konkreten Leistungen und ohne versteckte Klauseln." },
   { num: "03", time: "2–3 Wochen", title: "Reibungsloser Wechsel", desc: "Wir koordinieren die komplette Übergabe mit Ihrer bisherigen Verwaltung. Kein Aufwand für Sie — wir kümmern uns um alles." },
   { num: "04", time: "Ab Tag 1", title: "Alles läuft. Sofort.", desc: "Ihr Eigentümerportal ist live. Anfragen werden sofort bearbeitet. Abrechnungen, Belege, Wartungshistorien — alles einsehbar, nichts bleibt liegen." },

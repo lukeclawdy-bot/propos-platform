@@ -2,7 +2,7 @@ import { CheckIcon, CloseIcon } from "./Icons";
 
 const rows = [
   { feature: "Preise auf der Website sichtbar", us: true, others: false },
-  { feature: "Sofortige Bearbeitung jeder Anfrage", us: true, others: false },
+  { feature: "Reaktionszeit unter 5 Minuten", us: true, others: false },
   { feature: "Persönlicher Ansprechpartner", us: true, others: true },
   { feature: "Digitales Eigentümerportal", us: true, others: true },
   { feature: "Transparente Nebenkostenabrechnung", us: true, others: false },

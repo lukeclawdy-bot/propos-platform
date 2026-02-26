@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { CheckIcon, ArrowRightIcon } from "./Icons";
 
 const heroChecks = [
-  "Sofortige Bearbeitung jeder Anfrage — garantiert",
+  "Reaktionszeit unter 5 Minuten — garantiert",
   "Preise ab €24/Einheit/Monat — offen auf dieser Seite",
   "Hamburger Unternehmen, kein anonymes Callcenter",
 ];
@@ -76,21 +75,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right — Pain point card + floating dashboard */}
+          {/* Right — Pain point card */}
           <div className="relative hidden lg:block">
-            {/* Dashboard cutout floating over card */}
-            <div className="absolute -top-10 -right-8 w-[260px] z-10 pointer-events-none">
-              <Image
-                src="/dashboard-mockup.png"
-                alt="Digitales Eigentümerportal"
-                width={1280}
-                height={896}
-                className="w-full h-auto drop-shadow-2xl"
-                priority
-              />
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 space-y-6 mt-8">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 space-y-6">
               <div className="text-sm font-semibold text-text-light uppercase tracking-wide">
                 Warum Eigentümer ihre Verwaltung wechseln
               </div>
@@ -113,8 +100,8 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Price badge */}
-            <div className="absolute -bottom-4 -left-4 bg-amber text-white rounded-xl px-4 py-2 shadow-lg">
+            {/* Price badge — top right */}
+            <div className="absolute -top-4 -right-4 bg-amber text-white rounded-xl px-4 py-2.5 shadow-lg">
               <div className="text-xs font-medium">Ab sofort in Hamburg</div>
               <div className="text-lg font-bold">ab €24/Einheit</div>
             </div>
