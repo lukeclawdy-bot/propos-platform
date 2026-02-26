@@ -69,6 +69,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "wohnungsuebergabe-protokoll",
     "grundsteuer-hamburg-2025",
     "vermieter-pflichten-heizung",
+    // Sprint 8 — More SEO posts
+    "eigenbedarfskuendigung-fristen",
+    "energieausweis-kosten-2026",
+    "hausverwaltung-muenchen",
+    "hausverwaltung-muenchen-2026",
+    "mietkaution-vermieter",
+    "rauchmelder-pflicht-hamburg",
+    "treppenhausreinigung-pflicht",
+    "vermieterrechte-mietrecht",
+    "whatsapp-mieter-kommunikation",
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     priority: 0.7,

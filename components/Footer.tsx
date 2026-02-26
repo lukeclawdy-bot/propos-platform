@@ -4,8 +4,8 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="max-w-[1100px] mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
+        <div className="grid md:grid-cols-5 gap-8 mb-12">
+          <div className="md:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-teal rounded-lg flex items-center justify-center">
                 <HouseLogoIcon className="w-[18px] h-[18px] text-white" />
@@ -43,6 +43,21 @@ export function Footer() {
                 { label: "BKA-Rechner", href: "/bka-rechner" },
                 { label: "Mieterhöhung Rechner", href: "/mieterhohung-rechner" },
                 { label: "Beschlussprotokoll Generator", href: "/beschlussprotokoll" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors">{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-white text-sm mb-4 uppercase tracking-wide">Standorte</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: "Hamburg", href: "/hausverwaltung-hamburg" },
+                { label: "Berlin", href: "/hausverwaltung-berlin" },
+                { label: "München", href: "/hausverwaltung-muenchen" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors">{item.label}</a>
