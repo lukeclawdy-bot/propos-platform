@@ -238,3 +238,42 @@ export interface CostEntry {
   allocation_key: AllocationKey;
   
   /** Description of the service/charge */
+  description?: string;
+  
+  /** Invoice date */
+  invoiceDate?: Date;
+  
+  /** Supplier/vendor name */
+  vendor?: string;
+}
+
+/**
+ * Full BKA calculation input
+ */
+export interface BKAInput {
+  property: Property;
+  costs: CostEntry[];
+  /** Accounting period start date */
+  periodStart: Date;
+  /** Accounting period end date */
+  periodEnd: Date;
+}
+
+/**
+ * Per-unit BKA result
+ */
+export interface UnitBKAResult {
+  unit: Unit;
+  totalCost: number;
+  breakdown: { category: BKACostCategory; amount: number }[];
+}
+
+/**
+ * Full BKA calculation result
+ */
+export interface BKAResult {
+  input: BKAInput;
+  totalCosts: number;
+  costPerSqm: number;
+  unitResults: UnitBKAResult[];
+}
