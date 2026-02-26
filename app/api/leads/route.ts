@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { db, hasDatabase } from "@/app/db";
+import { leads } from "@/app/db/schema";
 
 interface LeadSubmission {
   verwaltungstyp?: string;
@@ -36,6 +38,26 @@ export async function POST(request: NextRequest) {
         { success: false, error: "Name und E-Mail sind erforderlich" },
         { status: 400 }
       );
+    }
+
+    // Save to database if available
+    if (hasDatabase && db) {
+      try {
+        await db.insert(leads).values({
+          name: body.name,
+          email: body.email,
+          telefon: body.telefon || null,
+          verwaltungstyp: body.verwaltungstyp || null,
+          einheiten: body.einheiten || null,
+          standort: body.standort || null,
+          situation: body.situation || null,
+          prioritaet: body.prioritaet || null,
+          quelle: "anfrage",
+        });
+      } catch (dbError) {
+        console.error("Database error (continuing with email):", dbError);
+        // Don't fail the request if DB save fails - still send email
+      }
     }
 
     // Format values for display
