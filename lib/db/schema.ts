@@ -93,6 +93,10 @@ export const landlords = pgTable('landlords', {
   communicationChannel: text('communication_channel').default('email'), // email | whatsapp | portal
   aiAutonomyLevel: text('ai_autonomy_level').default('supervised'), // supervised | semi-auto | full-auto
   onboardingCompleted: boolean('onboarding_completed').default(false),
+  // Notification preferences (Owner Notification System)
+  emailNewTicket: boolean('email_new_ticket').default(true), // Email bei neuem Ticket
+  emailRentOverdue: boolean('email_rent_overdue').default(true), // Email bei überfälliger Miete
+  emailDailyDigest: boolean('email_daily_digest').default(false), // Tägliche Zusammenfassung
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });

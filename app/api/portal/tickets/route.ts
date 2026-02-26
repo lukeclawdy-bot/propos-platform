@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { tickets, tenants, units } from '@/lib/db/schema';
 import { eq, and } from 'drizzle-orm';
+import { inngest } from '@/lib/inngest/client';
 
 export async function GET(req: NextRequest) {
   try {
@@ -45,6 +46,23 @@ export async function POST(req: NextRequest) {
       urgency: urgency || 2, category: category || 'other',
       status: 'open', slaDeadline,
     }).returning();
+
+    // Fire notification event for landlord (if tenant-created, otherwise skip)
+    if (tenantId) {
+      await inngest.send({
+        name: "ticket.created",
+        data: {
+          ticketId: ticket.id,
+          tenantId,
+          unitId,
+          landlordId,
+          propertyId,
+          title: ticket.title,
+          description: ticket.description,
+          category: ticket.category,
+        },
+      });
+    }
 
     return NextResponse.json({ data: ticket }, { status: 201 });
   } catch (e) {

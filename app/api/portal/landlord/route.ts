@@ -45,3 +45,39 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: String(e) }, { status: 500 });
   }
 }
+
+// PATCH - Update landlord preferences (notification settings, etc.)
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { id, emailNewTicket, emailRentOverdue, emailDailyDigest, name, phone, companyName } = body;
+    
+    if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 });
+
+    // Build update object with only provided fields
+    const updateData: Partial<typeof landlords.$inferInsert> = {};
+    
+    if (name !== undefined) updateData.name = name;
+    if (phone !== undefined) updateData.phone = phone;
+    if (companyName !== undefined) updateData.companyName = companyName;
+    if (emailNewTicket !== undefined) updateData.emailNewTicket = emailNewTicket;
+    if (emailRentOverdue !== undefined) updateData.emailRentOverdue = emailRentOverdue;
+    if (emailDailyDigest !== undefined) updateData.emailDailyDigest = emailDailyDigest;
+    
+    // Always update the updatedAt timestamp
+    updateData.updatedAt = new Date();
+
+    const [updated] = await db
+      .update(landlords)
+      .set(updateData)
+      .where(eq(landlords.id, id))
+      .returning();
+
+    if (!updated) return NextResponse.json({ error: 'landlord not found' }, { status: 404 });
+
+    return NextResponse.json({ data: updated });
+  } catch (e) {
+    console.error('[landlord/patch] Error:', e);
+    return NextResponse.json({ error: String(e) }, { status: 500 });
+  }
+}

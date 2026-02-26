@@ -2,6 +2,7 @@ import { eq, and, desc } from 'drizzle-orm';
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { conversations, properties, tenants, tickets, units } from '@/lib/db/schema';
+import { inngest } from '@/lib/inngest/client';
 
 // GET /api/tenant/tickets - List tickets for current tenant
 export async function GET(request: NextRequest) {
@@ -136,6 +137,21 @@ export async function POST(request: NextRequest) {
       body: `Kategorie: ${getCategoryLabel(category)}\nDringlichkeit: ${getUrgencyLabel(urgency)}\n\n${description || title}`,
       aiClassification: category || 'other',
       aiUrgency: urgency || 2,
+    });
+
+    // Fire notification event for landlord
+    await inngest.send({
+      name: "ticket.created",
+      data: {
+        ticketId: ticket.id,
+        tenantId,
+        unitId: tenant.unitId,
+        landlordId: property.landlordId!,
+        propertyId: property.id,
+        title: ticket.title,
+        description: ticket.description,
+        category: ticket.category,
+      },
     });
 
     return NextResponse.json({ data: ticket }, { status: 201 });
