@@ -22,6 +22,52 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "rauchmelder-pflicht-hamburg",
+    title: "Rauchmelder Pflicht Hamburg 2026: Welche Wohnungen sind betroffen?",
+    description:
+      "Rauchmelderpflicht in Hamburg: Welche Wohnungen brauchen Rauchmelder? Wer ist verantwortlich? Aktuelle Regelungen 2026 mit Bußgeldern.",
+    keyword: "Rauchmelder Pflicht Hamburg",
+    readTime: "7 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "treppenhausreinigung-pflicht",
+    title: "Treppenhausreinigung: Pflichten des Vermieters nach Mietrecht",
+    description:
+      "Wer muss das Treppenhaus reinigen? Pflichten von Vermieter und Mieter nach Mietrecht — inklusive Kosten und rechtlicher Einordnung.",
+    keyword: "Treppenhausreinigung Pflicht",
+    readTime: "7 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "wohnungsmaengel-melden",
+    title: "Wohnungsmängel melden: Rechte und Pflichten von Mieter und Vermieter",
+    description:
+      "Wohnungsmängel richtig melden: Fristen, Formvorschriften, Mietminderung und was bei Streit zu tun ist — kompetent erklärt.",
+    keyword: "Wohnungsmängel",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieterrechte-mietrecht",
+    title: "Vermieterrechte: Was darf ein Vermieter nach deutschem Mietrecht?",
+    description:
+      "Welche Rechte hat ein Vermieter? Überblick über Zutrittsrecht, Mieterhöhung, Kündigung, Schönheitsreparaturen und mehr nach BGB.",
+    keyword: "Vermieterrechte",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-muenchen",
+    title: "Hausverwaltung München 2026: Kosten, Anbieter und Vergleich",
+    description:
+      "Hausverwaltung in München 2026: Aktuelle Kosten, Marktpreise, Anbietervergleich und worauf Eigentümer beim Verwalterwechsel achten müssen.",
+    keyword: "Hausverwaltung München",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+  {
     slug: "weg-hamburg",
     title: "WEG Hamburg: Was Wohnungseigentümer über die Verwaltung wissen müssen",
     description:

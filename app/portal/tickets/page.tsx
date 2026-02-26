@@ -51,6 +51,7 @@ export default async function TicketsPage({ searchParams }: { searchParams: Prom
         <nav className="flex-1 px-3 py-4 space-y-1">
           {[
             { label: "Übersicht", href: "/portal/dashboard", active: false },
+            { label: "Chat", href: "/portal/chat", active: false },
             { label: "Tickets", href: "/portal/tickets", active: true },
             { label: "Dokumente", href: "/portal/dokumente", active: false },
             { label: "Finanzen", href: "/portal/finanzen", active: false },

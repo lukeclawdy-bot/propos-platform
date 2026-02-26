@@ -83,6 +83,7 @@ export default async function DokumentePage() {
         <nav className="flex-1 px-3 py-4 space-y-1">
           {[
             { label: "Übersicht", href: "/portal/dashboard", active: false },
+            { label: "Chat", href: "/portal/chat", active: false },
             { label: "Einheiten", href: "/portal/einheiten", active: false },
             { label: "Mieter", href: "/portal/mieter", active: false },
             { label: "Tickets", href: "/portal/tickets", active: false },

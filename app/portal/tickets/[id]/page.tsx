@@ -41,6 +41,7 @@ export default async function TicketDetailPage({ params }: { params: Promise<{ i
         <nav className="flex-1 px-3 py-4 space-y-1">
           {[
             { label: "Übersicht", href: "/portal/dashboard" },
+            { label: "Chat", href: "/portal/chat" },
             { label: "Tickets", href: "/portal/tickets" },
           ].map((item) => (
             <Link key={item.href} href={item.href}
