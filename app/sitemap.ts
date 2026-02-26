@@ -79,6 +79,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "treppenhausreinigung-pflicht",
     "vermieterrechte-mietrecht",
     "whatsapp-mieter-kommunikation",
+    // Sprint 9 — Additional high-volume posts
+    "nebenkostenabrechnung-frist-verpasst",
+    "vermieter-steuern-optimieren",
+    "abmahnung-mieter-muster",
+    "kautionsrueckgabe-frist",
+    "indexmiete-vs-staffelmiete",
+    // Sprint 10 — New high-volume keywords
+    "hausverwaltung-frankfurt",
+    "verwaltervertrag-kuendigen",
+    "wohnungsuebergabeprotokoll",
+    "hausmeisterservice-hamburg",
+    "betriebskosten-senken",
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     priority: 0.7,

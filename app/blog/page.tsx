@@ -22,6 +22,51 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "hausverwaltung-frankfurt",
+    title: "Hausverwaltung Frankfurt: Kosten und Anbieter im Vergleich 2026",
+    description:
+      "Hausverwaltung Frankfurt 2026: Aktuelle Marktpreise €25–38/Einheit, Leistungsvergleich und Tipps zur Auswahl des richtigen Hausverwalters in Frankfurt am Main.",
+    keyword: "Hausverwaltung Frankfurt",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "verwaltervertrag-kuendigen",
+    title: "Verwaltervertrag kündigen: So wechseln Sie die Hausverwaltung fristgerecht",
+    description:
+      "Verwaltervertrag rechtssicher kündigen: Kündigungsfristen nach §26 WEG und §621 BGB, Muster-Kündigung und Schritt-für-Schritt-Anleitung für den Verwalterwechsel.",
+    keyword: "Verwaltervertrag kündigen",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "wohnungsuebergabeprotokoll",
+    title: "Wohnungsübergabeprotokoll: Vorlage und Tipps für Vermieter",
+    description:
+      "Das Wohnungsübergabeprotokoll schützt Vermieter und Mieter. Kostenlose Vorlage, vollständige Checkliste und die 5 häufigsten Fehler die Eigentümer vermeiden sollten.",
+    keyword: "Wohnungsübergabeprotokoll",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausmeisterservice-hamburg",
+    title: "Hausmeisterservice Hamburg: Kosten und worauf Sie achten sollten",
+    description:
+      "Hausmeisterservice Hamburg 2026: Preise €20–35/Stunde oder €80–350/Monat, Leistungsübersicht, Umlagefähigkeit nach §2 Nr. 14 BetrKV und Auswahlkriterien.",
+    keyword: "Hausmeisterservice Hamburg",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "betriebskosten-senken",
+    title: "Betriebskosten senken: 8 legale Wege für Vermieter",
+    description:
+      "8 bewährte Strategien, um Betriebskosten rechtssicher zu reduzieren: Versicherungsvergleich, Mülloptimierung, hydraulischer Abgleich, LED-Umrüstung und mehr.",
+    keyword: "Betriebskosten senken",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
     slug: "indexmiete-vs-staffelmiete",
     title: "Indexmiete vs. Staffelmiete: Was ist besser für Vermieter?",
     description:
