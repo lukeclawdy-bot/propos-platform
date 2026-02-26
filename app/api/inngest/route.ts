@@ -5,6 +5,7 @@ import { dripCampaign } from "@/lib/inngest/functions/drip.campaign";
 import { tenantMessage } from "@/lib/inngest/functions/tenant.message";
 import { rentMonitoring } from "@/lib/inngest/functions/rent.monitoring";
 import { complianceChecks } from "@/lib/inngest/functions/compliance.checks";
+import { billingInvoicePaid, billingDunningSequence } from "@/lib/inngest/functions/billing";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
@@ -14,5 +15,7 @@ export const { GET, POST, PUT } = serve({
     tenantMessage,
     rentMonitoring,
     complianceChecks,
+    billingInvoicePaid,
+    billingDunningSequence,
   ],
 });

@@ -26,7 +26,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     }
 
     const [msg] = await db.insert(conversations).values({
-      ticketId: id, landlordId, tenantId,
+      ticketId: id, landlordId,
+      ...(tenantId ? { tenantId } : {}),
       direction, body: msgBody,
       aiGenerated: aiGenerated || false,
       channel: 'portal',

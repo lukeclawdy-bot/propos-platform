@@ -47,7 +47,7 @@ Urgency-Skala: 1=unwichtig, 3=normal, 5=Notfall (Wasser/Feuer/Heizung im Winter)
         const [newConversation] = await db
           .insert(conversations)
           .values({
-            tenantId: tenantId,
+            ...(tenantId ? { tenantId } : {}),
             landlordId: landlordId,
             channel: "portal",
             direction: "inbound",
@@ -75,8 +75,8 @@ Urgency-Skala: 1=unwichtig, 3=normal, 5=Notfall (Wasser/Feuer/Heizung im Winter)
             .insert(tickets)
             .values({
               propertyId: propertyId,
-              tenantId: tenantId,
-              landlordId: landlordId,
+              ...(tenantId ? { tenantId } : {}),
+              ...(landlordId ? { landlordId } : {}),
               title: classification.summary || "Neue Mieteranfrage",
               description: message,
               category: classification.category,

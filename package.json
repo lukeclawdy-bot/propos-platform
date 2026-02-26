@@ -9,10 +9,12 @@
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "seed:demo": "tsx scripts/seed-demo.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
+    "@stripe/stripe-js": "^8.8.0",
     "drizzle-kit": "^0.31.9",
     "drizzle-orm": "^0.45.1",
     "inngest": "^3.52.3",
@@ -20,7 +22,8 @@
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "resend": "^4.8.0"
+    "resend": "^4.8.0",
+    "stripe": "^20.4.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -30,6 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

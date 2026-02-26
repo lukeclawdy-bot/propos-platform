@@ -22,6 +22,51 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "hausverwaltung-hamburg-altona",
+    title: "Hausverwaltung Hamburg Altona: Was Eigentümer wissen müssen",
+    description:
+      "Altbaubestand, Denkmalschutz, steigende Preise: Was eine gute Hausverwaltung in Hamburg-Altona leisten muss — und wie Sie die Richtige finden.",
+    keyword: "Hausverwaltung Hamburg Altona",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "wasserschaden-mietwohnung",
+    title: "Wasserschaden in der Mietwohnung: Wer zahlt und was jetzt zu tun ist",
+    description:
+      "Rohrbruch, undichtes Dach, Waschmaschine defekt: Wer zahlt bei einem Wasserschaden in der Mietwohnung? § 535 BGB, Versicherung, Mängelanzeige und Fristen erklärt.",
+    keyword: "Wasserschaden Mietwohnung",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "weg-vs-mietverwaltung",
+    title: "WEG-Verwaltung vs. Mietverwaltung: Was ist der Unterschied?",
+    description:
+      "WEG oder Mietverwaltung — oder beides? Der vollständige Vergleich: Aufgaben, Rechtsbasis (§ 26 WEG, BGB), Kosten und wann Sie welche Form brauchen.",
+    keyword: "WEG Verwaltung Unterschied",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-kuendigen-muster",
+    title: "Hausverwaltung kündigen: Muster-Kündigung und wichtige Fristen",
+    description:
+      "Kündigung der Hausverwaltung: § 621 BGB, Kündigungsfristen (meist 3 Monate), Muster-Kündigungsbrief und Checkliste für einen reibungslosen Verwalterwechsel.",
+    keyword: "Hausverwaltung kündigen Muster",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "nebenkostenabrechnung-pruefen",
+    title: "Nebenkostenabrechnung prüfen: So erkennen Sie Fehler als Mieter und Vermieter",
+    description:
+      "§ 556 BGB, 12-Monats-Frist, häufige Fehler und Muster-Widerspruch: Der Leitfaden zur richtigen Prüfung der Nebenkostenabrechnung — für Mieter und Vermieter.",
+    keyword: "Nebenkostenabrechnung prüfen",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
     slug: "hausverwaltung-wechseln-hamburg",
     title: "Hausverwaltung wechseln in Hamburg: So gelingt der Wechsel stressfrei",
     description:
