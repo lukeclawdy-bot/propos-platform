@@ -97,10 +97,10 @@ export function Hero() {
               ))}
             </div>
 
-            {/* Price badge — below card */}
-            <div className="mt-4 inline-flex items-center gap-3 bg-amber text-white rounded-xl px-5 py-3 shadow-lg">
-              <div className="text-xs font-medium leading-tight">Ab sofort<br />in Hamburg</div>
-              <div className="text-xl font-bold">ab €24<span className="text-sm font-normal opacity-80">/Einheit</span></div>
+            {/* Price badge — floating top-right, offset outside card */}
+            <div className="absolute -top-5 -right-5 bg-amber text-white rounded-xl px-4 py-2 shadow-lg z-10">
+              <div className="text-xs font-medium">Ab sofort in Hamburg</div>
+              <div className="text-lg font-bold">ab €24/Einheit</div>
             </div>
           </div>
         </div>

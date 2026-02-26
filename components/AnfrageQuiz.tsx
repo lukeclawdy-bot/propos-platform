@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckIcon, ArrowRightIcon, HouseLogoIcon } from "./Icons";
+import { CheckIcon, ArrowRightIcon, HouseLogoIcon, HomeIcon, ScaleIcon, ClipboardIcon, ChatIcon, MapPinIcon, BoltIcon, LockOpenIcon, WrenchIcon, StarIcon, ShieldIcon, BuildingIcon, QuestionIcon, CurrencyIcon, UsersIcon } from "./Icons";
 
 // --- Types ---
 type StepType = "choice" | "input" | "result";
@@ -10,7 +10,7 @@ interface Choice {
   value: string;
   label: string;
   sublabel?: string;
-  icon?: string;
+  icon?: React.ComponentType<{ className?: string }>;
 }
 
 interface Step {
@@ -31,10 +31,10 @@ const steps: Step[] = [
     headline: "Um welche Art von Verwaltung geht es?",
     subline: "Damit wir Ihnen das richtige Angebot machen können.",
     choices: [
-      { value: "miet", label: "Mietverwaltung", sublabel: "Sie vermieten Wohnungen und brauchen jemanden, der sich kümmert.", icon: "🏠" },
-      { value: "weg", label: "WEG-Verwaltung", sublabel: "Eigentümergemeinschaft sucht eine zuverlässige Hausverwaltung.", icon: "🏢" },
-      { value: "beides", label: "Beides", sublabel: "Mietverwaltung + WEG für dasselbe Objekt oder mehrere Objekte.", icon: "📋" },
-      { value: "unsicher", label: "Bin mir nicht sicher", sublabel: "Kein Problem — wir klären das gemeinsam im Gespräch.", icon: "💬" },
+      { value: "miet", label: "Mietverwaltung", sublabel: "Sie vermieten Wohnungen und brauchen jemanden, der sich kümmert.", icon: HomeIcon },
+      { value: "weg", label: "WEG-Verwaltung", sublabel: "Eigentümergemeinschaft sucht eine zuverlässige Hausverwaltung.", icon: BuildingIcon },
+      { value: "beides", label: "Beides", sublabel: "Mietverwaltung + WEG für dasselbe Objekt oder mehrere Objekte.", icon: ClipboardIcon },
+      { value: "unsicher", label: "Bin mir nicht sicher", sublabel: "Kein Problem — wir klären das gemeinsam im Gespräch.", icon: ChatIcon },
     ],
   },
   {
@@ -235,7 +235,7 @@ export function AnfrageQuiz() {
       {/* Dynamic insight */}
       {insight && (
         <div className="bg-teal/8 border border-teal/20 rounded-xl p-4 mb-8 text-sm text-navy leading-relaxed">
-          💡 {insight}
+          <BoltIcon className="w-4 h-4 text-teal inline-block mr-1 -mt-0.5" /> {insight}
         </div>
       )}
 
@@ -255,7 +255,11 @@ export function AnfrageQuiz() {
                 }`}
               >
                 <div className="flex items-start gap-3">
-                  {c.icon && <span className="text-xl flex-shrink-0 mt-0.5">{c.icon}</span>}
+                  {c.icon && (
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-navy/8 flex items-center justify-center mt-0.5">
+                      <c.icon className="w-5 h-5 text-navy" />
+                    </div>
+                  )}
                   <div>
                     <div className="font-semibold text-navy">{c.label}</div>
                     {c.sublabel && <div className="text-sm text-text-light mt-0.5">{c.sublabel}</div>}
