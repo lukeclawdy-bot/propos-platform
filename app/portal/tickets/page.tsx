@@ -52,7 +52,10 @@ export default async function TicketsPage({ searchParams }: { searchParams: Prom
           {[
             { label: "Übersicht", href: "/portal/dashboard", active: false },
             { label: "Chat", href: "/portal/chat", active: false },
+            { label: "Einheiten", href: "/portal/einheiten", active: false },
+            { label: "Mieter", href: "/portal/mieter", active: false },
             { label: "Tickets", href: "/portal/tickets", active: true },
+            { label: "Partner", href: "/portal/partner", active: false },
             { label: "Dokumente", href: "/portal/dokumente", active: false },
             { label: "Finanzen", href: "/portal/finanzen", active: false },
           ].map((item) => (

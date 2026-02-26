@@ -87,6 +87,7 @@ export default async function DokumentePage() {
             { label: "Einheiten", href: "/portal/einheiten", active: false },
             { label: "Mieter", href: "/portal/mieter", active: false },
             { label: "Tickets", href: "/portal/tickets", active: false },
+            { label: "Partner", href: "/portal/partner", active: false },
             { label: "Dokumente", href: "/portal/dokumente", active: true },
             { label: "Finanzen", href: "/portal/finanzen", active: false },
           ].map((item) => (

@@ -140,9 +140,11 @@ export default async function AbrechnungPage() {
         <nav className="flex-1 px-3 py-4 space-y-1">
           {[
             { label: 'Übersicht', href: '/portal/dashboard' },
+            { label: 'Chat', href: '/portal/chat' },
             { label: 'Einheiten', href: '/portal/einheiten' },
             { label: 'Mieter', href: '/portal/mieter' },
             { label: 'Tickets', href: '/portal/tickets' },
+            { label: 'Partner', href: '/portal/partner' },
             { label: 'Dokumente', href: '/portal/dokumente' },
             { label: 'Finanzen', href: '/portal/finanzen' },
             { label: 'Abrechnung', href: '/portal/abrechnung', active: true },
