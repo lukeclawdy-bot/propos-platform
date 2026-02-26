@@ -235,3 +235,28 @@ export const billingEvents = pgTable('billing_events', {
   processedAt: timestamp('processed_at'),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+// ─── VOICE TABLES v4 ─────────────────────────────────────────────────────────
+
+// Phone calls — Retell AI voice call records (Kai)
+export const phoneCalls = pgTable('phone_calls', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  tenantId: uuid('tenant_id'),
+  propertyId: uuid('property_id'),
+  landlordId: uuid('landlord_id'),
+  retellCallId: text('retell_call_id').unique(), // Retell AI call_id
+  phoneFrom: text('phone_from'),                 // tenant's caller ID
+  phoneTo: text('phone_to'),                     // Kai's Hamburg number
+  startedAt: timestamp('started_at'),
+  endedAt: timestamp('ended_at'),
+  durationSeconds: integer('duration_seconds'),
+  transcript: jsonb('transcript'),               // full Retell transcript array
+  aiSummary: text('ai_summary'),                 // Retell's post-call summary
+  intent: text('intent'),                        // classified intent
+  ticketId: uuid('ticket_id'),                   // linked ticket
+  recordingConsent: boolean('recording_consent').default(true),
+  recordingUrl: text('recording_url'),           // Retell recording URL
+  escalated: boolean('escalated').default(false),
+  escalationReason: text('escalation_reason'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
