@@ -6,7 +6,12 @@ import { createToken, isDemoMode } from "@/lib/auth/jwt";
 import { storePin } from "@/lib/auth/pin-store";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy init — avoid build-time crash when RESEND_API_KEY is missing
+let _resend: InstanceType<typeof Resend> | null = null;
+function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
+  return _resend;
+}
 
 const GENERIC_MSG =
   "Wenn Sie ein Konto haben, erhalten Sie in Kürze einen Link.";
@@ -61,7 +66,7 @@ export async function POST(req: NextRequest) {
 
     // Send email (best-effort — never fail silently in dev)
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: "einfach verwaltet. <noreply@einfach-verwaltet.de>",
         to: normalised,
         subject: "Ihr Anmeldelink für einfach verwaltet.",

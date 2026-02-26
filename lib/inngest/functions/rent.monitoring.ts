@@ -85,10 +85,11 @@ export const rentMonitoring = inngest.createFunction(
         for (const unit of unitsDay10) {
           // Create financial transaction for Mahnung
           await db.insert(financialTransactions).values({
+            landlordId: (unit as any).landlordId || "00000000-0000-0000-0000-000000000000",
             unitId: unit.unitId,
             propertyId: unit.propertyId,
             type: "mahnung",
-            amount: unit.coldRentCents,
+            amountCents: unit.coldRentCents || 0,
             currency: "EUR",
             status: "pending",
             description: `Mahnung für Miete - ${unit.daysOverdue} Tage überfällig`,
@@ -114,6 +115,7 @@ export const rentMonitoring = inngest.createFunction(
       try {
         for (const unit of unitsOverdue7Days) {
           await db.insert(aiActions).values({
+            landlordId: (unit as any).landlordId || "00000000-0000-0000-0000-000000000000",
             propertyId: unit.propertyId,
             unitId: unit.unitId,
             type: "mahnung",
