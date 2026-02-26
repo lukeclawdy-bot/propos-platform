@@ -66,6 +66,51 @@ const posts = [
     readTime: "7 min",
     date: "Februar 2026",
   },
+  {
+    slug: "betriebskostenabrechnung-hamburg",
+    title: "Betriebskostenabrechnung Hamburg: Was Vermieter wissen müssen",
+    description:
+      "Fristen, umlagefähige Kosten nach §2 BetrKV, häufige Fehler und wie Sie als Hamburger Vermieter rechtssicher abrechnen.",
+    keyword: "Betriebskostenabrechnung Hamburg",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "eigentuemerversammlung-vorbereiten",
+    title: "Eigentümerversammlung vorbereiten: Checkliste für Vermieter",
+    description:
+      "Einladungsfristen, Tagesordnung, Beschlussfähigkeit, Protokoll und digitale ETV — der komplette Leitfaden für WEG-Versammlungen.",
+    keyword: "Eigentümerversammlung vorbereiten",
+    readTime: "7 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietvertrag-kuendigen-hamburg",
+    title: "Mietvertrag kündigen Hamburg: Fristen und Voraussetzungen nach §573 BGB",
+    description:
+      "Was Hamburger Vermieter bei der Kündigung beachten müssen — Kündigungsfristen, Eigenbedarf, Formvorschriften und häufige Fehler.",
+    keyword: "Mietvertrag kündigen Hamburg",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-selbst-machen",
+    title: "Hausverwaltung selbst machen vs. Verwalter beauftragen: Was lohnt sich?",
+    description:
+      "Kosten, Zeitaufwand und Risiken der Selbstverwaltung — der ehrliche Vergleich für private Vermieter ab 4 Einheiten.",
+    keyword: "Hausverwaltung selbst machen",
+    readTime: "7 min",
+    date: "Januar 2026",
+  },
+  {
+    slug: "schoenheitsreparaturen-bgh-2026",
+    title: "Schönheitsreparaturen nach BGH: Was Vermieter 2026 beachten müssen",
+    description:
+      "BGH-Urteile, unwirksame Klauseln, Quotenabgeltung — und was bei unrenoviert übergebenen Wohnungen gilt.",
+    keyword: "Schönheitsreparaturen Vermieter BGH",
+    readTime: "8 min",
+    date: "Januar 2026",
+  },
 ];
 
 export default function BlogIndex() {
