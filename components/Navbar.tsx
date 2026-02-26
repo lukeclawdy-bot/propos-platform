@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import { HouseLogoIcon } from "./Icons";
 
 export function Navbar() {
+  const [toolsOpen, setToolsOpen] = useState(false);
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-warm-white/95 backdrop-blur-sm border-b border-navy/8">
       <div className="max-w-[1100px] mx-auto px-6 py-4 flex justify-between items-center">
@@ -17,7 +22,32 @@ export function Navbar() {
           <a href="/bka-rechner" className="text-teal hover:text-navy text-sm font-medium transition-colors">BKA-Rechner</a>
           <a href="/preise" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Preise</a>
           <a href="/blog" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Ratgeber</a>
-          <a href="/#nachfolge" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Nachfolge</a>
+          
+          {/* Tools Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setToolsOpen(!toolsOpen)}
+              onBlur={() => setTimeout(() => setToolsOpen(false), 150)}
+              className="text-text-light hover:text-navy text-sm font-medium transition-colors flex items-center gap-1"
+            >
+              Werkzeuge
+              <svg className={`w-4 h-4 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {toolsOpen && (
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+                <a
+                  href="/mieterhohung-rechner"
+                  className="block px-4 py-2.5 text-sm text-navy hover:bg-teal/5 hover:text-teal transition-colors"
+                >
+                  <span className="font-medium">Mieterhöhungsrechner</span>
+                  <span className="block text-xs text-text-light">§ 558 BGB berechnen</span>
+                </a>
+              </div>
+            )}
+          </div>
+          
           <a href="/kontakt" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Kontakt</a>
           <a href="/kontakt" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
             Kostenlose Beratung

@@ -44,19 +44,25 @@ export function Vergleich() {
         </div>
 
         <div className="bg-warm-white rounded-2xl border border-gray-100 overflow-hidden">
-          <div className="grid grid-cols-[1fr_100px_100px] sm:grid-cols-[1fr_120px_120px] bg-navy text-white text-sm font-semibold">
-            <div className="px-6 py-4"></div>
-            <div className="px-4 py-4 text-center">einfach verwaltet.</div>
-            <div className="px-4 py-4 text-center text-white/60">Typische HV</div>
+          {/* Header */}
+          <div className="grid grid-cols-[1fr_72px_72px] sm:grid-cols-[1fr_120px_120px] bg-navy text-white text-xs sm:text-sm font-semibold">
+            <div className="px-4 sm:px-6 py-4"></div>
+            <div className="py-4 text-center leading-tight px-1">
+              einfach<br className="sm:hidden" /> verwaltet.
+            </div>
+            <div className="py-4 text-center text-white/60 leading-tight px-1">
+              Typische<br className="sm:hidden" /> HV
+            </div>
           </div>
+          {/* Rows */}
           {rows.map((r, i) => (
             <div
               key={r.feature}
-              className={`grid grid-cols-[1fr_100px_100px] sm:grid-cols-[1fr_120px_120px] items-center ${i % 2 === 0 ? "bg-white" : "bg-warm-white"}`}
+              className={`grid grid-cols-[1fr_72px_72px] sm:grid-cols-[1fr_120px_120px] items-center ${i % 2 === 0 ? "bg-white" : "bg-warm-white"}`}
             >
-              <div className="px-6 py-4 text-sm text-navy font-medium">{r.feature}</div>
-              <div className="px-4 py-4">{r.us ? <Check /> : <Cross />}</div>
-              <div className="px-4 py-4">{r.others ? <Check /> : <Cross />}</div>
+              <div className="px-4 sm:px-6 py-4 text-sm text-navy font-medium min-w-0">{r.feature}</div>
+              <div className="py-4 flex items-center justify-center">{r.us ? <Check /> : <Cross />}</div>
+              <div className="py-4 flex items-center justify-center">{r.others ? <Check /> : <Cross />}</div>
             </div>
           ))}
         </div>
