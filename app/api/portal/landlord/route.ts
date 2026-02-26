@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { landlords, properties, tickets } from '@/lib/db/schema';
 import { eq, count } from 'drizzle-orm';
+import { getDemoLandlord, getDemoProperties, getDemoTickets } from '@/lib/demo-data';
 
 export async function POST(req: NextRequest) {
   try {
@@ -30,6 +31,20 @@ export async function GET(req: NextRequest) {
     const email = req.nextUrl.searchParams.get('email');
     const id = req.nextUrl.searchParams.get('id');
     if (!email && !id) return NextResponse.json({ error: 'email or id required' }, { status: 400 });
+
+    // Check if this is a demo request
+    if (id === 'demo' || id?.startsWith('demo-') || email?.includes('demo')) {
+      const demoLandlord = getDemoLandlord();
+      const demoProperties = getDemoProperties();
+      const demoTickets = getDemoTickets();
+      return NextResponse.json({
+        data: {
+          ...demoLandlord,
+          propertiesCount: demoProperties.length,
+          ticketsCount: demoTickets.length,
+        }
+      });
+    }
 
     const [landlord] = email
       ? await db.select().from(landlords).where(eq(landlords.email, email))

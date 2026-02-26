@@ -97,7 +97,7 @@ export async function POST(req: NextRequest) {
     // Send email (best-effort)
     try {
       await getResend().emails.send({
-        from: "einfach verwaltet. <mieter@einfach-verwaltet.de>",
+        from: "einfach verwaltet. <mieter@immo.einfach-verwaltet.de>",
         to: tenant.email,
         subject: "Ihr Anmeldelink für das Mieterportal",
         html: `<!DOCTYPE html>

@@ -2,11 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { financialTransactions, properties, units } from '@/lib/db/schema';
 import { eq, inArray, gte, and } from 'drizzle-orm';
+import { getDemoFinanzenData } from '@/lib/demo-data';
 
 export async function GET(req: NextRequest) {
   try {
     const landlordId = req.nextUrl.searchParams.get('landlordId');
     if (!landlordId) return NextResponse.json({ error: 'landlordId required' }, { status: 400 });
+
+    // Check if this is a demo request
+    if (landlordId === 'demo' || landlordId.startsWith('demo-')) {
+      return NextResponse.json({ data: getDemoFinanzenData() });
+    }
 
     // Get last 6 months of transactions
     const sixMonthsAgo = new Date();

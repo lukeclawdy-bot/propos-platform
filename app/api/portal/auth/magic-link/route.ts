@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
     // Send email (best-effort — never fail silently in dev)
     try {
       await getResend().emails.send({
-        from: "einfach verwaltet. <noreply@einfach-verwaltet.de>",
+        from: "einfach verwaltet. <noreply@immo.einfach-verwaltet.de>",
         to: normalised,
         subject: "Ihr Anmeldelink für einfach verwaltet.",
         html: `

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { tenants, units, properties } from '@/lib/db/schema';
 import { eq, inArray } from 'drizzle-orm';
+import { getDemoTenants, getDemoUnits, getDemoProperties } from '@/lib/demo-data';
 
 export async function GET(req: NextRequest) {
   try {
@@ -10,6 +11,38 @@ export async function GET(req: NextRequest) {
     
     if (!landlordId && !propertyId) {
       return NextResponse.json({ error: 'landlordId or propertyId required' }, { status: 400 });
+    }
+
+    // Check if this is a demo request
+    if (landlordId === 'demo' || landlordId?.startsWith('demo-') || propertyId?.startsWith('demo-')) {
+      let demoTenants = getDemoTenants();
+      const demoUnits = getDemoUnits();
+      const demoProperties = getDemoProperties();
+      
+      // Filter by property if specified
+      if (propertyId) {
+        const propertyUnitIds = demoUnits
+          .filter(u => u.propertyId === propertyId)
+          .map(u => u.id);
+        demoTenants = demoTenants.filter(t => propertyUnitIds.includes(t.unitId));
+      }
+      
+      // Enrich with unit info
+      const enriched = demoTenants.map(t => {
+        const unit = demoUnits.find(u => u.id === t.unitId);
+        const prop = unit ? demoProperties.find(p => p.id === unit.propertyId) : null;
+        return {
+          ...t,
+          unit: unit ? {
+            id: unit.id,
+            designation: unit.designation,
+            propertyAddress: prop?.address || 'Unbekannt'
+          } : null,
+          coldRentCents: unit?.coldRentCents || null
+        };
+      });
+      
+      return NextResponse.json({ data: enriched });
     }
 
     let tenantRows;

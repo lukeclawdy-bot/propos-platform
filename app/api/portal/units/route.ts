@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { units, tenants, properties } from '@/lib/db/schema';
 import { eq, and, inArray } from 'drizzle-orm';
+import { getDemoUnits, getDemoTenants } from '@/lib/demo-data';
 
 export async function GET(req: NextRequest) {
   try {
@@ -10,6 +11,31 @@ export async function GET(req: NextRequest) {
     
     if (!propertyId && !landlordId) {
       return NextResponse.json({ error: 'propertyId or landlordId required' }, { status: 400 });
+    }
+
+    // Check if this is a demo request
+    if (landlordId === 'demo' || landlordId?.startsWith('demo-') || propertyId?.startsWith('demo-')) {
+      let demoUnits = getDemoUnits();
+      
+      // Filter by property if specified
+      if (propertyId) {
+        demoUnits = demoUnits.filter(u => u.propertyId === propertyId);
+      }
+      
+      // Enrich with tenant info if occupied
+      const demoTenants = getDemoTenants();
+      const enriched = demoUnits.map((u) => {
+        const tenant = u.occupied 
+          ? demoTenants.find(t => t.unitId === u.id)
+          : null;
+        return { 
+          ...u, 
+          tenantName: tenant ? `${tenant.firstName} ${tenant.lastName}` : null,
+          tenantEmail: tenant?.email || null,
+        };
+      });
+      
+      return NextResponse.json({ data: enriched });
     }
 
     let rows;

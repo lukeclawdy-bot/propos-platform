@@ -53,7 +53,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ tic
         // Send email notification to tenant
         try {
           await getResend().emails.send({
-            from: 'einfach verwaltet <noreply@einfach-verwaltet.de>',
+            from: 'einfach verwaltet <noreply@immo.einfach-verwaltet.de>',
             to: tenant.email,
             subject: 'Neue Nachricht von Ihrer Hausverwaltung',
             html: `

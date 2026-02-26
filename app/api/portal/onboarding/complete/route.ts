@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
-          from: "portal@einfach-verwaltet.de",
+          from: "portal@immo.einfach-verwaltet.de",
           to: email,
           subject: "Ihr Portal ist bereit — einfach verwaltet.",
           html: `

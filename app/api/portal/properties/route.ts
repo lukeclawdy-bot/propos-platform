@@ -2,11 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { properties, units, tickets } from '@/lib/db/schema';
 import { eq, count, isNull } from 'drizzle-orm';
+import { getDemoProperties } from '@/lib/demo-data';
 
 export async function GET(req: NextRequest) {
   try {
     const landlordId = req.nextUrl.searchParams.get('landlordId');
     if (!landlordId) return NextResponse.json({ error: 'landlordId required' }, { status: 400 });
+
+    // Check if this is a demo request
+    if (landlordId === 'demo' || landlordId.startsWith('demo-')) {
+      return NextResponse.json({ data: getDemoProperties() });
+    }
 
     const props = await db.select().from(properties).where(eq(properties.landlordId, landlordId));
 
