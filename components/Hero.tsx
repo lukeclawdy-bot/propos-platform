@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CheckIcon, ArrowRightIcon } from "./Icons";
 
 const heroChecks = [
@@ -15,17 +16,21 @@ const painPoints = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-warm-white pt-16 overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, #1B3A5C 0%, transparent 70%)", transform: "translate(30%, -30%)" }}
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Modernes Apartment in Hamburg HafenCity"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={85}
         />
-        <div
-          className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-[0.03]"
-          style={{ background: "radial-gradient(circle, #2A7F7F 0%, transparent 70%)", transform: "translate(-30%, 30%)" }}
-        />
+        {/* Overlay: white gradient from left (where text sits) fading to semi-transparent right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/30" />
+        {/* Bottom fade for clean section transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white/60 to-transparent" />
       </div>
 
       <div className="relative max-w-[1100px] mx-auto px-6 py-20 lg:py-32">

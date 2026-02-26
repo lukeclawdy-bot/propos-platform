@@ -119,6 +119,8 @@ export function AnfrageQuiz() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const step = steps[current];
   const totalSteps = steps.length;
@@ -131,8 +133,11 @@ export function AnfrageQuiz() {
     setTimeout(() => setCurrent((c) => Math.min(c + 1, totalSteps - 1)), 250);
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
     const form = new FormData(e.currentTarget);
     const name = form.get("name") as string;
     const email = form.get("email") as string;
@@ -141,20 +146,29 @@ export function AnfrageQuiz() {
     const updated: Record<string, string> = { ...answers, name, email, telefon };
     setAnswers(updated);
 
-    // Build mailto
-    const subject = encodeURIComponent(`Angebot-Anfrage von ${name} — einfach verwaltet.`);
-    const body = encodeURIComponent(
-      `Neue Anfrage über Qualifying-Fragebogen:\n\n` +
-      `Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "—"}\n\n` +
-      `Verwaltungstyp: ${updated["verwaltungstyp"] || "—"}\n` +
-      `Einheiten: ${updated["einheiten"] || "—"}\n` +
-      `Standort: ${updated["standort"] || "—"}\n` +
-      `Situation: ${updated["situation"] || "—"}\n` +
-      `Priorität: ${updated["prioritaet"] || "—"}\n`
-    );
-    window.location.href = `mailto:kontakt@einfach-verwaltet.de?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setCurrent(totalSteps - 1);
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Ein Fehler ist aufgetreten");
+      }
+
+      setSubmitted(true);
+      setCurrent(totalSteps - 1);
+    } catch (err) {
+      console.error("Submit error:", err);
+      setSubmitError(
+        "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt per Telefon."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   function goBack() {
@@ -299,12 +313,31 @@ export function AnfrageQuiz() {
             </label>
           </div>
 
+          {submitError && (
+            <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
+              {submitError}
+            </div>
+          )}
+
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-navy text-white py-4 px-6 rounded-xl font-semibold text-base hover:bg-navy/85 transition-all hover:shadow-md mt-4"
+            disabled={isSubmitting}
+            className="w-full flex items-center justify-center gap-2 bg-navy text-white py-4 px-6 rounded-xl font-semibold text-base hover:bg-navy/85 transition-all hover:shadow-md mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Angebot anfordern
-            <ArrowRightIcon className="w-4 h-4" />
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Wird gesendet...
+              </>
+            ) : (
+              <>
+                Angebot anfordern
+                <ArrowRightIcon className="w-4 h-4" />
+              </>
+            )}
           </button>
 
           <p className="text-xs text-text-light text-center">Kostenlos &amp; unverbindlich. Keine Kaltakquise.</p>
