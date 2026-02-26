@@ -40,6 +40,9 @@ export function Footer() {
                 { label: "Mieterhöhung Hamburg", href: "/blog/mieterhohung-hamburg-2026" },
                 { label: "Kosten Hausverwaltung", href: "/blog/hausverwaltung-hamburg-kosten" },
                 { label: "Alle Artikel", href: "/blog" },
+                { label: "BKA-Rechner", href: "/bka-rechner" },
+                { label: "Mieterhöhung Rechner", href: "/mieterhohung-rechner" },
+                { label: "Beschlussprotokoll Generator", href: "/beschlussprotokoll" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors">{item.label}</a>
