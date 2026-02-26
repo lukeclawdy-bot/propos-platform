@@ -35,10 +35,10 @@ export function Kontakt() {
               <span className="text-teal text-sm font-semibold">Kontakt</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4 font-serif">
-              Wir melden uns innerhalb von 24 Stunden
+              Wir melden uns noch am selben Tag
             </h2>
             <p className="text-text-light text-lg leading-relaxed mb-8">
-              Kein Warteschlangensystem. Kein „Wir melden uns irgendwann." Sie bekommen eine verbindliche Rückmeldung innerhalb von 24 Stunden — mit einem konkreten Angebot, das zu Ihrer Situation passt.
+              Kein Warteschlangensystem. Kein „Wir melden uns irgendwann." Sie bekommen eine sofortige Bestätigung und ein konkretes Angebot — am nächsten Werktag, nicht in zwei Wochen.
             </p>
 
             <div className="space-y-4">
@@ -76,9 +76,9 @@ export function Kontakt() {
             <div className="mt-10 bg-warm-white rounded-xl p-5 border border-gray-100">
               <div className="text-sm font-semibold text-navy mb-2">Was nach Ihrer Anfrage passiert:</div>
               <ol className="space-y-2 text-sm text-text-light">
-                <li className="flex items-start gap-2"><span className="font-bold text-teal flex-shrink-0">1.</span>Bestätigungsmail innerhalb von 30 Minuten</li>
-                <li className="flex items-start gap-2"><span className="font-bold text-teal flex-shrink-0">2.</span>Persönlicher Rückruf innerhalb von 24 Stunden</li>
-                <li className="flex items-start gap-2"><span className="font-bold text-teal flex-shrink-0">3.</span>Schriftliches Angebot innerhalb von 48 Stunden</li>
+                <li className="flex items-start gap-2"><span className="font-bold text-teal flex-shrink-0">1.</span>Sofortige Bestätigung Ihrer Anfrage</li>
+                <li className="flex items-start gap-2"><span className="font-bold text-teal flex-shrink-0">2.</span>Rückruf noch am selben Werktag</li>
+                <li className="flex items-start gap-2"><span className="font-bold text-teal flex-shrink-0">3.</span>Schriftliches Angebot am nächsten Tag</li>
               </ol>
             </div>
           </div>
@@ -148,7 +148,7 @@ export function Kontakt() {
 
               {submitted && (
                 <p className="text-teal font-semibold text-center text-sm">
-                  ✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                  ✓ Vielen Dank! Wir melden uns noch heute bei Ihnen.
                 </p>
               )}
 

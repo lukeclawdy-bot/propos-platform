@@ -2,7 +2,7 @@ import Image from "next/image";
 import { BoltIcon, MapPinIcon, LockOpenIcon, ScaleIcon, LockIcon, HomeIcon, ShieldIcon, StarIcon } from "./Icons";
 
 const stats = [
-  { icon: BoltIcon, value: "< 24h", label: "Reaktionszeit", desc: "Garantiert, schriftlich festgehalten. Nicht \"so schnell wie möglich\"." },
+  { icon: BoltIcon, value: "Sofort", label: "Reaktionszeit", desc: "Ihre Anfragen werden sofort bearbeitet. Nicht \"so schnell wie möglich\" — sondern jetzt." },
   { icon: MapPinIcon, value: "Hamburg", label: "Verwurzelt", desc: "Kein Fernverwalter. Wir kennen Altona, Eimsbüttel, Winterhude." },
   { icon: LockOpenIcon, value: "100%", label: "Preistransparenz", desc: "Alle Kosten auf dieser Seite. Kein Anruf nötig, um den Preis zu erfahren." },
   { icon: ScaleIcon, value: "§34c", label: "GewO Lizenz", desc: "Vollständig zugelassene Hausverwaltung nach deutschem Recht." },

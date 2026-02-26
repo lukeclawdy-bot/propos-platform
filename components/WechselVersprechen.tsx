@@ -40,7 +40,7 @@ export function WechselVersprechen() {
           Jetzt wechseln — kostenlos anfragen
         </a>
         <p className="text-white/40 text-xs mt-4">
-          Kostenlos und unverbindlich. Wir melden uns innerhalb von 24 Stunden.
+          Kostenlos und unverbindlich. Wir melden uns noch am selben Tag.
         </p>
       </div>
     </section>

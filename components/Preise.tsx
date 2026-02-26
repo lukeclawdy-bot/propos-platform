@@ -5,7 +5,7 @@ const mietFeatures = [
   "SEPA-Mieteinzug & Mahnwesen",
   "Handwerker-Koordination",
   "Nebenkostenabrechnung (jährlich)",
-  "24h-Reaktionszeit, garantiert",
+  "Sofortige Bearbeitung aller Anfragen",
   "Online-Eigentümerportal",
   "Monatliche Abrechnungsberichte",
 ];

@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Wie schnell reagieren Sie auf Anfragen?",
-    a: "Innerhalb von 24 Stunden — garantiert und vertraglich festgehalten. Zum Vergleich: Die meisten Hausverwaltungen versprechen 48 Stunden oder gar nichts. In dringenden Fällen (Wasserrohrbruch, Heizungsausfall) sind wir auch außerhalb der Geschäftszeiten erreichbar.",
+    a: "Sofort. Jede Anfrage wird unmittelbar bearbeitet und am selben Werktag beantwortet — das ist vertraglich festgehalten. Zum Vergleich: Die meisten Hausverwaltungen versprechen 48 Stunden oder gar nichts. In dringenden Fällen (Wasserrohrbruch, Heizungsausfall) sind wir auch außerhalb der Geschäftszeiten erreichbar.",
   },
   {
     q: "Bin ich an eine Mindestlaufzeit gebunden?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Was unterscheidet Sie von großen Hausverwaltungen wie Buena oder Matera?",
-    a: "Transparenz und Nähe. Wir zeigen unsere Preise offen — bei den meisten Wettbewerbern müssen Sie erst ein Formular ausfüllen. Und wir sind ein Hamburger Unternehmen, das vor Ort ist — kein Fernverwalter aus Berlin oder München. Dazu kommt: 24h Reaktionszeit statt 48h, ein digitales Portal mit voller Kostentransparenz, und ein Wechselprozess, der tatsächlich reibungslos funktioniert.",
+    a: "Transparenz und Geschwindigkeit. Wir zeigen unsere Preise offen — bei den meisten Wettbewerbern müssen Sie erst ein Formular ausfüllen. Und wir sind ein Hamburger Unternehmen, das vor Ort ist — kein Fernverwalter aus Berlin oder München. Dazu kommt: sofortige Bearbeitung statt tagelangem Warten, ein digitales Portal mit voller Kostentransparenz, und ein Wechselprozess, der tatsächlich reibungslos funktioniert.",
   },
   {
     q: "Verwalten Sie auch WEG-Gemeinschaften?",

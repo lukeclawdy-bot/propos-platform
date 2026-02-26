@@ -2,7 +2,7 @@ import Image from "next/image";
 import { CheckIcon, ArrowRightIcon } from "./Icons";
 
 const heroChecks = [
-  "Antwort innerhalb von 24 Stunden — garantiert",
+  "Sofortige Bearbeitung jeder Anfrage — garantiert",
   "Preise ab €24/Einheit/Monat — offen auf dieser Seite",
   "Hamburger Unternehmen, kein anonymes Callcenter",
 ];

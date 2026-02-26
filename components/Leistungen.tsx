@@ -4,7 +4,7 @@ const services = [
   {
     icon: PhoneIcon,
     title: "Erreichbarkeit, die hält",
-    desc: "Wir antworten innerhalb von 24 Stunden — immer. Per Telefon, E-Mail oder über Ihr Online-Portal. Kein Anrufbeantworter, der nie zurückruft.",
+    desc: "Ihre Anfrage wird sofort bearbeitet — nicht morgen, nicht nächste Woche. Per Telefon, E-Mail oder Portal. Kein Anrufbeantworter, der nie zurückruft.",
   },
   {
     icon: ChartIcon,
