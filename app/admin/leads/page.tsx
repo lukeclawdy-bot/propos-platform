@@ -1,5 +1,5 @@
-import { db, hasDatabase } from "@/app/db";
-import { leads } from "@/app/db/schema";
+import { db, hasDatabase } from "../../db/index";
+import { leads } from "../../db/schema";
 import { desc } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { Lead, LeadTable } from "./LeadTable";

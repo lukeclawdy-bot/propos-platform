@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackAnfrageConversion } from "@/lib/gtag";
 import { CheckIcon, ArrowRightIcon, HouseLogoIcon, HomeIcon, ScaleIcon, ClipboardIcon, ChatIcon, MapPinIcon, BoltIcon, LockOpenIcon, WrenchIcon, StarIcon, ShieldIcon, BuildingIcon, QuestionIcon, CurrencyIcon, UsersIcon } from "./Icons";
 
 // --- Types ---
@@ -161,6 +162,9 @@ export function AnfrageQuiz() {
 
       setSubmitted(true);
       setCurrent(totalSteps - 1);
+      
+      // Track Google Ads conversion
+      trackAnfrageConversion();
     } catch (err) {
       console.error("Submit error:", err);
       setSubmitError(

@@ -2,6 +2,7 @@
 
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from "./Icons";
 import { useState, FormEvent } from "react";
+import { trackKontaktConversion } from "@/lib/gtag";
 
 export function Kontakt() {
   const [submitted, setSubmitted] = useState(false);
@@ -36,6 +37,8 @@ export function Kontakt() {
       if (res.ok) {
         setSubmitted(true);
         form.reset();
+        // Track Google Ads conversion
+        trackKontaktConversion();
       } else {
         const json = await res.json().catch(() => ({}));
         setError(json.error || "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.");

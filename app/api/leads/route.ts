@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { db, hasDatabase } from "@/app/db";
-import { leads } from "@/app/db/schema";
+import { db, hasDatabase } from "../../db";
+import { leads } from "../../db/schema";
 
 interface LeadSubmission {
   verwaltungstyp?: string;
