@@ -98,7 +98,7 @@ export function Hero() {
             </div>
 
             {/* Price badge — floating top-right, offset outside card */}
-            <div className="absolute -top-5 -right-5 bg-amber text-white rounded-xl px-4 py-2 shadow-lg z-10">
+            <div className="absolute -top-8 -right-5 bg-amber text-white rounded-xl px-4 py-2 shadow-lg z-10">
               <div className="text-xs font-medium">Ab sofort in Hamburg</div>
               <div className="text-lg font-bold">ab €24/Einheit</div>
             </div>
