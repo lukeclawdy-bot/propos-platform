@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/bka-rechner`, priority: 0.7, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/beschlussprotokoll`, priority: 0.8, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-hamburg-vergleich`, priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/hausverwaltung-berlin`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-hamburg`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/mietverwaltung-hamburg`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-wechseln`, priority: 0.8, changeFrequency: "monthly" as const },
