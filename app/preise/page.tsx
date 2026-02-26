@@ -145,14 +145,14 @@ export default function PreisePage() {
                     ))}
                   </ul>
                   <a
-                    href="/kontakt"
+                    href={pkg.name === "Mietverwaltung Enterprise" ? "/kontakt" : "/portal/onboarding"}
                     className={`block text-center w-full py-3 px-6 rounded-xl font-semibold transition-all ${
                       pkg.highlight
                         ? "bg-teal text-white hover:bg-teal/85 shadow-md hover:shadow-lg"
                         : "bg-navy text-white hover:bg-navy/85"
                     }`}
                   >
-                    {pkg.name === "Mietverwaltung Enterprise" ? "Individuelles Angebot anfragen" : "Angebot anfragen"}
+                    {pkg.name === "Mietverwaltung Enterprise" ? "Individuelles Angebot anfragen" : "Jetzt starten →"}
                   </a>
                 </div>
               ))}

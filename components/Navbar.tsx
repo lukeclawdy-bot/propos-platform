@@ -104,14 +104,21 @@ export function Navbar() {
             )}
           </div>
 
-          <a href="/anfrage" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors whitespace-nowrap">
-            Angebot anfragen
+          <a href="/portal/login"
+            className="text-text-light hover:text-navy text-sm font-medium transition-colors whitespace-nowrap flex items-center gap-1.5">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Portal
+          </a>
+          <a href="/portal/onboarding" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors whitespace-nowrap">
+            Jetzt starten
           </a>
         </div>
 
         {/* Mobile: CTA + burger */}
         <div className="flex md:hidden items-center gap-3">
-          <a href="/anfrage" className="bg-teal text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
+          <a href="/portal/onboarding" className="bg-teal text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
             Angebot
           </a>
           <button
@@ -193,13 +200,20 @@ export function Navbar() {
               </div>
             )}
 
-            <div className="pt-3">
+            <div className="pt-3 space-y-2">
               <a
-                href="/anfrage"
+                href="/portal/onboarding"
                 onClick={() => setMobileOpen(false)}
-                className="block w-full text-center bg-navy text-white py-3.5 rounded-xl font-semibold hover:bg-teal transition-colors"
+                className="block w-full text-center bg-teal text-white py-3.5 rounded-xl font-semibold hover:bg-navy transition-colors"
               >
-                Angebot in 2 Minuten →
+                Jetzt starten →
+              </a>
+              <a
+                href="/portal/login"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full text-center border border-navy/20 text-navy py-3 rounded-xl font-medium hover:bg-navy/5 transition-colors text-sm"
+              >
+                Portal Login
               </a>
             </div>
           </div>

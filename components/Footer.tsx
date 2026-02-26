@@ -67,6 +67,22 @@ export function Footer() {
           </div>
 
           <div>
+            <h4 className="font-semibold text-white text-sm mb-4 uppercase tracking-wide">Portal</h4>
+            <ul className="space-y-2.5">
+              {[
+                { label: "Portal starten", href: "/portal/onboarding" },
+                { label: "Portal Login", href: "/portal/login" },
+                { label: "Demo ansehen", href: "/demo" },
+                { label: "Beta-Programm", href: "/beta" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors">{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h4 className="font-semibold text-white text-sm mb-4 uppercase tracking-wide">Rechtliches</h4>
             <ul className="space-y-2.5">
               {[
