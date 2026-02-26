@@ -19,11 +19,10 @@ export function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-8">
           <a href="/leistungen" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Leistungen</a>
-          <a href="/bka-rechner" className="text-teal hover:text-navy text-sm font-medium transition-colors">BKA-Rechner</a>
           <a href="/preise" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Preise</a>
           <a href="/blog" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Ratgeber</a>
-          
-          {/* Tools Dropdown */}
+
+          {/* Werkzeuge Dropdown */}
           <div className="relative">
             <button
               onClick={() => setToolsOpen(!toolsOpen)}
@@ -36,21 +35,22 @@ export function Navbar() {
               </svg>
             </button>
             {toolsOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
-                <a
-                  href="/mieterhohung-rechner"
-                  className="block px-4 py-2.5 text-sm text-navy hover:bg-teal/5 hover:text-teal transition-colors"
-                >
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+                <a href="/bka-rechner" className="block px-4 py-2.5 text-sm text-navy hover:bg-teal/5 hover:text-teal transition-colors">
+                  <span className="font-medium">BKA-Rechner</span>
+                  <span className="block text-xs text-text-light">Betriebskosten nach §2 BetrKV</span>
+                </a>
+                <a href="/mieterhohung-rechner" className="block px-4 py-2.5 text-sm text-navy hover:bg-teal/5 hover:text-teal transition-colors">
                   <span className="font-medium">Mieterhöhungsrechner</span>
                   <span className="block text-xs text-text-light">§ 558 BGB berechnen</span>
                 </a>
               </div>
             )}
           </div>
-          
+
           <a href="/kontakt" className="text-text-light hover:text-navy text-sm font-medium transition-colors">Kontakt</a>
-          <a href="/kontakt" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
-            Kostenlose Beratung
+          <a href="/anfrage" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
+            Angebot anfragen
           </a>
         </div>
       </div>
