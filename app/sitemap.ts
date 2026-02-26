@@ -28,38 +28,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const blogPosts = [
+    // Sprint 1
     "weg-hamburg",
     "mietspiegel-hamburg-2025",
     "hausordnung-mietwohnung",
     "immobilien-vermieten-steuern",
     "verwaltervertrag-hausverwaltung",
+    // Sprint 2
     "hausverwaltung-wechseln-hamburg",
     "nebenkostenabrechnung-fehler",
     "mieterhohung-hamburg-2026",
     "hausverwaltung-hamburg-kosten",
     "moderne-hausverwaltung-2026",
+    // Sprint 3
     "betriebskostenabrechnung-hamburg",
     "eigentuemerversammlung-vorbereiten",
     "mietvertrag-kuendigen-hamburg",
     "hausverwaltung-selbst-machen",
     "schoenheitsreparaturen-bgh-2026",
+    // Sprint 4
     "hausverwaltung-hamburg-altona",
     "wasserschaden-mietwohnung",
     "weg-vs-mietverwaltung",
     "hausverwaltung-kuendigen-muster",
     "nebenkostenabrechnung-pruefen",
+    // Additional
     "hausverwalter-wechseln-hamburg",
     "weg-verwaltung-hamburg",
-    "eigentuemerversammlung-online",
+    "beschlussprotokoll-eigentuemerversammlung",
+    // Sprint 5 — Berlin SEO + high-value topics
     "hausverwaltung-berlin-wechseln",
     "mietpreisbremse-berlin-2026",
+    "eigentuemerversammlung-online",
     "wohnungseigentuemer-rechte-pflichten",
-    "beschlussprotokoll-eigentuemerversammlung",
-    "mieterhohung-hamburg-2026",
-    "mietpreisbremse-berlin-2026",
-    "mietspiegel-hamburg-2025",
-    "moderne-hausverwaltung-2026",
-    "schoenheitsreparaturen-bgh-2026",
+    "hausverwaltung-kuendigen-frist",
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     priority: 0.7,
