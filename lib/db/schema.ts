@@ -77,6 +77,7 @@ export const tickets = pgTable('tickets', {
   aiTriage: jsonb('ai_triage'), // { category, urgency, summary }
   slaDeadline: timestamp('sla_deadline'),
   resolvedAt: timestamp('resolved_at'),
+  rating: integer('rating'), // 1-5 stars, set by tenant after resolution
 });
 
 // ─── NEW TABLES v2 ───────────────────────────────────────────────────────────
@@ -177,5 +178,60 @@ export const financialTransactions = pgTable('financial_transactions', {
   dueDate: timestamp('due_date'),
   paidAt: timestamp('paid_at'),
   metadata: jsonb('metadata').default({}),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// ─── BILLING TABLES v3 ───────────────────────────────────────────────────────
+
+// Billing subscriptions — Stripe subscription tracking per landlord
+export const billingSubscriptions = pgTable('billing_subscriptions', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  landlordId: uuid('landlord_id').notNull().unique(),
+  stripeCustomerId: text('stripe_customer_id').notNull().unique(),
+  stripeSubscriptionId: text('stripe_subscription_id').unique(),
+  stripePriceId: text('stripe_price_id'), // which tier price object
+  tier: text('tier').notNull().default('basic'), // basic | standard | professional
+  unitCount: integer('unit_count').notNull().default(1),
+  monthlyAmountCents: integer('monthly_amount_cents'), // €/month incl. VAT
+  status: text('status').default('incomplete'), // incomplete | active | past_due | canceled | unpaid
+  sepaMandate: boolean('sepa_mandate').default(false), // SEPA Direct Debit mandate collected
+  currentPeriodStart: timestamp('current_period_start'),
+  currentPeriodEnd: timestamp('current_period_end'),
+  cancelAtPeriodEnd: boolean('cancel_at_period_end').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Billing invoices — Stripe invoice records for German Rechnungen (§14 UStG)
+export const billingInvoices = pgTable('billing_invoices', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  landlordId: uuid('landlord_id').notNull(),
+  stripeInvoiceId: text('stripe_invoice_id').notNull().unique(),
+  invoiceNumber: text('invoice_number'), // Stripe sequential Rechnungsnummer
+  subscriptionId: uuid('subscription_id'), // FK to billing_subscriptions
+  status: text('status').default('draft'), // draft | open | paid | uncollectible | void
+  amountDueCents: integer('amount_due_cents'), // Bruttobetrag
+  amountPaidCents: integer('amount_paid_cents'),
+  vatRatePercent: integer('vat_rate_percent').default(19), // 19% MwSt.
+  vatAmountCents: integer('vat_amount_cents'), // MwSt. Betrag
+  subtotalCents: integer('subtotal_cents'), // Nettobetrag
+  pdfUrl: text('pdf_url'), // Stripe hosted invoice PDF
+  hostedInvoiceUrl: text('hosted_invoice_url'), // Stripe hosted invoice page
+  periodStart: timestamp('period_start'), // Leistungszeitraum von
+  periodEnd: timestamp('period_end'), // Leistungszeitraum bis
+  paidAt: timestamp('paid_at'),
+  metadata: jsonb('metadata').default({}),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// Billing events — webhook event log for audit trail
+export const billingEvents = pgTable('billing_events', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  stripeEventId: text('stripe_event_id').notNull().unique(),
+  eventType: text('event_type').notNull(), // invoice.payment_succeeded etc.
+  landlordId: uuid('landlord_id'),
+  processed: boolean('processed').default(false),
+  payload: jsonb('payload').default({}),
+  processedAt: timestamp('processed_at'),
   createdAt: timestamp('created_at').defaultNow(),
 });
