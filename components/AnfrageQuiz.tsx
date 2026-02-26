@@ -244,7 +244,14 @@ export function AnfrageQuiz() {
           }
         </div>
 
-        <a href="/" className="inline-block mt-8 text-teal text-sm font-medium hover:underline">← Zurück zur Startseite</a>
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/portal/onboarding" className="inline-block bg-teal text-white px-6 py-3 rounded-xl font-semibold hover:bg-navy transition-colors">
+            Portal einrichten →
+          </a>
+          <a href="/" className="inline-block text-teal text-sm font-medium hover:underline flex items-center justify-center">
+            ← Zurück zur Startseite
+          </a>
+        </div>
       </div>
     );
   }
