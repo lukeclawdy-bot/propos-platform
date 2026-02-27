@@ -242,6 +242,7 @@ export function MieterhohungClient({ initialProperties, initialUnits, isDemo }: 
             { label: 'Finanzen', href: '/portal/finanzen' },
             { label: 'Analysen', href: '/portal/analytics', active: false },
             { label: 'Mieterhöhung', href: '/portal/mieterhohung', active: true },
+            { label: 'NKA', href: '/portal/nka' },
           ].map((item) => (
             <Link
               key={item.href}

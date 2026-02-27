@@ -4,15 +4,15 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Hausverwaltung wechseln: Die ultimative Checkliste | einfach verwaltet.",
+  title: "Hausverwaltung wechseln Checkliste: Schritt für Schritt | einfach verwaltet.",
   description:
-    "Hausverwaltung wechseln Checkliste: Kündigung, Unterlagenübergabe, Mieterinformation — Schritt für Schritt zum erfolgreichen Verwalterwechsel.",
+    "Hausverwaltung wechseln Checkliste: Kündigungsfristen, Unterlagenübergabe, Mieterinformation, Onboarding neue HV. Der vollständige Leitfaden für einen reibungslosen Verwalterwechsel.",
   keywords:
-    "Hausverwaltung wechseln Checkliste, Hausverwaltung kündigen, Verwalterwechsel, Hausverwaltung wechseln Schritt für Schritt",
+    "Hausverwaltung wechseln Checkliste, Hausverwaltung kündigen, Verwalterwechsel Ablauf, Hausverwaltung wechseln Schritt für Schritt, Hausverwaltung kündigen Fristen",
   openGraph: {
-    title: "Hausverwaltung wechseln: Die ultimative Checkliste",
+    title: "Hausverwaltung wechseln Checkliste: Der vollständige Leitfaden",
     description:
-      "Die vollständige Checkliste für den Wechsel Ihrer Hausverwaltung — von der Kündigung bis zur reibungslosen Übergabe.",
+      "Kündigungsfristen, Datenübergabe, Mieterinformation — alles was Sie für einen reibungslosen Hausverwaltungs-Wechsel brauchen.",
     url: "https://einfach-verwaltet.de/blog/hausverwaltung-wechseln-checkliste",
     siteName: "einfach verwaltet.",
     locale: "de_DE",
@@ -20,12 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Hausverwaltung wechseln: Die ultimative Checkliste",
+  headline: "Hausverwaltung wechseln Checkliste: Schritt für Schritt zum reibungslosen Wechsel",
   description:
-    "Schritt-für-Schritt-Checkliste für den Wechsel der Hausverwaltung: Kündigung, Unterlagenübergabe, Mieterinformation.",
+    "Kündigungsfristen, Unterlagenübergabe, Mieterinformation, neue HV onboarden — der vollständige Leitfaden für den Hausverwaltungs-Wechsel.",
   author: { "@type": "Organization", name: "einfach verwaltet." },
   publisher: {
     "@type": "Organization",
@@ -43,10 +43,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Wie kündige ich meiner Hausverwaltung?",
+      name: "Welche Kündigungsfristen gelten beim Hausverwaltungswechsel?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Kündigung muss schriftlich per Einwurfeinschreiben erfolgen. Die übliche Kündigungsfrist beträgt 3 Monate zum Jahresende (§ 621 BGB). Bei WEG-Verwaltungen ist ein Beschluss der Eigentümerversammlung erforderlich (§ 26 WEG). Lesen Sie Ihren Verwaltervertrag sorgfältig auf abweichende Regelungen.",
+        text: "Bei der Mietverwaltung gilt für den Verwaltervertrag in der Regel eine Kündigungsfrist von 3 Monaten zum Jahresende (§621 BGB bei unbefristeten Verträgen). Bei WEG-Verwaltung beträgt die Amtszeit nach §26 WEG maximal 5 Jahre — Abberufung ist jederzeit möglich, der Verwaltervertrag kann aber besondere Fristen enthalten. Schauen Sie immer in Ihren konkreten Vertrag.",
       },
     },
     {
@@ -54,26 +54,26 @@ const faqJsonLd = {
       name: "Welche Unterlagen muss die alte Hausverwaltung übergeben?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die alte Verwaltung muss übergeben: alle Mietverträge, Nebenkostenabrechnungen, Korrespondenz mit Mietern, Kontoauszüge und Salden, Handwerkerverträge, Versicherungspolicen, Schlüsselverzeichnis und alle digitalen Zugangsdaten.",
+        text: "Die alte Verwaltung ist verpflichtet, alle Verwaltungsunterlagen herauszugeben: Mietverträge, Betriebskostenabrechnungen, Kontoauszüge und Rücklagenkonten, Wartungsverträge, Schlüssellisten, Versicherungsverträge, Korrespondenz mit Mietern sowie Grundbuchauszüge und Baupläne. Die Übergabe muss vollständig und geordnet erfolgen.",
       },
     },
     {
       "@type": "Question",
-      name: "Wie lange dauert ein Verwalterwechsel?",
+      name: "Wie werden Mieter über den Hausverwaltungswechsel informiert?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ein Verwalterwechsel dauert typischerweise 4–8 Wochen nach der Kündigung. Die Kündigungsfrist selbst beträgt meist 3 Monate. Planen Sie mindestens 6 Monate von der Entscheidung bis zur vollständigen Übernahme durch die neue Verwaltung.",
+        text: "Mieter müssen schriftlich über den Wechsel informiert werden — Name und Kontaktdaten der neuen Verwaltung, neues Konto für Mietzahlungen (SEPA-Mandate müssen aktualisiert werden), neue Ansprechpartner für Reparaturmeldungen und Notfälle. Die Information sollte mindestens 4 Wochen vor dem Übergabedatum erfolgen.",
       },
     },
   ],
 };
 
-export default function Post() {
+export default function HausverwaltungWechselnChecklistePost() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
@@ -95,234 +95,213 @@ export default function Post() {
               Ratgeber · 10 min Lesezeit
             </p>
             <h1 className="text-3xl md:text-4xl font-bold text-navy font-playfair mb-4 leading-tight">
-              Hausverwaltung wechseln: Die ultimative Checkliste
+              Hausverwaltung wechseln Checkliste: Der vollständige Leitfaden
             </h1>
             <p className="text-gray-500 text-sm">Februar 2026 · einfach verwaltet.</p>
           </header>
 
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+
+            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
+              Warum der Hausverwaltungswechsel oft zu lange aufgeschoben wird
+            </h2>
             <p>
-              Sie haben entschieden: Die aktuelle Hausverwaltung muss weg. Zu langsam,
-              zu undurchsichtig, zu unzuverlässig. Jetzt kommt der entscheidende Schritt —
-              der Wechsel. Mit dieser Checkliste gelingt er strukturiert und ohne
-              unangenehme Überraschungen.
+              Viele Eigentümer sind mit ihrer Hausverwaltung unzufrieden — schlechte Erreichbarkeit,
+              fehlerhafte Abrechnungen, träge Reaktionen auf Mieteranfragen. Trotzdem bleibt der Wechsel
+              aus. Der Grund: Die meisten fürchten den Aufwand. Dieser Leitfaden zeigt, dass ein
+              strukturierter Wechsel in 5 Schritten deutlich reibungsloser verläuft, als viele denken.
             </p>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Phase 1: Vorbereitung (8–12 Wochen vor Wechsel)
-            </h2>
-
-            <div className="bg-navy/5 border border-navy/10 rounded-xl p-6">
-              <h3 className="font-bold text-navy mb-4">✓ Checkliste Phase 1</h3>
-              <ul className="space-y-3 text-sm">
-                {[
-                  "Verwaltervertrag lesen: Kündigungsfristen und -bedingungen notieren",
-                  "Mögliche Gründe für außerordentliche Kündigung prüfen (grobe Pflichtverletzung)",
-                  "Bei WEG: Tagesordnungspunkt für nächste ETV einplanen (§ 26 WEG)",
-                  "Neue Verwaltung auswählen und Angebote einholen (mindestens 3)",
-                  "Referenzen der neuen Verwaltung prüfen",
-                  "Preisvergleich: Grundgebühr + Zusatzleistungen vergleichen",
-                  "Vertragsentwurf mit neuer Verwaltung prüfen lassen",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded border-2 border-teal flex-shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Phase 2: Kündigung (6–12 Wochen vor Wechsel)
+              Schritt 1: Vertrag prüfen — Kündigungsfristen und Laufzeit
             </h2>
             <p>
-              Die Kündigung ist der formale Startschuss. Sie muss korrekt formuliert und
-              fristgerecht zugestellt werden.
+              Bevor Sie handeln, müssen Sie Ihren bestehenden Verwaltervertrag kennen. Prüfen Sie:
             </p>
-
-            <div className="bg-navy/5 border border-navy/10 rounded-xl p-6">
-              <h3 className="font-bold text-navy mb-4">✓ Checkliste Kündigung</h3>
-              <ul className="space-y-3 text-sm">
-                {[
-                  "Kündigung schriftlich formulieren (per Einwurfeinschreiben)",
-                  "Kündigungsfrist einhalten (meist 3 Monate zum Jahresende nach § 621 BGB)",
-                  "Bei WEG: Eigentümerversammlungsbeschluss herbeiführen (§ 26 WEG)",
-                  "Empfangsbestätigung der Kündigung anfordern",
-                  "Übergabetermin vereinbaren",
-                  "Fristen für Abrechnungen klären (z.B. offene Nebenkostenabrechnung)",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded border-2 border-teal flex-shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <h3 className="text-xl font-semibold text-navy mt-6 mb-2">
-              Muster-Kündigung (Mietverwaltung)
-            </h3>
-            <div className="bg-white border border-gray-200 rounded-xl p-6 text-sm font-mono">
-              <p>[Ihr Name]<br />[Ihre Adresse]</p>
-              <br />
-              <p>[Name Hausverwaltung]<br />[Adresse Hausverwaltung]</p>
-              <br />
-              <p><strong>Kündigung Verwaltervertrag — [Objekt/Adresse]</strong></p>
-              <br />
-              <p>Sehr geehrte Damen und Herren,</p>
-              <br />
-              <p>hiermit kündige ich den Verwaltervertrag vom [Datum] für das Objekt
-              [Adresse] fristgerecht zum [Datum — 3 Monate zum Jahresende].</p>
-              <br />
-              <p>Ich bitte um schriftliche Bestätigung des Eingangs sowie um Benennung
-              eines Termins zur Übergabe aller Unterlagen.</p>
-              <br />
-              <p>Mit freundlichen Grüßen,<br />[Unterschrift]</p>
-            </div>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <strong>Vertragslaufzeit:</strong> Ist der Vertrag befristet oder unbefristet?
+                Befristete Verträge enden automatisch, können aber auch Verlängerungsklauseln enthalten.
+              </li>
+              <li>
+                <strong>Kündigungsfristen:</strong> Bei unbefristeten Mietverwaltungsverträgen gilt
+                nach §621 BGB in der Regel eine Frist von 3 Monaten zum Quartals- oder Jahresende.
+                Viele Verträge enthalten abweichende Regelungen.
+              </li>
+              <li>
+                <strong>WEG-Verwaltung:</strong> Die Abberufung des Verwalters kann nach §26 WEG
+                jederzeit durch Eigentümermehrheit erfolgen. Der Verwaltervertrag kann aber
+                Entschädigungsregelungen enthalten.
+              </li>
+              <li>
+                <strong>Automatische Verlängerung:</strong> Gibt es eine Verlängerungsklausel?
+                Wenn ja, müssen Sie vor dem Fristablauf kündigen.
+              </li>
+            </ul>
+            <p className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded">
+              <strong>Wichtig:</strong> Die Kündigung immer schriftlich per Einschreiben mit Rückschein.
+              Bewahren Sie den Rückschein als Nachweis auf. Faxkündigung ist möglich, aber riskanter.
+            </p>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Phase 3: Unterlagenübergabe (2–4 Wochen vor Wechsel)
+              Schritt 2: Neue Hausverwaltung auswählen
             </h2>
             <p>
-              Die vollständige Übergabe aller Unterlagen ist der kritischste Schritt.
-              Bestehen Sie auf Vollständigkeit — die alte Verwaltung ist rechtlich
-              verpflichtet, alle Dokumente herauszugeben.
+              Beginnen Sie die Suche parallel zur Kündigungsankündigung — nicht danach. So haben Sie Zeit
+              für einen sorgfältigen Vergleich und ein geordnetes Übergabeverfahren.
+            </p>
+            <p>Kriterien für die Auswahl einer neuen Hausverwaltung:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>§34c GewO-Lizenz:</strong> Pflichtvoraussetzung für gewerbliche Hausverwaltung</li>
+              <li><strong>Lokale Marktkenntnisse:</strong> Kenntnis des Mietspiegels, lokaler Handwerker, Behörden</li>
+              <li><strong>Transparente Preisgestaltung:</strong> Vollständiges Leistungsverzeichnis ohne versteckte Gebühren</li>
+              <li><strong>Digitale Infrastruktur:</strong> Mieterportal, Online-Abrechnung, Dokumentenmanagement</li>
+              <li><strong>Reaktionszeiten:</strong> Wie schnell werden Mangelanzeigen bearbeitet?</li>
+              <li><strong>Referenzen:</strong> Vergleichbare Objekte und nachweisbare Erfahrung</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
+              Schritt 3: Unterlagenübergabe — Was Sie zurückbekommen müssen
+            </h2>
+            <p>
+              Die alte Verwaltung ist rechtlich verpflichtet, alle Verwaltungsunterlagen vollständig
+              herauszugeben. Fordern Sie diese aktiv an — und haken Sie nach, wenn Unterlagen fehlen.
             </p>
 
+            <h3 className="text-xl font-bold text-navy mt-6 mb-3">Checkliste Unterlagenübergabe</h3>
             <div className="bg-navy/5 border border-navy/10 rounded-xl p-6">
-              <h3 className="font-bold text-navy mb-4">✓ Checkliste Unterlagenübergabe</h3>
-              <ul className="space-y-3 text-sm">
+              <div className="space-y-3 text-sm">
                 {[
                   "Alle Mietverträge (Original oder beglaubigte Kopie)",
-                  "Aktuelle Mieterkorrespondenz (letzten 3 Jahre)",
-                  "Kontoauszüge und Salden (Mietkautionskonto, Rücklagenkonto bei WEG)",
-                  "Offene Nebenkostenabrechungen und Vorschüsse",
-                  "Handwerker- und Dienstleisterverträge",
-                  "Versicherungspolicen (Gebäudeversicherung, Haftpflicht)",
-                  "Schlüsselverzeichnis und alle Schlüssel",
-                  "Energieausweis und technische Dokumentation",
-                  "Digitale Zugangsdaten (Online-Banking, Portale, E-Mail)",
-                  "Offene Beschlüsse und laufende Rechtsstreitigkeiten (bei WEG)",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded border-2 border-teal flex-shrink-0 mt-0.5" />
+                  "Aktuelle Mieterübersicht mit Miethöhen, Mietbeginn, Kaution",
+                  "Kautionskonten-Nachweis oder Abtretungserklärungen",
+                  "Betriebskostenabrechnungen der letzten 3 Jahre",
+                  "Kontoauszüge aller verwalteten Konten",
+                  "Rücklagenkonten (insbesondere bei WEG)",
+                  "Alle Wartungsverträge (Heizung, Aufzug, Rauchmelderwartung, etc.)",
+                  "Versicherungsverträge (Gebäudeversicherung, Haftpflicht)",
+                  "Schlüsselliste und ggf. Schlüssel",
+                  "Korrespondenz mit Mietern der letzten 2 Jahre",
+                  "Offene Forderungen und laufende Mahnverfahren",
+                  "Grundbuchauszüge, Baupläne, Baugenehmigungen",
+                  "Energieausweise aller Einheiten",
+                  "WEG: Beschlussprotokolle der letzten 5 Jahre, Teilungserklärung",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="w-4 h-4 border-2 border-teal rounded mt-0.5 flex-shrink-0" />
                     <span>{item}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Phase 4: Mieterinformation (1–2 Wochen vor Wechsel)
+              Schritt 4: Mieter über den Wechsel informieren
             </h2>
             <p>
-              Mieter müssen über den Wechsel der Hausverwaltung informiert werden.
-              Dies ist nicht nur höflich, sondern teilweise rechtlich notwendig.
+              Die Kommunikation mit den Mietern ist ein unterschätzter aber kritischer Schritt.
+              Eine gute Information verhindert Verwirrung bei Mietzahlungen und Notfällen.
+            </p>
+            <p>Das Anschreiben an die Mieter sollte enthalten:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Name, Adresse und Kontaktdaten der neuen Hausverwaltung</li>
+              <li>Datum des Übergangs</li>
+              <li>Neue Bankverbindung für Mietzahlungen (IBAN)</li>
+              <li>Hinweis auf Anpassung von Daueraufträgen oder SEPA-Mandaten</li>
+              <li>Neuer Ansprechpartner für Reparaturmeldungen und Notfälle (inklusive Notfallnummer)</li>
+            </ul>
+            <p className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded">
+              <strong>Timing:</strong> Das Anschreiben sollte mindestens 4 Wochen vor dem Übergabedatum
+              bei den Mietern ankommen — so haben sie ausreichend Zeit, Daueraufträge anzupassen.
             </p>
 
-            <div className="bg-navy/5 border border-navy/10 rounded-xl p-6">
-              <h3 className="font-bold text-navy mb-4">✓ Checkliste Mieterinformation</h3>
-              <ul className="space-y-3 text-sm">
-                {[
-                  "Anschreiben an alle Mieter: Datum des Wechsels, neue Kontaktdaten",
-                  "Neue Kontoverbindung für Mietzahlungen kommunizieren",
-                  "Notfallkontakt (24h) der neuen Verwaltung bekanntgeben",
-                  "Laufende Reparaturanfragen an neue Verwaltung übergeben",
-                  "Kautionskonten auf neue Verwaltung übertragen",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded border-2 border-teal flex-shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Phase 5: Erste Wochen mit der neuen Verwaltung
-            </h2>
-
-            <div className="bg-navy/5 border border-navy/10 rounded-xl p-6">
-              <h3 className="font-bold text-navy mb-4">✓ Checkliste Einarbeitung</h3>
-              <ul className="space-y-3 text-sm">
-                {[
-                  "Kick-off-Termin mit neuer Verwaltung: Ziele und Erwartungen klären",
-                  "Bestandsaufnahme: Immobilienzustand, offene Mängel",
-                  "Laufende Verträge prüfen und ggf. kündigen",
-                  "Reporting-Rhythmus vereinbaren (monatlich/quartalsweise)",
-                  "Online-Zugang zu Eigentümerportal einrichten",
-                  "Erste Abrechnung nach 3 Monaten prüfen",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded border-2 border-teal flex-shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              FAQ: Hausverwaltung wechseln
-            </h2>
-
-            <div className="space-y-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-navy mb-2">
-                  Wie kündige ich meiner Hausverwaltung?
-                </h3>
-                <p className="text-sm">
-                  Schriftlich per Einwurfeinschreiben, mit 3 Monaten Kündigungsfrist
-                  zum Jahresende. Bei WEG-Verwaltungen ist ein ETV-Beschluss erforderlich.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-navy mb-2">
-                  Welche Unterlagen muss die alte Verwaltung übergeben?
-                </h3>
-                <p className="text-sm">
-                  Alle Mietverträge, Abrechnungen, Kontoauszüge, Schlüssel, Verträge,
-                  Versicherungspolicen und digitale Zugangsdaten. Bestehen Sie auf
-                  vollständige Übergabe.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-navy mb-2">
-                  Wie lange dauert ein Verwalterwechsel?
-                </h3>
-                <p className="text-sm">
-                  Von der Entscheidung bis zur vollständigen Übergabe ca. 4–6 Monate.
-                  Planen Sie genug Zeit ein, damit nichts im Stress passiert.
-                </p>
-              </div>
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Fazit: Strukturiert wechseln spart Nerven
+              Schritt 5: Neue Hausverwaltung onboarden
             </h2>
             <p>
-              Ein Verwalterwechsel ist eine ernste Angelegenheit, aber kein Hexenwerk.
-              Mit dieser Checkliste behalten Sie den Überblick über alle Schritte —
-              von der Kündigung bis zur vollständigen Einarbeitung der neuen Verwaltung.
-              Die meisten professionellen Hausverwaltungen unterstützen Sie aktiv beim
-              Wechselprozess und übernehmen die Koordination mit der Vorgängerverwaltung.
+              Der erste Monat mit der neuen Verwaltung entscheidet über Erfolg oder Misserfolg des Wechsels.
+              Übergeben Sie nicht nur Unterlagen — übergeben Sie Kontext:
             </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Offene Themen und laufende Reparaturen mit Status</li>
+              <li>Besonderheiten bei einzelnen Mietern (z.B. laufende Mahnverfahren, bekannte Konflikte)</li>
+              <li>Wartungsintervalle und nächste Fälligkeiten</li>
+              <li>Absprachen, die mündlich oder informell getroffen wurden</li>
+            </ul>
+            <p>
+              Eine gute Hausverwaltung wird Sie aktiv nach dieser Information fragen — und Ihre
+              Immobilie innerhalb weniger Wochen vollständig erfassen.
+            </p>
+
+            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
+              Typische Fehler beim Hausverwaltungswechsel — und wie man sie vermeidet
+            </h2>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <strong>Zu spät kündigen:</strong> Unbedingt Kündigungsfristen einhalten — sonst verlängert
+                sich der Vertrag automatisch um ein weiteres Jahr.
+              </li>
+              <li>
+                <strong>Neue Verwaltung zu spät beauftragen:</strong> Mindestens 8 Wochen Vorlauf einplanen,
+                damit Übergabe und Mieterinformation sauber koordiniert werden können.
+              </li>
+              <li>
+                <strong>Unvollständige Unterlagenübergabe akzeptieren:</strong> Haken Sie nach. Fehlende
+                Unterlagen können später teuer werden — z.B. fehlende Betriebskostenabrechnungen.
+              </li>
+              <li>
+                <strong>Mieter nicht oder zu spät informieren:</strong> Zu knappe Information führt zu
+                Mietzahlungen auf das falsche Konto und unnötigen Rückbuchungen.
+              </li>
+            </ul>
+
+            {/* FAQ Section */}
+            <h2 className="text-2xl font-bold text-navy font-playfair mt-12 mb-6">
+              Häufige Fragen zum Hausverwaltungswechsel
+            </h2>
+            <div className="space-y-6">
+              <div className="border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-navy mb-2">Welche Kündigungsfristen gelten beim Hausverwaltungswechsel?</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Bei der Mietverwaltung gilt für unbefristete Verträge in der Regel 3 Monate zum
+                  Quartals- oder Jahresende (§621 BGB). Bei WEG-Verwaltung ist Abberufung jederzeit
+                  möglich, der Verwaltervertrag kann aber abweichende Fristen enthalten.
+                  Immer den konkreten Vertrag prüfen.
+                </p>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-navy mb-2">Welche Unterlagen muss die alte Hausverwaltung übergeben?</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Alle Verwaltungsunterlagen: Mietverträge, Betriebskostenabrechnungen, Kontoauszüge,
+                  Kautionsnachweise, Wartungsverträge, Versicherungsverträge, Schlüssellisten,
+                  Korrespondenz mit Mietern, Energieausweise, bei WEG: Beschlussprotokolle und Teilungserklärung.
+                </p>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-6">
+                <h3 className="font-bold text-navy mb-2">Wie werden Mieter über den Hausverwaltungswechsel informiert?</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  Schriftlich, mindestens 4 Wochen vor dem Übergabedatum: Neue Kontaktdaten,
+                  neue Bankverbindung für Mietzahlungen, neuer Ansprechpartner für Reparaturen.
+                  SEPA-Mandate müssen bei Bankeinzug neu erteilt werden.
+                </p>
+              </div>
+            </div>
           </div>
 
+          {/* CTA */}
           <div className="mt-12 bg-teal/10 border border-teal/20 rounded-xl p-8">
             <h3 className="text-xl font-bold text-navy mb-2 font-playfair">
-              Wir begleiten Ihren Wechsel
+              Lassen Sie uns Ihre Immobilie verwalten
             </h3>
             <p className="text-gray-600 mb-4">
-              einfach verwaltet. übernimmt die komplette Koordination des Verwalterwechsels —
-              Unterlagenübergabe, Mieterinformation, alles aus einer Hand.
+              Wir begleiten Ihren Verwaltungswechsel von der Unterlagenübergabe bis zur Mieterinformation.
+              Reibungslos und ohne Leerstand-Risiko.
             </p>
             <Link
               href="/anfrage"
               className="inline-block bg-teal text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal/90 transition-colors"
             >
-              Jetzt Wechsel starten
+              Jetzt wechseln — kostenlos anfragen
             </Link>
           </div>
 

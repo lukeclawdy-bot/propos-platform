@@ -241,6 +241,7 @@ export default async function MahnungPage() {
               { label: "Vertrag", href: "/portal/vertrag" },
               { label: "Finanzen", href: "/portal/finanzen" },
               { label: "Mieterhöhung", href: "/portal/mieterhohung" },
+            { label: "NKA", href: "/portal/nka", active: false },
               { label: "Miete", href: "/portal/miete", active: true },
             ].map((item) => (
               <Link

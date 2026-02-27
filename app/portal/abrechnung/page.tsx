@@ -150,6 +150,7 @@ export default async function AbrechnungPage() {
             { label: 'Finanzen', href: '/portal/finanzen' },
             { label: 'Analysen', href: '/portal/analytics' },
             { label: 'Mieterhöhung', href: '/portal/mieterhohung' },
+            { label: 'NKA', href: '/portal/nka', active: false },
             { label: 'Abrechnung', href: '/portal/abrechnung', active: true },
           ].map((item) => (
             <Link key={item.href} href={item.href}

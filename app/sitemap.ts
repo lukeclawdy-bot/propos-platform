@@ -52,6 +52,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "hausverwaltung-bonn",
     "hausverwaltung-bielefeld",
     "hausverwaltung-karlsruhe",
+    "hausverwaltung-augsburg",
+    "hausverwaltung-wiesbaden",
+    "hausverwaltung-freiburg",
     "checkliste",
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
@@ -188,6 +191,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "mietkaution-rueckzahlung",
     "betriebskostenabrechnung-fehler",
     "hausverwaltung-kuendigen-vorlage",
+    // Sprint 19 — Legal obligations, Energieausweis, Mietminderung, NKA-Frist
+    "energieausweis-pflicht-vermieter",
+    "mietvertrag-sonderklauseln",
+    "vermieter-pflichten-mietminderung",
+    "nebenkostenabrechnung-frist-vermieter",
   ];
 
   const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

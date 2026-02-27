@@ -213,6 +213,7 @@ export default function ChatDetailPage({ params }: { params: Promise<{ ticketId:
             { label: "Vertrag", href: "/portal/vertrag" },
             { label: "Finanzen", href: "/portal/finanzen" },
             { label: "Mieterhöhung", href: "/portal/mieterhohung" },
+            { label: "NKA", href: "/portal/nka", active: false },
           ].map((item) => (
             <Link key={item.href} href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors

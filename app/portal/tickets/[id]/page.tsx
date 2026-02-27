@@ -152,6 +152,7 @@ export default function TicketDetailPage({
             { label: "Übersicht", href: "/portal/dashboard" },
             { label: "Chat", href: "/portal/chat" },
             { label: "Tickets", href: "/portal/tickets" },
+            { label: "NKA", href: "/portal/nka" },
           ].map((item) => (
             <Link
               key={item.href}

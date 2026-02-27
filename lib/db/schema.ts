@@ -341,3 +341,17 @@ export const phoneCalls = pgTable('phone_calls', {
   escalationReason: text('escalation_reason'),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+// ─── NKA RECORDS v8 ──────────────────────────────────────────────────────────
+
+// nka_records — Nebenkostenabrechnung records per property per year
+export const nkaRecords = pgTable('nka_records', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  propertyId: uuid('property_id').notNull(),
+  landlordId: uuid('landlord_id').notNull(),
+  abrechnungsjahr: integer('abrechnungsjahr').notNull(), // e.g. 2024
+  status: text('status').notNull().default('draft'), // draft | generated | sent
+  totalCosts: jsonb('total_costs'), // Record<string, number> — costs per BetrKV category
+  generatedAt: timestamp('generated_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+});

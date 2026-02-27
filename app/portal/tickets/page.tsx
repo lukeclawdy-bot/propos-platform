@@ -93,6 +93,10 @@ export default async function TicketsPage({ searchParams }: { searchParams: Prom
               { label: "Dokumente", href: "/portal/dokumente", active: false },
               { label: "Vertrag", href: "/portal/vertrag", active: false },
               { label: "Finanzen", href: "/portal/finanzen", active: false },
+              { label: "Mieterhöhung", href: "/portal/mieterhohung", active: false },
+              { label: "NKA", href: "/portal/nka", active: false },
+              { label: "Analysen", href: "/portal/analytics", active: false },
+              { label: "DATEV Export", href: "/portal/datev", active: false },
             ].map((item) => (
               <Link key={item.href} href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors

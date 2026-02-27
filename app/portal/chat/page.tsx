@@ -278,6 +278,7 @@ export default async function ChatPage() {
               { label: "Vertrag", href: "/portal/vertrag" },
               { label: "Finanzen", href: "/portal/finanzen" },
               { label: "Mieterhöhung", href: "/portal/mieterhohung" },
+            { label: "NKA", href: "/portal/nka", active: false },
               { label: "Analysen", href: "/portal/analytics" },
               { label: "DATEV Export", href: "/portal/datev" },
             ].map((item) => (

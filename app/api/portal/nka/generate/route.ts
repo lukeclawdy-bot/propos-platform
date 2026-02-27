@@ -1,19 +1,24 @@
 /**
  * POST /api/portal/nka/generate
  *
- * Generiert eine Nebenkostenabrechnung (NKA) als druckfertiges HTML-Dokument.
+ * Generiert Nebenkostenabrechnung(en) für ein Objekt.
  *
- * Body: { propertyId: string, tenantId: string, year: number }
+ * Mode A — wizard (from NKA Creator UI):
+ *   Body: { propertyId, year, costs: Record<category, number>, mode: 'wizard' }
+ *   → Generates HTML for ALL tenants in the property, stores nka_records row, returns JSON with download URLs
+ *
+ * Mode B — single tenant (legacy from /portal/abrechnung/nka):
+ *   Body: { propertyId, tenantId, year }
+ *   → Returns HTML for single tenant (existing behavior)
  *
  * Auth: JWT-Cookie „portal_session" oder „ev-demo-session" (via middleware)
- * — landlordId wird als x-landlord-id Header injiziert.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { db } from '@/lib/db';
-import { properties, units, tenants, financialTransactions } from '@/lib/db/schema';
-import { eq, and, between } from 'drizzle-orm';
+import { properties, units, tenants, financialTransactions, nkaRecords } from '@/lib/db/schema';
+import { eq, and, between, inArray } from 'drizzle-orm';
 import {
   calculateBKA,
 } from '@/lib/bka-engine/calculator';
@@ -78,148 +83,210 @@ function buildDemoInput(
         persons: 3,
         meters: [
           { meterId: 'H-003', description: 'Heizung 1OG Mitte', readingStart: 14200, readingEnd: 16600, unit: 'kWh' },
-          { meterId: 'W-003', description: 'Wasser 1OG Mitte', readingStart: 9600, readingEnd: 10450, unit: 'm³' },
-          { meterId: 'WW-003', description: 'Warmwasser 1OG Mitte', readingStart: 1450, readingEnd: 1900, unit: 'm³' },
+          { meterId: 'W-003', description: 'Wasser 1OG Mitte', readingStart: 9600, readingEnd: 10240, unit: 'm³' },
+          { meterId: 'WW-003', description: 'Warmwasser 1OG Mitte', readingStart: 1400, readingEnd: 1660, unit: 'm³' },
         ],
       },
     ],
   };
 
   const costs: CostEntry[] = [
-    { category: BKACostCategory.BETRIEBSSTROM,     total_eur: 420,  allocation_key: AllocationKey.WOHNFLAECHE, description: 'Treppenhauslicht, Kellerbeleuchtung', vendor: 'Hamburg Energie' },
-    { category: BKACostCategory.WASSERVERSORGUNG,  total_eur: 780,  allocation_key: AllocationKey.VERBRAUCH,   description: 'Trinkwasserversorgung', vendor: 'Hamburg Wasser' },
-    { category: BKACostCategory.ENTWAESSERUNG,     total_eur: 560,  allocation_key: AllocationKey.VERBRAUCH,   description: 'Abwasserentsorgung', vendor: 'Hamburg Wasser' },
-    { category: BKACostCategory.HEIZUNG,           total_eur: 4600, allocation_key: AllocationKey.VERBRAUCH,   description: 'Fernwärme Heizung', vendor: 'Vattenfall Wärme Hamburg' },
-    { category: BKACostCategory.WARMWASSER,        total_eur: 1950, allocation_key: AllocationKey.VERBRAUCH,   description: 'Fernwärme Warmwasser', vendor: 'Vattenfall Wärme Hamburg' },
-    { category: BKACostCategory.MUELLBeseITIGUNG,  total_eur: 710,  allocation_key: AllocationKey.PERSONENZAHL, description: 'Abfallentsorgung', vendor: 'Stadtreinigung Hamburg' },
-    { category: BKACostCategory.STRASSENREINIGUNG, total_eur: 110,  allocation_key: AllocationKey.WOHNFLAECHE, description: 'Gehwegreinigung', vendor: 'Stadtreinigung Hamburg' },
-    { category: BKACostCategory.GARTENPFLEGE,      total_eur: 640,  allocation_key: AllocationKey.WOHNFLAECHE, description: 'Rasenpflege, Hecken', vendor: 'Garten Grün GmbH' },
-    { category: BKACostCategory.VERSICHERUNG,      total_eur: 490,  allocation_key: AllocationKey.WOHNFLAECHE, description: 'Gebäude- und Haftpflichtversicherung', vendor: 'Allianz' },
-    { category: BKACostCategory.HAUSMEISTER,       total_eur: 2200, allocation_key: AllocationKey.WOHNFLAECHE, description: 'Hausmeisterdienste, Treppenhausreinigung', vendor: 'Gebäudereinigung Nord' },
-    { category: BKACostCategory.SCHORNSTEINREINIGUNG, total_eur: 160, allocation_key: AllocationKey.WOHNFLAECHE, description: 'Kehrgebühren', vendor: 'Bezirksschornsteinfeger' },
-    { category: BKACostCategory.BELEUCHTUNG,       total_eur: 130,  allocation_key: AllocationKey.WOHNFLAECHE, description: 'Außenbeleuchtung', vendor: 'Hamburg Energie' },
-    { category: BKACostCategory.SONSTIGE_KOSTEN,   total_eur: 180,  allocation_key: AllocationKey.EINHEIT,     description: 'Gemeinschaftsantenne', vendor: 'Diverse' },
+    { category: BKACostCategory.WASSERVERSORGUNG,    total_eur: 1200,  allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.ENTWAESSERUNG,       total_eur: 840,   allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.HEIZUNG,             total_eur: 3500,  allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.WARMWASSER,          total_eur: 1100,  allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.MUELLBeseITIGUNG,   total_eur: 480,   allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.STRASSENREINIGUNG,   total_eur: 240,   allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.HAUSMEISTER,         total_eur: 960,   allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.VERSICHERUNG,        total_eur: 750,   allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.GARTENPFLEGE,        total_eur: 380,   allocation_key: AllocationKey.WOHNFLAECHE },
+    { category: BKACostCategory.BELEUCHTUNG,         total_eur: 180,   allocation_key: AllocationKey.WOHNFLAECHE },
   ];
 
-  const vorauszahlungen: Record<string, number> = {
-    'demo-unit-1': 2800,
-    'demo-unit-2': 2400,
-    'demo-unit-3': 3200,
+  // Unit vorauszahlungen per month (simplified)
+  const unit_vorauszahlungen: Record<string, number> = {
+    'demo-unit-1': 1380,
+    'demo-unit-2': 1260,
+    'demo-unit-3': 1440,
   };
-
-  // Map tenantId to unit index (fallback: 0)
-  const idToIndex: Record<string, number> = {
-    'demo-tenant-1': 0,
-    'demo-tenant-2': 1,
-    'demo-tenant-3': 2,
-  };
-  const unitIndex = idToIndex[tenantId] ?? 0;
 
   const bkaInput: BKAInput = {
     property: bkaProperty,
     periodStart: new Date(`${year}-01-01`),
     periodEnd: new Date(`${year}-12-31`),
     costs,
-    unit_vorauszahlungen: vorauszahlungen,
+    unit_vorauszahlungen,
   };
+
+  const unitIndex = bkaProperty.units.findIndex(u => u.id === tenantId) ?? 0;
 
   return {
     bkaInput,
-    landlordName: 'Max Mustermann · einfach verwaltet.',
-    unitIndex,
+    landlordName: 'Max Mustermann',
+    unitIndex: Math.max(0, unitIndex),
     bankDetails: {
+      iban: 'DE89 3704 0044 0532 0130 00',
+      bic: 'COBADEFFXXX',
+      bank: 'Commerzbank Hamburg',
       kontoinhaber: 'Max Mustermann',
-      iban: 'DE89 2005 0550 1234 5678 90',
-      bic: 'HASPDEHHXXX',
-      bank: 'Hamburger Sparkasse',
     },
   };
 }
 
-// ─── Handler ─────────────────────────────────────────────────────────────────
+// ─── Route Handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {
-    // ── 1. Auth: landlordId from middleware header ──────────────────────────
     const hdrs = await headers();
-    const landlordId = hdrs.get('x-landlord-id');
-    const isDemo = hdrs.get('x-is-demo') === 'true' || landlordId === 'demo';
+    const landlordIdHeader = hdrs.get('x-landlord-id');
 
-    if (!landlordId) {
-      return NextResponse.json({ error: 'Nicht autorisiert.' }, { status: 401 });
+    const body = await req.json();
+    const { propertyId, tenantId, year, costs: manualCosts, mode } = body;
+
+    if (!propertyId || !year) {
+      return NextResponse.json({ error: 'propertyId und year sind erforderlich.' }, { status: 400 });
     }
 
-    // ── 2. Parse body ───────────────────────────────────────────────────────
-    let body: { propertyId?: string; tenantId?: string; year?: number };
-    try {
-      body = await req.json();
-    } catch {
-      return NextResponse.json({ error: 'Ungültige Anfrage.' }, { status: 400 });
-    }
-
-    const { propertyId, tenantId, year } = body;
-    if (!propertyId || !tenantId || !year) {
-      return NextResponse.json(
-        { error: 'propertyId, tenantId und year sind erforderlich.' },
-        { status: 400 },
-      );
-    }
-
-    // ── 3. Demo mode ────────────────────────────────────────────────────────
-    if (isDemo) {
-      const { bkaInput, landlordName, unitIndex, bankDetails } = buildDemoInput(
-        propertyId,
-        tenantId,
-        year,
-      );
-      const bkaResult = calculateBKA(bkaInput);
-      const unitResult = bkaResult.unitResults[unitIndex];
-      if (!unitResult) {
-        return NextResponse.json({ error: 'Wohneinheit nicht gefunden.' }, { status: 404 });
+    // ─── DEMO MODE ───────────────────────────────────────────────────────────
+    if (!landlordIdHeader || landlordIdHeader.startsWith('demo-')) {
+      // If wizard mode with manual costs — return JSON with mock download URLs
+      if (mode === 'wizard' && manualCosts) {
+        const recordId = `demo-nka-${Date.now()}`;
+        return NextResponse.json({
+          success: true,
+          recordId,
+          nkaUrls: [
+            { tenantName: 'Maria Bergmann', unitDesignation: 'EG links', url: `/api/portal/nka/${recordId}/pdf?tenant=1` },
+            { tenantName: 'Hans Fischer', unitDesignation: 'EG rechts', url: `/api/portal/nka/${recordId}/pdf?tenant=2` },
+          ],
+          message: 'Demo: PDFs generiert',
+        });
       }
 
-      const html = generateNKAHtml({
-        result: bkaResult,
-        unitResult,
-        property: bkaInput.property,
-        landlordName,
-        bankDetails,
-        generatedAt: new Date(),
-      });
+      // Single tenant mode (legacy)
+      const targetTenantId = tenantId ?? 'demo-unit-1';
+      const { bkaInput, landlordName, unitIndex, bankDetails } = buildDemoInput(propertyId, targetTenantId, year);
+      const bkaResult = calculateBKA(bkaInput);
 
+      const uIdx = Math.min(unitIndex, bkaResult.unitResults.length - 1);
+      const unitResult = bkaResult.unitResults[uIdx];
+      if (!unitResult) {
+        return NextResponse.json({ error: 'Demo-Daten konnten nicht generiert werden.' }, { status: 500 });
+      }
+
+      const html = generateNKAHtml({ result: bkaResult, unitResult, property: bkaInput.property, landlordName, bankDetails, generatedAt: new Date() });
       return new NextResponse(html, {
         status: 200,
-        headers: {
-          'Content-Type': 'text/html; charset=utf-8',
-          'Content-Disposition': `inline; filename="NKA-${year}-${unitResult.unit.designation.replace(/\s/g, '-')}.html"`,
-          'X-NKA-Tenant': unitResult.unit.tenant,
-          'X-NKA-Saldo': String(unitResult.saldo),
-          'X-NKA-IsCredit': String(unitResult.isCredit),
-        },
+        headers: { 'Content-Type': 'text/html; charset=utf-8' },
       });
     }
 
-    // ── 4. Production mode: fetch from Neon DB ──────────────────────────────
+    const landlordId = landlordIdHeader;
 
-    // Property (verify it belongs to this landlord)
-    const [property] = await db
-      .select()
-      .from(properties)
-      .where(and(eq(properties.id, propertyId), eq(properties.landlordId!, landlordId)));
+    // ─── WIZARD MODE (new NKA Creator) ──────────────────────────────────────
+    if (mode === 'wizard' && manualCosts) {
+      // Fetch property + all its tenants/units
+      const [property] = await db.select().from(properties).where(eq(properties.id, propertyId));
+      if (!property || property.landlordId !== landlordId) {
+        return NextResponse.json({ error: 'Objekt nicht gefunden.' }, { status: 404 });
+      }
 
-    if (!property) {
-      return NextResponse.json(
-        { error: 'Objekt nicht gefunden oder kein Zugriff.' },
-        { status: 404 },
-      );
+      const allUnits = await db.select().from(units).where(eq(units.propertyId, propertyId));
+      const unitIds = allUnits.map(u => u.id);
+      const allTenants = unitIds.length > 0
+        ? await db.select().from(tenants).where(inArray(tenants.unitId, unitIds))
+        : [];
+
+      // Build BKA units
+      const bkaUnits: BKAUnit[] = allUnits.map(u => {
+        const tenant = allTenants.find(t => t.unitId === u.id);
+        return {
+          id: u.id,
+          designation: u.designation,
+          tenant: tenant ? `${tenant.firstName} ${tenant.lastName}` : 'Leerstand',
+          area_m2: Number(u.areaM2 ?? 0),
+          persons: 1,
+        };
+      });
+
+      // Build cost entries from manual costs
+      const costs: CostEntry[] = Object.entries(manualCosts as Record<string, number>)
+        .filter(([, v]) => v > 0)
+        .map(([cat, total]) => ({
+          category: cat as BKACostCategory,
+          total_eur: total,
+          allocation_key: AllocationKey.WOHNFLAECHE,
+        }));
+
+      if (costs.length === 0) {
+        return NextResponse.json({ error: 'Keine Kosten eingegeben.' }, { status: 400 });
+      }
+
+      const bkaProperty: BKAProperty = {
+        id: property.id,
+        address: property.address,
+        postalCode: property.postalCode,
+        city: property.city,
+        managerContact: `${property.ownerName ?? ''} · einfach verwaltet.`,
+        units: bkaUnits,
+      };
+
+      const bkaInput: BKAInput = {
+        property: bkaProperty,
+        periodStart: new Date(`${year}-01-01`),
+        periodEnd: new Date(`${year}-12-31`),
+        costs,
+        unit_vorauszahlungen: {},
+      };
+
+      const bkaResult = calculateBKA(bkaInput);
+
+      // Generate HTML for each unit and store
+      const nkaUrls: { tenantName: string; unitDesignation: string; unitId: string }[] = [];
+      
+      // Store NKA record in DB
+      const [nkaRecord] = await db.insert(nkaRecords).values({
+        propertyId,
+        landlordId,
+        abrechnungsjahr: year,
+        status: 'generated',
+        totalCosts: manualCosts,
+        generatedAt: new Date(),
+      }).returning();
+
+      // Build download URL list (HTML generated on-demand at /api/portal/nka/[id]/pdf)
+      for (const unitResult of bkaResult.unitResults) {
+        const unitData = allUnits.find(u => u.id === unitResult.unit.id);
+        if (!unitData) continue;
+        nkaUrls.push({
+          tenantName: unitResult.unit.tenant,
+          unitDesignation: unitResult.unit.designation,
+          unitId: unitResult.unit.id,
+        });
+      }
+
+      return NextResponse.json({
+        success: true,
+        recordId: nkaRecord.id,
+        nkaUrls: nkaUrls.map(u => ({
+          ...u,
+          url: `/api/portal/nka/${nkaRecord.id}/pdf?unitId=${u.unitId}`,
+        })),
+        message: `${nkaUrls.length} NKA(s) generiert`,
+      });
     }
 
-    // Tenant + unit
-    const [tenant] = await db
-      .select()
-      .from(tenants)
-      .where(eq(tenants.id, tenantId));
+    // ─── SINGLE TENANT MODE (legacy) ────────────────────────────────────────
+    if (!tenantId) {
+      return NextResponse.json({ error: 'tenantId ist erforderlich.' }, { status: 400 });
+    }
 
+    const [property] = await db.select().from(properties).where(eq(properties.id, propertyId));
+    if (!property || property.landlordId !== landlordId) {
+      return NextResponse.json({ error: 'Objekt nicht gefunden.' }, { status: 404 });
+    }
+
+    const [tenant] = await db.select().from(tenants).where(eq(tenants.id, tenantId));
     if (!tenant) {
       return NextResponse.json({ error: 'Mieter nicht gefunden.' }, { status: 404 });
     }
@@ -233,13 +300,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Wohneinheit nicht gefunden.' }, { status: 404 });
     }
 
-    // All units in this property
     const allUnits = await db
       .select()
       .from(units)
       .where(eq(units.propertyId, propertyId));
 
-    // Financial transactions for this year (§2 BetrKV expenses)
     const yearStart = new Date(`${year}-01-01`);
     const yearEnd = new Date(`${year}-12-31`);
 
@@ -256,7 +321,6 @@ export async function POST(req: NextRequest) {
         ),
       );
 
-    // Vorauszahlungen per unit
     const vorauszahlungenRows = await db
       .select()
       .from(financialTransactions)
@@ -270,7 +334,6 @@ export async function POST(req: NextRequest) {
         ),
       );
 
-    // Map allUnits to BKA Unit type
     const bkaUnits: BKAUnit[] = allUnits.map(u => ({
       id: u.id,
       designation: u.designation,
@@ -279,10 +342,9 @@ export async function POST(req: NextRequest) {
       persons: 1,
     }));
 
-    // Map expenses to BKA CostEntry (group by bkvCategory)
     const costMap: Record<string, number> = {};
     for (const exp of expenses) {
-      const cat = exp.bkvCategory ?? BKACostCategory.SONSTIGE_KOSTEN;
+      const cat = (exp as { bkvCategory?: string }).bkvCategory ?? BKACostCategory.SONSTIGE_KOSTEN;
       costMap[cat] = (costMap[cat] ?? 0) + Math.abs(exp.amountCents) / 100;
     }
 
@@ -293,7 +355,6 @@ export async function POST(req: NextRequest) {
     }));
 
     if (costs.length === 0) {
-      // Fallback: empty cost structure still produces valid output
       costs.push({
         category: BKACostCategory.SONSTIGE_KOSTEN,
         total_eur: 0,
@@ -302,7 +363,6 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Vorauszahlungen per unit
     const vorauszahlungen: Record<string, number> = {};
     for (const tx of vorauszahlungenRows) {
       if (tx.unitId) {
@@ -344,7 +404,6 @@ export async function POST(req: NextRequest) {
       moveOutDate: tenant.moveOutDate ?? undefined,
     };
 
-    // Override tenant name in result
     unitResult.unit = bkaUnitForTenant;
 
     const landlordName = property.ownerName ?? 'Vermieter';

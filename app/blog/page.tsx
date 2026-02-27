@@ -780,6 +780,43 @@ const posts = [
     readTime: "9 min",
     date: "Februar 2026",
   },
+  // Sprint 19 — Legal obligations, Energieausweis, Mietminderung, NKA-Frist
+  {
+    slug: "energieausweis-pflicht-vermieter",
+    title: "Energieausweis Pflicht Vermieter: §16a GEG, Kosten & Bußgelder",
+    description:
+      "§16a GEG: Bedarfsausweis vs. Verbrauchsausweis, Kosten €80–500, wer zahlt, Bußgelder bis €10.000 und welche Anbieter in Frage kommen — der vollständige Leitfaden für Vermieter.",
+    keyword: "Energieausweis Pflicht Vermieter",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietvertrag-sonderklauseln",
+    title: "Mietvertrag Sonderklauseln: Was gilt — und was hält vor Gericht nicht stand?",
+    description:
+      "Tierhaltungsverbot (BGH 2013), Untervermietung (§553 BGB), Parabolantenne, Schönheitsreparaturen (BGH 2015): Welche Sonderklauseln wirksam sind und welche nicht.",
+    keyword: "Mietvertrag Sonderklauseln",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieter-pflichten-mietminderung",
+    title: "Vermieter Pflichten bei Mietminderung: §536 BGB, Mangelarten & Streitvorbeugung",
+    description:
+      "Wann gilt §536 BGB? Mangeltypen, Anzeigepflicht, Reaktionszeiten und wie Vermieter Mietminderungsstreitigkeiten von vornherein vermeiden.",
+    keyword: "Vermieter Pflichten Mietminderung",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "nebenkostenabrechnung-frist-vermieter",
+    title: "Nebenkostenabrechnung Frist: Was §556 Abs. 3 BGB für Vermieter bedeutet",
+    description:
+      "Die 12-Monate-Ausschlussfrist nach §556 Abs. 3 BGB: Was bei Fristversäumnis droht, wie Korrekturen noch möglich sind und wie Vermieter die Frist sicher einhalten.",
+    keyword: "Nebenkostenabrechnung Frist Vermieter",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
 ];
 
 export default function BlogIndex() {
