@@ -162,6 +162,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "eigentuemer-pflichten-vermietung",
     "wohnungsuebergabe-protokoll",
     "hausverwaltung-kuendigen-frist",
+    // Sprint 15 — City page SEO support posts
+    "hausverwaltung-frankfurt-kosten",
+    "hausverwaltung-duesseldorf-wechseln",
+    "weg-verwaltung-hannover",
+    "mietverwaltung-leipzig-kosten",
+    "hausverwaltung-kuendigen-was-tun",
   ];
 
   const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
