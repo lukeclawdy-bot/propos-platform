@@ -490,6 +490,7 @@ export function PartnerClient() {
             { label: "Tickets", href: "/portal/tickets", active: false },
             { label: "Partner", href: "/portal/partner", active: true },
             { label: "Dokumente", href: "/portal/dokumente", active: false },
+            { label: "Vertrag", href: "/portal/vertrag", active: false },
             { label: "Finanzen", href: "/portal/finanzen", active: false },
           ].map((item) => (
             <Link

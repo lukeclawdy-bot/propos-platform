@@ -91,6 +91,7 @@ export default async function EinheitenPage() {
               { label: "Tickets", href: "/portal/tickets", active: false },
               { label: "Partner", href: "/portal/partner", active: false },
               { label: "Dokumente", href: "/portal/dokumente", active: false },
+              { label: "Vertrag", href: "/portal/vertrag", active: false },
               { label: "Finanzen", href: "/portal/finanzen", active: false },
               { label: "Analysen", href: "/portal/analytics", active: false },
             { label: "Mieterhöhung", href: "/portal/mieterhohung", active: false },

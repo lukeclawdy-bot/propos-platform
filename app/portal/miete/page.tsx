@@ -169,6 +169,7 @@ export default async function MietePage({ searchParams }: { searchParams: Promis
               { label: "Tickets", href: "/portal/tickets" },
               { label: "Partner", href: "/portal/partner" },
               { label: "Dokumente", href: "/portal/dokumente" },
+              { label: "Vertrag", href: "/portal/vertrag" },
               { label: "Finanzen", href: "/portal/finanzen" },
               { label: "Mieterhöhung", href: "/portal/mieterhohung" },
               { label: "Miete", href: "/portal/miete", active: true },

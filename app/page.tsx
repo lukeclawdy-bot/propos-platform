@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { TrustBar } from "@/components/TrustBar";
 import { SocialProof } from "@/components/SocialProof";
 import { Leistungen } from "@/components/Leistungen";
+import { BetaUrgency } from "@/components/BetaUrgency";
 import { Vergleich } from "@/components/Vergleich";
 import { Preise } from "@/components/Preise";
 import { SoFunktionierts } from "@/components/SoFunktionierts";
@@ -18,8 +20,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <TrustBar />
         <SocialProof />
         <Leistungen />
+        <BetaUrgency />
         <Vergleich />
         <Preise />
         <SoFunktionierts />

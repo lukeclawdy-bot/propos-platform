@@ -43,6 +43,7 @@ export function Footer() {
                 { label: "BKA-Rechner", href: "/bka-rechner" },
                 { label: "Mieterhöhung Rechner", href: "/mieterhohung-rechner" },
                 { label: "Beschlussprotokoll Generator", href: "/beschlussprotokoll" },
+                { label: "Kostenvergleich HV", href: "/kostenvergleich" },
               ].map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-white/60 text-sm hover:text-white transition-colors">{item.label}</a>

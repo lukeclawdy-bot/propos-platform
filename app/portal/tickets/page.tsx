@@ -91,6 +91,7 @@ export default async function TicketsPage({ searchParams }: { searchParams: Prom
               { label: "Tickets", href: "/portal/tickets", active: true },
               { label: "Partner", href: "/portal/partner", active: false },
               { label: "Dokumente", href: "/portal/dokumente", active: false },
+              { label: "Vertrag", href: "/portal/vertrag", active: false },
               { label: "Finanzen", href: "/portal/finanzen", active: false },
             ].map((item) => (
               <Link key={item.href} href={item.href}
