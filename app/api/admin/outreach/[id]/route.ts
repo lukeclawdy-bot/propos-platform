@@ -5,6 +5,7 @@ import { outreachContacts } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
+// PATCH /api/admin/outreach/[id] - update outreach contact
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -17,20 +18,37 @@ export async function PATCH(
 
   try {
     const body = await request.json();
-    const { status, notes } = body;
+    const { 
+      pipelineStage, 
+      notes, 
+      followUpDueAt,
+      unitsEstimate,
+      dealType,
+      status,
+      lastContactAt,
+      touchCount
+    } = body;
 
-    const updateData: { status?: string; notes?: string; lastContactAt?: Date } = {};
-    if (status !== undefined) {
-      updateData.status = status;
-      updateData.lastContactAt = new Date();
-    }
+    const updateData: Record<string, unknown> = {};
+    
+    if (pipelineStage !== undefined) updateData.pipelineStage = pipelineStage;
     if (notes !== undefined) updateData.notes = notes;
+    if (followUpDueAt !== undefined) updateData.followUpDueAt = followUpDueAt ? new Date(followUpDueAt) : null;
+    if (unitsEstimate !== undefined) updateData.unitsEstimate = unitsEstimate ? parseInt(unitsEstimate) : null;
+    if (dealType !== undefined) updateData.dealType = dealType;
+    if (status !== undefined) updateData.status = status;
+    if (lastContactAt !== undefined) updateData.lastContactAt = lastContactAt ? new Date(lastContactAt) : null;
+    if (touchCount !== undefined) updateData.touchCount = touchCount;
+    
+    // Always update the updatedAt timestamp
+    updateData.updatedAt = new Date();
 
-    await db.update(outreachContacts)
+    const [updated] = await db.update(outreachContacts)
       .set(updateData)
-      .where(eq(outreachContacts.id, id));
+      .where(eq(outreachContacts.id, id))
+      .returning();
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ contact: updated });
   } catch (error) {
     console.error("Failed to update outreach contact:", error);
     return NextResponse.json({ error: "Failed to update contact" }, { status: 500 });

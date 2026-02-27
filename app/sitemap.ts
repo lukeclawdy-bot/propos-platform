@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/weg-verwaltung`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-koeln`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-stuttgart`, priority: 0.9, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/pitch`, priority: 0.5, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/impressum`, priority: 0.3, changeFrequency: "yearly" as const },
     { url: `${baseUrl}/datenschutz`, priority: 0.3, changeFrequency: "yearly" as const },
     { url: `${baseUrl}/agb`, priority: 0.3, changeFrequency: "yearly" as const },

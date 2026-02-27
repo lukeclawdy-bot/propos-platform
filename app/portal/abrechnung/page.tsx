@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cookies, headers } from 'next/headers';
 import { getTokenFromCookie } from '@/lib/auth/jwt';
 import { PRICING_TIERS } from '@/lib/stripe';
+import { NKADownloadButton } from './NKADownloadButton';
 
 async function getLandlordId(): Promise<string> {
   const hdrs = await headers();
@@ -271,6 +272,30 @@ export default async function AbrechnungPage() {
                   Plan upgraden
                 </a>
               )}
+            </div>
+          </div>
+
+          {/* NKA Download */}
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
+            <div className="flex items-start justify-between">
+              <div>
+                <h2 className="font-bold text-navy text-lg">Nebenkostenabrechnung (NKA)</h2>
+                <p className="text-text-light text-sm mt-0.5">
+                  Betriebskostenabrechnung gemäß §2 BetrKV als PDF herunterladen.
+                </p>
+              </div>
+              <Link
+                href="/portal/abrechnung/nka"
+                className="text-xs text-teal hover:underline flex items-center gap-1"
+              >
+                Alle NKAs verwalten →
+              </Link>
+            </div>
+            <div className="mt-4 pt-4 border-t border-gray-50 flex flex-wrap items-center gap-4">
+              <NKADownloadButton />
+              <p className="text-xs text-text-light">
+                Frist: §556 Abs. 3 BGB — Abrechnung muss spätestens bis zum 31.12. des Folgejahres beim Mieter eingehen.
+              </p>
             </div>
           </div>
 

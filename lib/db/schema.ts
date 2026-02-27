@@ -1,5 +1,9 @@
 // Database Schema for einfach verwaltet.
 // v2: Added landlords, onboarding_sessions, ai_actions, conversations, documents, financial_transactions
+// v3: Added billing tables (subscriptions, invoices, events)
+// v4: Added voice tables (phone_calls)
+// v5: Added outreach tables (outreach_contacts)
+// v6: Added admin GTM pipeline fields (leads.source, pipeline_stage, email_events, outreach_touches)
 // Using Neon PostgreSQL + Drizzle ORM
 
 import { pgTable, text, timestamp, integer, boolean, decimal, uuid, jsonb } from 'drizzle-orm/pg-core';
@@ -19,6 +23,19 @@ export const leads = pgTable('leads', {
   telefon: text('telefon'),
   status: text('status').default('new'),
   notes: text('notes'),
+  // v6: GTM pipeline fields
+  source: text('source').default('quiz'), // quiz | google_ads | blog | referral | direct
+  utmMedium: text('utm_medium'),
+  utmCampaign: text('utm_campaign'),
+  contactedAt: timestamp('contacted_at'),
+  demoAt: timestamp('demo_at'),
+  proposalSentAt: timestamp('proposal_sent_at'),
+  wonAt: timestamp('won_at'),
+  lostAt: timestamp('lost_at'),
+  lostReason: text('lost_reason'),
+  estimatedUnits: integer('estimated_units'), // parsed from einheiten field
+  pipelineValueCents: integer('pipeline_value_cents'), // estimatedUnits * 2900
+  assignedTo: text('assigned_to').default('lukas'),
 });
 
 export const properties = pgTable('properties', {
@@ -249,7 +266,7 @@ export const billingEvents = pgTable('billing_events', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// ─── OUTREACH TABLES v5 ─────────────────────────────────────────────────────
+// ─── OUTREACH TABLES v5 / v6 ─────────────────────────────────────────────────
 
 // Outreach contacts — manual CRM for sales outreach
 export const outreachContacts = pgTable('outreach_contacts', {
@@ -265,6 +282,39 @@ export const outreachContacts = pgTable('outreach_contacts', {
   lastContactAt: timestamp('last_contact_at'),
   notes: text('notes'),
   source: text('source').default('cold'), // cold | referral | m&a | inbound
+  // v6: GTM pipeline fields
+  pipelineStage: text('pipeline_stage').default('identified'), // identified|touched|responded|meeting|demo|proposal|signed|dead
+  followUpDueAt: timestamp('follow_up_due_at'),
+  unitsEstimate: integer('units_estimate'),
+  dealType: text('deal_type').default('cold'), // cold|referral|ma
+  touchCount: integer('touch_count').default(0),
+});
+
+// ─── OUTREACH TOUCHES v6 ─────────────────────────────────────────────────────
+
+// Outreach touches — individual touchpoints with contacts
+export const outreachTouches = pgTable('outreach_touches', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  createdAt: timestamp('created_at').defaultNow(),
+  contactId: uuid('contact_id').notNull(),
+  channel: text('channel').notNull(), // email|whatsapp|phone|linkedin
+  direction: text('direction').default('outbound'), // outbound|inbound
+  contentSummary: text('content_summary'),
+  outcome: text('outcome').default('no_response'), // no_response|opened|replied|meeting_booked|won|lost
+  agentId: text('agent_id').default('lukas'),
+});
+
+// ─── EMAIL EVENTS v6 ─────────────────────────────────────────────────────────
+
+// Email events — tracking from Resend webhooks
+export const emailEvents = pgTable('email_events', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  createdAt: timestamp('created_at').defaultNow(),
+  resendMessageId: text('resend_message_id'),
+  recipientEmail: text('recipient_email').notNull(),
+  eventType: text('event_type').notNull(), // sent|delivered|opened|clicked|bounced|complained
+  leadId: uuid('lead_id'),
+  metadata: jsonb('metadata'),
 });
 
 // ─── VOICE TABLES v4 ─────────────────────────────────────────────────────────

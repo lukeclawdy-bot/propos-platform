@@ -12,33 +12,33 @@ import {
 } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "Hausverwaltung Koln — Professionelle Mietverwaltung | einfach verwaltet.",
+  title: "Hausverwaltung Köln — Zuverlässige Mietverwaltung | einfach verwaltet.",
   description:
-    "Professionelle Hausverwaltung in Koln: Mietverwaltung & WEG-Verwaltung ab EUR24/Einheit. Transparent, digital, immer erreichbar. Jetzt Angebot anfragen.",
+    "Professionelle Hausverwaltung in Köln: Mietverwaltung & WEG-Verwaltung ab €24/Einheit. Transparent, digital, immer erreichbar. Alle Stadtteile: Innenstadt, Ehrenfeld, Nippes, Rodenkirchen, Lindenthal, Bayenthal.",
   alternates: {
     canonical: "https://einfach-verwaltet.de/hausverwaltung-koeln",
   },
   openGraph: {
-    title: "Hausverwaltung Koln — einfach verwaltet.",
+    title: "Hausverwaltung Köln — Zuverlässige Mietverwaltung | einfach verwaltet.",
     description:
-      "Moderne Hausverwaltung in Koln. Mietverwaltung & WEG-Verwaltung, digitale Kommunikation, transparente Abrechnung. Ab EUR24/Einheit.",
+      "Moderne Hausverwaltung in Köln. Mietverwaltung & WEG-Verwaltung, digitale Kommunikation, transparente Abrechnung. Ab €24/Einheit.",
   },
 };
 
 const localStructuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "einfach verwaltet. — Hausverwaltung Koln",
+  name: "einfach verwaltet. — Hausverwaltung Köln",
   description:
-    "Professionelle Hausverwaltung in Koln fur Miet- und WEG-Immobilien. Digital, transparent, immer erreichbar.",
+    "Professionelle Hausverwaltung in Köln für Miet- und WEG-Immobilien. Transparente Preise, lokales Know-how, 24/7 Erreichbarkeit.",
   url: "https://einfach-verwaltet.de/hausverwaltung-koeln",
   areaServed: [
-    { "@type": "City", name: "Koln" },
+    { "@type": "City", name: "Köln" },
     { "@type": "City", name: "Leverkusen" },
     { "@type": "City", name: "Bergisch Gladbach" },
   ],
   serviceType: ["Mietverwaltung", "WEG-Verwaltung", "Hausverwaltung"],
-  priceRange: "EUR",
+  priceRange: "€€",
   telephone: "+49-40-0000000",
   address: {
     "@type": "PostalAddress",
@@ -53,42 +53,26 @@ const faqStructuredData = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Was kostet eine Hausverwaltung in Koln?",
+      name: "Was kostet eine Hausverwaltung in Köln?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Eine professionelle Hausverwaltung in Koln kostet typischerweise EUR20-35 pro Einheit und Monat. einfach verwaltet. bietet Mietverwaltung ab EUR24/Einheit und WEG-Verwaltung ab EUR28/Einheit. Transparente Preise ohne versteckte Gebuhren.",
+        text: "Eine professionelle Hausverwaltung in Köln kostet typischerweise €24–34 pro Einheit und Monat. einfach verwaltet. bietet transparente Preise ohne versteckte Gebühren. Die Kosten hängen von der Anzahl der Einheiten und dem Leistungsumfang ab.",
       },
     },
     {
       "@type": "Question",
-      name: "Welche Stadtteile in Koln betreut einfach verwaltet.?",
+      name: "Welche Stadtteile in Köln betreut einfach verwaltet.?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "einfach verwaltet. betreut Immobilien in allen Kolner Stadtteilen -- von der Innenstadt, Neustadt-Sud und Neustadt-Nord uber Ehrenfeld, Nippes, Mulheim und Kalk bis Porz, Rodenkirchen und Zollstock. Digitale Prozesse ermoglichen effiziente Verwaltung in ganz Koln.",
+        text: "einfach verwaltet. betreut Immobilien in allen Kölner Stadtteilen — von der Innenstadt über Ehrenfeld, Nippes und Lindenthal bis Rodenkirchen und Bayenthal. Digitale Prozesse ermöglichen effiziente Verwaltung in ganz Köln.",
       },
     },
     {
       "@type": "Question",
-      name: "Wie schnell kann einfach verwaltet. meine Kolner Immobilie ubernehmen?",
+      name: "Was zeichnet den Kölner Immobilienmarkt aus?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nach Vertragsunterzeichnung und Datenubergabe dauert der Onboarding-Prozess in der Regel 2-4 Wochen. Fur dringende Falle (z. B. Vertragskundigung des bisherigen Verwalters) bieten wir beschleunigtes Onboarding an.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Gibt es Besonderheiten beim Kolner Mietrecht und Wohnungsmarkt?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Koln ist ein angespannter Wohnungsmarkt mit hoher Nachfrage und steigenden Mieten. Die Mietpreisbremse gilt in ausgewiesenen Gebieten. Ein professioneller Hausverwalter kennt den Kolner Mietspiegel und lokale Regelungen -- etwa spezifische Anforderungen an Altbauten im historischen Stadtbild.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was ist typisch bei der Hausverwaltung in Koln?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Als Medien- und Messestadt hat Koln eine besondere Mietstruktur mit vielen befristeten Mietvertragen wahrend Messen wie der gamescom oder der Art Cologne. Immobilien im Kolner Umland (Leverkusen, Bergisch Gladbach) gewinnen zunehmend an Bedeutung als alternativer Wohnraum.",
+        text: "Köln ist ein angespannter Wohnungsmarkt mit über 1,1 Millionen Einwohnern. Die Mietpreise liegen im Schnitt bei €12–15/qm. Beliebte Stadtteile wie die Innenstadt, Ehrenfeld und das Agnesviertel verzeichnen hohe Nachfrage. Die Mietpreisbremse gilt in ausgewiesenen Gebieten.",
       },
     },
   ],
@@ -98,54 +82,54 @@ const features = [
   {
     icon: ClockIcon,
     title: "Reaktionszeit unter 15 Minuten",
-    desc: "Mieteranfragen werden rund um die Uhr bearbeitet -- keine Warteschleifen, kein Anrufbeantworter.",
+    desc: "Mieteranfragen werden rund um die Uhr bearbeitet — keine Warteschleifen, kein Anrufbeantworter.",
   },
   {
     icon: BuildingIcon,
-    title: "Kolner Mietrecht-Expertise",
-    desc: "Kolner Mietspiegel, Mietpreisbremse, befristete Mietvertrage bei Messen -- wir kennen die lokalen Besonderheiten.",
+    title: "Kölner Mietrecht-Expertise",
+    desc: "Kölner Mietspiegel, Mietpreisbremse, befristete Mietverträge — wir kennen die lokalen Besonderheiten.",
   },
   {
     icon: ShieldIcon,
     title: "DSGVO-konformes Dokumentenportal",
-    desc: "Alle Mietvertrage, Abrechnungen und Protokolle sicher digital verfugbar -- fur Sie und Ihre Mieter.",
+    desc: "Alle Mietverträge, Abrechnungen und Protokolle sicher digital verfügbar — für Sie und Ihre Mieter.",
   },
   {
     icon: StarIcon,
     title: "Transparente Abrechnung",
-    desc: "Echtzeit-Dashboard statt Papierberge. Sehen Sie jeden Euro -- Einnahmen, Ausgaben, Rucklagen.",
+    desc: "Echtzeit-Dashboard statt Papierberge. Sehen Sie jeden Euro — Einnahmen, Ausgaben, Rücklagen.",
   },
 ];
 
 const stadtteile = [
   "Innenstadt",
-  "Altstadt-Nord",
-  "Altstadt-Sud",
-  "Neustadt-Nord",
-  "Neustadt-Sud",
   "Ehrenfeld",
   "Nippes",
-  "Mulheim",
+  "Rodenkirchen",
+  "Lindenthal",
+  "Bayenthal",
+  "Altstadt-Nord",
+  "Neustadt-Süd",
+  "Mülheim",
   "Kalk",
   "Porz",
-  "Rodenkirchen",
   "Zollstock",
 ];
 
 const leistungen = [
   "Mieterbetreuung & Kommunikation",
-  "Nebenkostenabrechnung (NKA) nach SS556 BGB",
-  "Mieterhohungen nach Kolner Mietspiegel",
+  "Nebenkostenabrechnung (NKA) nach §556 BGB",
+  "Mieterhöhungen nach Kölner Mietspiegel",
   "Handwerker-Koordination & Auftragsvergabe",
-  "WEG-Eigentumerversammlung & Beschlussprotokoll",
+  "WEG-Eigentümerversammlung & Beschlussprotokoll",
   "Jahresabrechnung & Wirtschaftsplan",
   "Digitales Mieterportal (Tickets, Dokumente)",
   "Vermietungsbegleitung & Mieterwechsel",
-  "Energieausweis-Verwaltung (SS16a GEG)",
+  "Energieausweis-Verwaltung (§16a GEG)",
   "Mahnung & SEPA-Einzug",
 ];
 
-export default function HausverwaltungKolnPage() {
+export default function HausverwaltungKoelnPage() {
   return (
     <>
       <script
@@ -167,11 +151,13 @@ export default function HausverwaltungKolnPage() {
                 Rheinland & NRW
               </div>
               <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-5">
-                Hausverwaltung Koln --<br />
-                <span className="text-teal">einfach verwaltet.</span>
+                Hausverwaltung Köln —<br />
+                <span className="text-teal">zuverlässig & transparent.</span>
               </h1>
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
-                Professionelle Mietverwaltung & WEG-Verwaltung fur Kolner Immobilien. Digital, transparent, immer erreichbar -- ab EUR24/Einheit/Monat.
+                Professionelle Mietverwaltung & WEG-Verwaltung für Kölner Immobilien. 
+                Alle Stadtteile: Innenstadt, Ehrenfeld, Nippes, Rodenkirchen, Lindenthal, Bayenthal. 
+                Ab €24/Einheit/Monat.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -191,7 +177,7 @@ export default function HausverwaltungKolnPage() {
               <div className="mt-8 flex items-center gap-6 text-sm text-white/60">
                 <span className="flex items-center gap-1.5"><CheckIcon className="w-4 h-4 text-teal" />Kostenlos & unverbindlich</span>
                 <span className="flex items-center gap-1.5"><CheckIcon className="w-4 h-4 text-teal" />Antwort am selben Tag</span>
-                <span className="flex items-center gap-1.5"><CheckIcon className="w-4 h-4 text-teal" />SS34c GewO lizenziert</span>
+                <span className="flex items-center gap-1.5"><CheckIcon className="w-4 h-4 text-teal" />§34c GewO lizenziert</span>
               </div>
             </div>
           </div>
@@ -201,7 +187,7 @@ export default function HausverwaltungKolnPage() {
         <section className="py-16 px-6 bg-white">
           <div className="max-w-[1100px] mx-auto">
             <h2 className="text-2xl font-bold text-navy text-center mb-10">
-              Warum einfach verwaltet. fur Koln?
+              Warum einfach verwaltet. für Köln?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((f) => (
@@ -217,35 +203,55 @@ export default function HausverwaltungKolnPage() {
           </div>
         </section>
 
-        {/* Leistungen */}
+        {/* Local Market Info */}
         <section className="py-16 px-6">
           <div className="max-w-[1100px] mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <h2 className="text-2xl font-bold text-navy mb-6">
-                  Leistungen der Hausverwaltung Koln
+                  Hausverwaltung Köln: Markt & Mietspiegel
                 </h2>
-                <ul className="space-y-3">
-                  {leistungen.map((l) => (
-                    <li key={l} className="flex items-center gap-3 text-sm text-gray-700">
-                      <CheckIcon className="w-4 h-4 text-teal flex-shrink-0" />
-                      {l}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <Link
-                    href="/anfrage"
-                    className="inline-flex items-center gap-2 bg-navy text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-navy/85 transition-all"
-                  >
-                    Angebot fur Kolner Immobilie
-                    <ArrowRightIcon className="w-4 h-4" />
-                  </Link>
+                <p className="text-text-light leading-relaxed mb-6">
+                  Köln ist mit über 1,1 Millionen Einwohnern die größte Stadt Nordrhein-Westfalens 
+                  und einer der angespanntesten Wohnungsmärkte Deutschlands. Der Kölner Mietspiegel 
+                  bildet die Grundlage für Mieterhöhungen nach §558 BGB.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <div className="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-navy mb-1">Mietpreise Köln 2026</h4>
+                      <p className="text-text-light text-sm">
+                        Durchschnittliche Kaltmieten: €12–15/qm in beliebten Lagen, 
+                        €10–12/qm in Stadtteilen außerhalb der Ringe.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-navy mb-1">Mietpreisbremse</h4>
+                      <p className="text-text-light text-sm">
+                        In vielen Kölner Stadtteilen gilt die Mietpreisbremse. 
+                        Wir prüfen vor jeder Mieterhöhung die rechtlichen Rahmenbedingungen.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-2 h-2 rounded-full bg-teal mt-2 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-navy mb-1">Beliebte Stadtteile</h4>
+                      <p className="text-text-light text-sm">
+                        Innenstadt, Ehrenfeld, Nippes und das Agnesviertel verzeichnen 
+                        die höchste Nachfrage und Mietpreise.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-navy mb-6">
-                  Alle Kolner Stadtteile
+                  Alle Kölner Stadtteile
                 </h2>
                 <div className="grid grid-cols-2 gap-2">
                   {stadtteile.map((s) => (
@@ -256,26 +262,52 @@ export default function HausverwaltungKolnPage() {
                   ))}
                 </div>
                 <p className="mt-4 text-xs text-text-light">
-                  Und alle weiteren Kolner Stadtteile -- digitale Prozesse ohne geografische Einschrankungen.
+                  Und alle weiteren Kölner Stadtteile — digitale Prozesse ohne geografische Einschränkungen.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Pricing teaser */}
+        {/* Leistungen */}
         <section className="py-16 px-6 bg-white">
+          <div className="max-w-[1100px] mx-auto">
+            <h2 className="text-2xl font-bold text-navy text-center mb-10">
+              Leistungen der Hausverwaltung Köln
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {leistungen.map((l) => (
+                <li key={l} className="flex items-center gap-3 text-sm text-gray-700 list-none">
+                  <CheckIcon className="w-4 h-4 text-teal flex-shrink-0" />
+                  {l}
+                </li>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/anfrage"
+                className="inline-flex items-center gap-2 bg-navy text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-navy/85 transition-all"
+              >
+                Angebot für Kölner Immobilie
+                <ArrowRightIcon className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing teaser */}
+        <section className="py-16 px-6">
           <div className="max-w-[700px] mx-auto text-center">
             <h2 className="text-2xl font-bold text-navy mb-4">
-              Hausverwaltung Koln Kosten
+              Hausverwaltung Köln Kosten
             </h2>
             <p className="text-text-light mb-8">
-              Transparente Preise -- keine versteckten Kosten, keine Mindestvertragslaufzeit uber 1 Jahr.
+              Transparente Preise — keine versteckten Kosten, keine Mindestvertragslaufzeit über 1 Jahr.
             </p>
             <div className="grid sm:grid-cols-2 gap-6">
-              <div className="bg-warm-white rounded-2xl p-6 border-2 border-gray-100 text-left">
-                <h3 className="font-bold text-navy mb-1">Mietverwaltung Koln</h3>
-                <div className="text-3xl font-bold text-teal mb-1">ab EUR24</div>
+              <div className="bg-white rounded-2xl p-6 border-2 border-gray-100 text-left">
+                <h3 className="font-bold text-navy mb-1">Mietverwaltung Köln</h3>
+                <div className="text-3xl font-bold text-teal mb-1">€24–34</div>
                 <div className="text-sm text-text-light mb-4">/Einheit/Monat</div>
                 <ul className="space-y-2 text-sm text-gray-700">
                   {["Mieterbetreuung 24/7", "Nebenkostenabrechnung", "Mahnung & SEPA", "Digitales Portal"].map((i) => (
@@ -287,11 +319,11 @@ export default function HausverwaltungKolnPage() {
                 </ul>
               </div>
               <div className="bg-navy rounded-2xl p-6 text-left">
-                <h3 className="font-bold text-white mb-1">WEG-Verwaltung Koln</h3>
-                <div className="text-3xl font-bold text-teal mb-1">ab EUR28</div>
+                <h3 className="font-bold text-white mb-1">WEG-Verwaltung Köln</h3>
+                <div className="text-3xl font-bold text-teal mb-1">€28–34</div>
                 <div className="text-sm text-white/60 mb-4">/Einheit/Monat</div>
                 <ul className="space-y-2 text-sm text-white/80">
-                  {["Alles aus Mietverwaltung", "Eigentumerversammlung", "Beschlussprotokoll", "Jahresabrechnung WEG"].map((i) => (
+                  {["Alles aus Mietverwaltung", "Eigentümerversammlung", "Beschlussprotokoll", "Jahresabrechnung WEG"].map((i) => (
                     <li key={i} className="flex items-center gap-2">
                       <CheckIcon className="w-3.5 h-3.5 text-teal flex-shrink-0" />
                       {i}
@@ -313,39 +345,37 @@ export default function HausverwaltungKolnPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 px-6">
+        <section className="py-16 px-6 bg-white">
           <div className="max-w-[700px] mx-auto">
             <h2 className="text-2xl font-bold text-navy text-center mb-8">
-              Haugste Fragen -- Hausverwaltung Koln
+              Häufige Fragen — Hausverwaltung Köln
             </h2>
             <div className="space-y-4">
-              {[
-                {
-                  q: "Was kostet eine Hausverwaltung in Koln?",
-                  a: "Eine professionelle Hausverwaltung in Koln kostet typischerweise EUR20-35 pro Einheit und Monat. einfach verwaltet. bietet Mietverwaltung ab EUR24/Einheit und WEG-Verwaltung ab EUR28/Einheit. Keine Mindestvertragslaufzeit uber ein Jahr, keine versteckten Gebuhren.",
-                },
-                {
-                  q: "Welche Stadtteile betreut einfach verwaltet. in Koln?",
-                  a: "Wir verwalten Immobilien in allen Kolner Stadtteilen -- von der Innenstadt, Altstadt-Nord, Neustadt-Sud uber Ehrenfeld und Nippes bis Mulheim, Kalk, Porz, Rodenkirchen und Zollstock. Digitale Prozesse ermoglichen effiziente Verwaltung in ganz Koln und dem Umland.",
-                },
-                {
-                  q: "Wie funktioniert der Wechsel der Hausverwaltung in Koln?",
-                  a: "Der Wechsel ist einfacher als gedacht: Nach der Kundigung (meist 3 Monate zum Jahresende) ubernehmen wir alle Unterlagen, informieren die Mieter und stellen das Portal ein. Unser Onboarding-Team begleitet den gesamten Prozess.",
-                },
-                {
-                  q: "Gibt es Besonderheiten beim Kolner Mietrecht?",
-                  a: "Ja -- Koln ist ein angespannter Wohnungsmarkt mit hoher Nachfrage. Die Mietpreisbremse gilt in ausgewiesenen Gebieten. Als Messe- und Medienstadt gibt es besondere Mietstrukturen mit befristeten Vertragen. Wir kennen den Kolner Mietspiegel und lokale Regelungen.",
-                },
-                {
-                  q: "Was zeichnet den Kolner Immobilienmarkt aus?",
-                  a: "Koln ist im Rheinland das wirtschaftliche und kulturelle Zentrum mit uber 1,1 Millionen Einwohnern. Besonders gefragt sind Immobilien in der Innenstadt, Ehrenfeld und Agnesviertel. Das Umland wie Leverkusen und Bergisch Gladbach gewinnt als Wohnalternativen zunehmend an Bedeutung.",
-                },
-              ].map((faq, i) => (
-                <div key={i} className="bg-white rounded-xl border border-gray-100 p-5">
-                  <h3 className="font-semibold text-navy text-sm mb-2">{faq.q}</h3>
-                  <p className="text-sm text-gray-700 leading-relaxed">{faq.a}</p>
-                </div>
-              ))}
+              <div className="bg-warm-white rounded-xl border border-gray-100 p-5">
+                <h3 className="font-semibold text-navy text-sm mb-2">Was kostet eine Hausverwaltung in Köln?</h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Eine professionelle Hausverwaltung in Köln kostet typischerweise €24–34 pro Einheit und Monat. 
+                  einfach verwaltet. bietet transparente Preise ohne versteckte Gebühren. 
+                  Die genauen Kosten hängen von der Anzahl der Einheiten und dem gewählten Leistungsumfang ab.
+                </p>
+              </div>
+              <div className="bg-warm-white rounded-xl border border-gray-100 p-5">
+                <h3 className="font-semibold text-navy text-sm mb-2">Welche Stadtteile betreut einfach verwaltet. in Köln?</h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Wir verwalten Immobilien in allen Kölner Stadtteilen — von der Innenstadt über Ehrenfeld, 
+                  Nippes und Lindenthal bis Rodenkirchen, Bayenthal und dem gesamten Kölner Umland. 
+                  Digitale Prozesse ermöglichen effiziente Verwaltung ohne geografische Einschränkungen.
+                </p>
+              </div>
+              <div className="bg-warm-white rounded-xl border border-gray-100 p-5">
+                <h3 className="font-semibold text-navy text-sm mb-2">Was zeichnet den Kölner Immobilienmarkt aus?</h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Köln ist ein angespannter Wohnungsmarkt mit über 1,1 Millionen Einwohnern. 
+                  Die Mietpreise liegen im Schnitt bei €12–15/qm. Beliebte Stadtteile wie die Innenstadt, 
+                  Ehrenfeld und das Agnesviertel verzeichnen hohe Nachfrage. Die Mietpreisbremse gilt 
+                  in ausgewiesenen Gebieten.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -354,10 +384,10 @@ export default function HausverwaltungKolnPage() {
         <section className="py-16 px-6 bg-navy">
           <div className="max-w-[600px] mx-auto text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Kolner Immobilie abgeben?
+              Kölner Immobilie professionell verwalten?
             </h2>
             <p className="text-white/70 mb-8">
-              Kostenlos anfragen -- wir melden uns am selben Tag mit einem individuellen Angebot.
+              Kostenlos anfragen — wir melden uns am selben Tag mit einem individuellen Angebot.
             </p>
             <Link
               href="/anfrage"
