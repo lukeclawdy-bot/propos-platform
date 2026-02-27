@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { trackAnfrageConversion } from "@/lib/gtag";
+import { trackEvent } from "@/components/Analytics";
 import { CheckIcon, ArrowRightIcon, HouseLogoIcon, HomeIcon, ScaleIcon, ClipboardIcon, ChatIcon, MapPinIcon, BoltIcon, LockOpenIcon, WrenchIcon, StarIcon, ShieldIcon, BuildingIcon, QuestionIcon, CurrencyIcon, UsersIcon, TargetIcon } from "./Icons";
 
 // --- Types ---
@@ -202,6 +203,8 @@ export function AnfrageQuiz() {
   function selectChoice(value: string) {
     const updated = { ...answers, [step.id]: value };
     setAnswers(updated);
+    // Track quiz step completion in GA4
+    trackEvent("quiz_step", "lead", `step_${current + 1}_${step.id}`);
     // Auto-advance after short delay
     setTimeout(() => setCurrent((c) => Math.min(c + 1, totalSteps - 1)), 250);
   }
@@ -242,6 +245,8 @@ export function AnfrageQuiz() {
       setSubmitted(true);
       setCurrent(totalSteps - 1);
       
+      // Track GA4 lead conversion event
+      trackEvent("lead_submitted", "conversion", "anfrage_quiz");
       // Track Google Ads conversion
       trackAnfrageConversion();
     } catch (err) {

@@ -9,6 +9,7 @@ import { Preise } from "@/components/Preise";
 import { SoFunktionierts } from "@/components/SoFunktionierts";
 import { WechselVersprechen } from "@/components/WechselVersprechen";
 import { WarumWir } from "@/components/WarumWir";
+import { ReferenzenTeaser } from "@/components/ReferenzenTeaser";
 import { Nachfolge } from "@/components/Nachfolge";
 import { Kontakt } from "@/components/Kontakt";
 import { FAQ } from "@/components/FAQ";
@@ -29,6 +30,7 @@ export default function Home() {
         <SoFunktionierts />
         <WechselVersprechen />
         <WarumWir />
+        <ReferenzenTeaser />
         <Nachfolge />
         <Kontakt />
         <FAQ />

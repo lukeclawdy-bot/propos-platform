@@ -68,7 +68,7 @@ export function Hero() {
                 href="/anfrage"
                 className="inline-flex items-center justify-center gap-2 bg-navy text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-navy/85 transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
-                Angebot in 2 Minuten
+                Kostenlose Beratung — in 24h
                 <ArrowRightIcon className="w-4 h-4" />
               </a>
               <a

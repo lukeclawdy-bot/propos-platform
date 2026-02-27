@@ -6,6 +6,7 @@ import { HouseLogoIcon } from "./Icons";
 const navLinks = [
   { href: "/leistungen", label: "Leistungen" },
   { href: "/preise", label: "Preise" },
+  { href: "/referenzen", label: "Referenzen" },
   { href: "/blog", label: "Ratgeber" },
   { href: "/kontakt", label: "Kontakt" },
 ];
