@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CheckIcon, ArrowRightIcon } from "./Icons";
+import { CheckIcon, ArrowRightIcon, RocketIcon } from "./Icons";
 
 const heroChecks = [
   "Reaktionszeit unter 5 Minuten — garantiert",
@@ -85,7 +85,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 mt-6 group"
             >
               <span className="inline-flex items-center gap-2 bg-teal/10 hover:bg-teal/15 border border-teal/30 rounded-full px-4 py-2 text-sm font-medium text-teal transition-all group-hover:-translate-y-0.5">
-                <span>🎯</span>
+                <RocketIcon className="w-3.5 h-3.5 opacity-80" />
                 <span>Beta-Programm: Noch 3 Plätze verfügbar</span>
                 <ArrowRightIcon className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 transition-transform" />
               </span>

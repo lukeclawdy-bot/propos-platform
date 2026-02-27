@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ArrowRightIcon, CheckIcon, BuildingIcon, MapPinIcon, SparklesIcon, UsersIcon, StarIcon, ShieldIcon, CurrencyIcon, ClockIcon, ChatIcon } from "@/components/Icons";
+import { ArrowRightIcon, CheckIcon, BuildingIcon, MapPinIcon, SparklesIcon, UsersIcon, StarIcon, ShieldIcon, CurrencyIcon, ClockIcon, ChatIcon, TargetIcon } from "@/components/Icons";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -201,7 +201,7 @@ export default function BetaPage() {
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 rounded-full bg-teal/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-4xl">🎯</span>
+                    <TargetIcon className="w-9 h-9 text-teal" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Ihre Investition</h3>
                   <p className="text-white/60 text-sm">Nur Ihre Zeit und ehrliches Feedback</p>

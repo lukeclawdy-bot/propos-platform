@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { trackAnfrageConversion } from "@/lib/gtag";
-import { CheckIcon, ArrowRightIcon, HouseLogoIcon, HomeIcon, ScaleIcon, ClipboardIcon, ChatIcon, MapPinIcon, BoltIcon, LockOpenIcon, WrenchIcon, StarIcon, ShieldIcon, BuildingIcon, QuestionIcon, CurrencyIcon, UsersIcon } from "./Icons";
+import { CheckIcon, ArrowRightIcon, HouseLogoIcon, HomeIcon, ScaleIcon, ClipboardIcon, ChatIcon, MapPinIcon, BoltIcon, LockOpenIcon, WrenchIcon, StarIcon, ShieldIcon, BuildingIcon, QuestionIcon, CurrencyIcon, UsersIcon, TargetIcon } from "./Icons";
 
 // --- Types ---
 type StepType = "choice" | "multi" | "input" | "result";
@@ -285,7 +285,7 @@ export function AnfrageQuiz() {
         {isBetaProgram ? (
           <>
             <div className="bg-amber/10 border border-amber/30 rounded-xl p-4 mb-6">
-              <p className="text-amber font-semibold mb-1">🎯 Beta-Programm-Anfrage</p>
+              <p className="text-amber font-semibold mb-1 flex items-center gap-1.5"><TargetIcon className="w-4 h-4" /> Beta-Programm-Anfrage</p>
               <p className="text-navy text-sm">Sie sind auf der Liste für eines der 5 Beta-Plätze!</p>
             </div>
             <p className="text-text-light text-lg mb-8">
