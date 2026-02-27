@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Hausverwaltung Magdeburg — einfach verwaltet.",
   description:
-    "Professionelle Hausverwaltung in Magdeburg: transparente Preise ab €24/Einheit, 24/7 Erreichbarkeit, lokales Handwerkernetzwerk. Für WEG und Mietverwaltung in der Elbestadt.",
+    "Professionelle Hausverwaltung in Magdeburg: transparente Preise ab €24/Einheit, 24/7 Erreichbarkeit, lokales Handwerkernetzwerk. Für WEG und Mietverwaltung in Magdeburg.",
   openGraph: {
     title: "Hausverwaltung Magdeburg — einfach verwaltet.",
     description: "Die moderne Hausverwaltung für Magdeburg. Lokales Know-how, transparente Preise, immer erreichbar.",
@@ -16,23 +16,23 @@ export const metadata: Metadata = {
   },
 };
 
-const serviceStructuredData = {
+const localBusinessData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "einfach verwaltet. — Hausverwaltung Magdeburg",
-  "description": "Professionelle Hausverwaltung in Magdeburg für WEG und Mietverwaltung. Transparente Preise ab 24€/Einheit, lokales Know-how, 24/7 Erreichbarkeit.",
+  "description": "Professionelle Hausverwaltung in Magdeburg für WEG und Mietverwaltung. Transparente Preise, lokales Know-how, 24/7 Erreichbarkeit.",
   "url": "https://einfach-verwaltet.de/hausverwaltung-magdeburg",
-  "telephone": "+49-40-000000",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Hamburg",
+    "addressLocality": "Magdeburg",
+    "addressRegion": "Sachsen-Anhalt",
     "addressCountry": "DE"
   },
   "areaServed": {
     "@type": "City",
     "name": "Magdeburg"
   },
-  "priceRange": "ab 24€/Einheit/Monat",
+  "priceRange": "ab €24/Einheit",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -57,39 +57,47 @@ const faqStructuredData = {
       "name": "Was kostet eine Hausverwaltung in Magdeburg?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bei einfach verwaltet. starten unsere Leistungen ab 24 € pro Einheit und Monat für Mietverwaltung, ab 28 € für WEG-Verwaltung. Alle Kernleistungen sind inklusive: Mieterkommunikation, Nebenkostenabrechnung nach §556 BGB, Mieterhöhungsmanagement, Instandhaltungskoordination und digitales Eigentümerportal.",
+        "text": "In Magdeburg kosten professionelle Hausverwaltungsleistungen bei einfach verwaltet. ab 24 € pro Einheit und Monat für Mietverwaltung, ab 28 € für WEG-Verwaltung. Alle Leistungen inklusive: Mieterkommunikation, Nebenkostenabrechnung, Instandhaltungskoordination und digitales Eigentümer-Portal. Keine versteckten Kosten.",
       },
     },
     {
       "@type": "Question",
-      "name": "Welche Stadtteile in Magdeburg verwaltet einfach verwaltet.?",
+      "name": "Welche Stadtteile in Magdeburg betreuen Sie?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Wir betreuen Objekte in allen Magdeburger Stadtteilen: Altstadt, Buckau, Stadtfeld, Sudenburg, Cracau, Beyendorf-Sohlen und alle weiteren Bezirke. Von der Gründerzeitvilla bis zum Neubau kennen wir den Magdeburger Markt.",
+        "text": "Wir betreuen Immobilien in ganz Magdeburg: Altstadt, Stadtfeld Ost und West, Sudenburg, Buckau, Cracau, Herrenkrug, Wilhelmstadt, Neue Neustadt und allen anderen Stadtbezirken. Auch Objekte im Umland von Magdeburg sind möglich.",
       },
     },
     {
       "@type": "Question",
-      "name": "Wie ist der Immobilienmarkt in Magdeburg 2026?",
+      "name": "Gibt es in Magdeburg besondere Mietrecht-Regelungen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Magdeburg ist die Landeshauptstadt Sachsen-Anhalts und verzeichnet seit Jahren wachsende Mietnachfrage, getrieben durch die Universität Magdeburg, die OVGU und wachsende Unternehsen wie Intel (Chip-Werk). Die Mietpreise liegen bei 7–12 €/m² nettokalt — mit Potenzial nach oben. Leerstand konzentriert sich auf periphere Lagen, Innenstadtlagen sind gut vermietet.",
+        "text": "Magdeburg liegt in Sachsen-Anhalt, einem Bundesland ohne aktive Mietpreisbremseverordnung. Das bedeutet: keine 10%-Kappung bei Neuvermietung, aber bundesweites Mietrecht (§558 BGB) gilt weiterhin für Mieterhöhungen im Bestand. Wir kennen die lokalen Besonderheiten und den Magdeburger Mietspiegel.",
       },
     },
     {
       "@type": "Question",
-      "name": "Gibt es in Magdeburg eine Mietpreisbremse?",
+      "name": "Wie ist der Magdeburger Immobilienmarkt 2026?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nein, in Magdeburg gilt derzeit keine Mietpreisbremse nach §556d BGB. Sachsen-Anhalt hat keine Mietpreisbremsenverordnung erlassen, da der Wohnungsmarkt nicht als angespannt gilt. Mieterhöhungen sind daher nach §558 BGB (bis zur ortsüblichen Vergleichsmiete, Kappungsgrenze 20 % in 3 Jahren) möglich.",
+        "text": "Magdeburg ist die Landeshauptstadt von Sachsen-Anhalt mit ca. 240.000 Einwohnern. Der Immobilienmarkt ist im Vergleich zu westdeutschen Großstädten günstiger, zeigt aber Stabilisierungstendenzen. Leerstandsquoten sind in bestimmten Lagen rückläufig. Für Investoren bietet Magdeburg attraktive Renditen.",
       },
     },
     {
       "@type": "Question",
-      "name": "Welche Besonderheiten hat die Immobilienverwaltung in Magdeburg gegenüber Westdeutschland?",
+      "name": "Betreuen Sie auch Altbauimmobilien in Magdeburg?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Magdeburg hat einen hohen Anteil an Plattenbauten (WBS 70) und Gründerzeitgebäuden, die spezifisches Know-how bei Sanierung und Instandhaltung erfordern. Der Markt ist preissensibler als westdeutsche Großstädte. Gleichzeitig bieten Bestandsimmobilien in zentralen Lagen attraktive Renditen für Eigentümer.",
+        "text": "Ja, wir haben Erfahrung mit dem typischen Magdeburger Gebäudebestand: Gründerzeit-Altbauten in Sudenburg und Stadtfeld, DDR-Plattenbauten in Neustädter See-Nähe sowie modernisierte Wohnbestände. Wir kennen die spezifischen Instandhaltungsanforderungen dieser Gebäudetypen.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert der Verwalterwechsel in Magdeburg?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein Verwalterwechsel in Magdeburg dauert in der Regel 4–8 Wochen. Nach Ihrer Kündigung beim bisherigen Verwalter übernehmen wir die gesamte Dokumentation, informieren alle Mieter und koordinieren die reibungslose Übergabe.",
       },
     },
   ],
@@ -98,35 +106,44 @@ const faqStructuredData = {
 const features = [
   {
     title: "Magdeburg-lokales Know-how",
-    description: "Wir kennen den Magdeburger Markt — von Gründerzeit-Altbauten in der Altstadt bis zu Neubauten in Stadtfeld. Kein Mietpreisbremse-Stress, aber rechtssichere Mieterhöhungen nach §558 BGB.",
+    description: "Wir kennen den Magdeburger Immobilienmarkt — von der gründerzeitlichen Sudenburg über die Neue Neustadt bis zu modernisierten Beständen im Stadtfeld. Kein bundesweiter Einheitsbrei, sondern echter Lokalmarkt-Expertise.",
   },
   {
     title: "Transparente Pauschalpreise",
-    description: "Ab 24 €/Einheit/Monat ohne Extragebühren. Alle Kernleistungen inklusive — gerade für Eigentümer in Ostdeutschland, wo günstige Verwaltungskosten die Rendite entscheidend beeinflussen.",
+    description: "Ab 24 €/Einheit/Monat für Mietverwaltung. Alle Leistungen inklusive — keine Sondervergütungen, keine Jahresgespräch-Gebühren, keine Überraschungen bei der Jahresrechnung.",
   },
   {
-    title: "24/7 Erreichbarkeit",
-    description: "Mieteranfragen werden innerhalb von 15 Minuten bestätigt. Notfälle sofort bearbeitet. Keine Wartezeiten — auch in Magdeburg.",
+    title: "24/7 Mieterkommunikation",
+    description: "Mieteranfragen werden innerhalb von 15 Minuten bestätigt. Kein Anrufbeantworter, keine Mailbox. Direkter Kontakt zu Ihrem persönlichen Verwalter — an 365 Tagen im Jahr.",
   },
   {
-    title: "Digitales Eigentümerportal",
-    description: "Echtzeit-Einblick in Mieteingänge, Reparaturstatus und alle Dokumente — ob Sie in Magdeburg wohnen oder Ihren Bestand aus Hamburg verwalten lassen.",
+    title: "Digitales Eigentümer-Portal",
+    description: "Echtzeit-Einblick in Mieteingänge, Reparaturstatus, Abrechnungen und alle Dokumente. Volle Transparenz über Ihr Magdeburger Portfolio — jederzeit, von überall.",
   },
 ];
 
 const localKnowledge = [
   {
-    title: "Wachsender Mietmarkt",
-    description: "Intel-Ansiedlung und Universitätswachstum treiben die Mietnachfrage in Magdeburg. Für Vermieter entstehen neue Chancen — wir helfen, sie rechtssicher zu nutzen.",
+    title: "Kein Mietpreisbremselandrecht in Sachsen-Anhalt",
+    description: "In Magdeburg gilt keine Mietpreisbremse — das eröffnet bei Neuvermietungen mehr Spielraum. Wir kennen die Marktpreise und helfen Ihnen, Mieten marktgerecht anzusetzen, ohne dabei rechtliche Grenzen zu übersehen.",
   },
   {
-    title: "Bestandsgebäude-Expertise",
-    description: "Magdeburg hat viele WBS-70-Plattenbauten und Gründerzeithäuser. Unsere Handwerker kennen diese Bautypen und arbeiten effizient und kostenbewusst.",
+    title: "Magdeburger Altbaubestand",
+    description: "Viele Magdeburger Immobilien sind Gründerzeit-Altbauten oder modernisierte DDR-Bestände. Wir kennen die typischen Instandhaltungsthemen und haben geprüfte Handwerkerpartner vor Ort.",
   },
   {
-    title: "Kein Mietpreisbremse-Risiko",
-    description: "In Sachsen-Anhalt gilt keine Mietpreisbremse. Wir nutzen den §558-Spielraum optimal — mit korrekter Mietspiegel-Analyse und vollständiger Begründungsdokumentation.",
+    title: "Lokales Handwerkernetzwerk Magdeburg",
+    description: "Von der Altstadt bis nach Cracau: Unser Netzwerk aus geprüften Magdeburger Handwerkern gewährleistet schnelle Reaktionszeiten und faire Preise — keine überregionalen Aufschläge.",
   },
+];
+
+const magdeburgMarketData = [
+  { label: "Bevölkerung", value: "ca. 240.000 Einw." },
+  { label: "Bundesland", value: "Sachsen-Anhalt" },
+  { label: "Ø Kaltmiete (2026)", value: "ca. 7–11 €/m²" },
+  { label: "Mietpreisbremse", value: "Nicht aktiv" },
+  { label: "Betreute Stadtteile", value: "Alle Bezirke" },
+  { label: "Reaktionszeit", value: "< 15 Min." },
 ];
 
 export default function HausverwaltungMagdeburgPage() {
@@ -134,7 +151,7 @@ export default function HausverwaltungMagdeburgPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
       />
       <script
         type="application/ld+json"
@@ -154,9 +171,8 @@ export default function HausverwaltungMagdeburgPage() {
               <span className="text-teal">die funktioniert.</span>
             </h1>
             <p className="text-lg text-white/75 max-w-2xl mx-auto">
-              Professionelle Hausverwaltung für die Landeshauptstadt Sachsen-Anhalts. 
-              Lokales Know-how, transparente Preise ab 24 €/Einheit, 24/7 Erreichbarkeit. 
-              Für WEG und Mietverwaltung — von der Altstadt bis Stadtfeld.
+              Professionelle Hausverwaltung für Magdeburg. Lokales Know-how, transparente Preise ab 24 €/Einheit, 
+              24/7 Erreichbarkeit. Für WEG und Mietverwaltung — von Sudenburg bis zur Neuen Neustadt.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               <a
@@ -175,30 +191,6 @@ export default function HausverwaltungMagdeburgPage() {
           </div>
         </section>
 
-        {/* Market Data */}
-        <section className="py-10 bg-teal/5 border-b border-teal/10">
-          <div className="max-w-[1100px] mx-auto px-6">
-            <div className="grid sm:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">~240.000</div>
-                <div className="text-text-light text-sm">Einwohner</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">7–12 €</div>
-                <div className="text-text-light text-sm">Nettokaltmiete/m²</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">Kein Bremse</div>
-                <div className="text-text-light text-sm">Keine Mietpreisbremse in SA</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">Wachsend</div>
-                <div className="text-text-light text-sm">Intel-Effekt + Universität</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Features */}
         <section className="py-16 lg:py-24 bg-warm-white">
           <div className="max-w-[1100px] mx-auto px-6">
@@ -207,8 +199,8 @@ export default function HausverwaltungMagdeburgPage() {
                 Warum Magdeburger Eigentümer einfach verwaltet. wählen
               </h2>
               <p className="text-text-light max-w-xl mx-auto">
-                Magdeburg wächst. Mit einem erfahrenen Verwalter sichern Sie Ihren Bestand optimal ab — 
-                zu fairen, transparenten Konditionen.
+                In Magdeburgs Immobilienmarkt mit seinen Besonderheiten als ostdeutsche Landeshauptstadt 
+                zählt lokale Expertise besonders. Wir kennen den Markt.
               </p>
             </div>
 
@@ -232,9 +224,10 @@ export default function HausverwaltungMagdeburgPage() {
                   Magdeburg-Expertise, die sich auszahlt
                 </h2>
                 <p className="text-text-light leading-relaxed mb-8">
-                  Die Elbestadt bietet Immobilieneigentümern attraktive Renditen — besonders seit der 
-                  Intel-Ansiedlung und dem Wachstum der Universität Magdeburg. Wir kennen die lokale 
-                  Marktdynamik und helfen Ihnen, Ihr Portfolio optimal zu verwalten.
+                  Magdeburgs Immobilienmarkt hat seine eigenen Gesetze: attraktive Renditeobjekte, 
+                  ein starkes Gründerzeit-Erbe in Stadtfeld und Sudenburg, und wachsende Nachfrage 
+                  durch die Hochschulen und den öffentlichen Sektor als Arbeitgeber. 
+                  Wir kennen jedes dieser Facetten.
                 </p>
                 <div className="space-y-6">
                   {localKnowledge.map((item) => (
@@ -249,50 +242,89 @@ export default function HausverwaltungMagdeburgPage() {
                 </div>
               </div>
               <div className="bg-navy/5 rounded-2xl p-8 border border-navy/10">
-                <h3 className="text-xl font-bold text-navy mb-6 font-serif">Unser Magdeburger Service</h3>
+                <h3 className="text-xl font-bold text-navy mb-6 font-serif">Magdeburg im Überblick</h3>
                 <div className="space-y-4 text-text-light">
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Geprüfte Handwerker</span>
-                    <span className="font-semibold text-navy">25+ Partner</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Betreute Stadtteile</span>
-                    <span className="font-semibold text-navy">Alle Bezirke</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Reaktionszeit Mieter</span>
-                    <span className="font-semibold text-navy">&lt; 15 Min.</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Nebenkostenabrechnung</span>
-                    <span className="font-semibold text-navy">Fristgerecht</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Mieterhöhungen nach §558</span>
-                    <span className="font-semibold text-navy">Rechtssicher</span>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <span>Verfügbarkeit</span>
-                    <span className="font-semibold text-navy">365 Tage/Jahr</span>
-                  </div>
+                  {magdeburgMarketData.map((item, i) => (
+                    <div
+                      key={item.label}
+                      className={`flex justify-between py-2 ${i < magdeburgMarketData.length - 1 ? "border-b border-navy/10" : ""}`}
+                    >
+                      <span>{item.label}</span>
+                      <span className="font-semibold text-navy">{item.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* Market Insight */}
         <section className="py-16 lg:py-24 bg-warm-white">
+          <div className="max-w-[1100px] mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-navy mb-4 font-serif">
+                Der Magdeburger Immobilienmarkt 2026
+              </h2>
+              <p className="text-text-light max-w-2xl mx-auto">
+                Magdeburg bietet Vermietern interessante Renditepotenziale: günstigere Kaufpreise 
+                als westdeutsche Vergleichsstädte bei stabiler Mieternachfrage.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-teal mb-2">~240.000</div>
+                <div className="text-text-light text-sm">Einwohner — Landeshauptstadt Sachsen-Anhalts</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-teal mb-2">7–11 €</div>
+                <div className="text-text-light text-sm">Ø Kaltmiete pro m² — attraktive Investitionsrenditen [Schätzung]</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-teal mb-2">Keine</div>
+                <div className="text-text-light text-sm">Mietpreisbremse in Sachsen-Anhalt — mehr Spielraum bei Neuvermietung</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 lg:py-24 bg-white">
           <div className="max-w-[800px] mx-auto px-6">
             <h2 className="text-3xl font-bold text-navy mb-8 text-center font-serif">
               Häufige Fragen zur Hausverwaltung in Magdeburg
             </h2>
 
             <div className="space-y-4">
-              {faqStructuredData.mainEntity.map((faq, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 border border-gray-100">
-                  <h3 className="font-bold text-navy mb-2">{faq.name}</h3>
-                  <p className="text-text-light text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+              {[
+                {
+                  q: "Was kostet eine Hausverwaltung in Magdeburg?",
+                  a: "Bei einfach verwaltet. kosten Hausverwaltungsleistungen ab 24 € pro Einheit und Monat für Mietverwaltung, ab 28 € für WEG-Verwaltung. Alle Leistungen inklusive — keine versteckten Kosten.",
+                },
+                {
+                  q: "Welche Stadtteile in Magdeburg betreuen Sie?",
+                  a: "Wir betreuen Immobilien in ganz Magdeburg: Altstadt, Stadtfeld, Sudenburg, Buckau, Cracau, Herrenkrug, Wilhelmstadt, Neue Neustadt und allen anderen Stadtbezirken.",
+                },
+                {
+                  q: "Gibt es in Magdeburg besondere Mietrecht-Regelungen?",
+                  a: "Magdeburg liegt in Sachsen-Anhalt, einem Bundesland ohne aktive Mietpreisbremseverordnung. Das bedeutet mehr Spielraum bei Neuvermietungen. Bundesweites Mietrecht (§558 BGB) gilt natürlich weiterhin für Mieterhöhungen im Bestand.",
+                },
+                {
+                  q: "Betreuen Sie auch Altbauimmobilien in Magdeburg?",
+                  a: "Ja, wir haben Erfahrung mit Gründerzeit-Altbauten in Sudenburg und Stadtfeld sowie mit DDR-Plattenbauten und modernisierten Beständen. Wir kennen die spezifischen Instandhaltungsanforderungen dieser Gebäudetypen.",
+                },
+                {
+                  q: "Wie ist der Magdeburger Immobilienmarkt 2026?",
+                  a: "Magdeburg bietet als ostdeutsche Landeshauptstadt attraktive Renditeobjekte — günstigere Kaufpreise als westdeutsche Vergleichsstädte bei stabiler Mieternachfrage durch Universitäten und öffentlichen Sektor.",
+                },
+                {
+                  q: "Wie lange dauert der Verwalterwechsel in Magdeburg?",
+                  a: "Ein Verwalterwechsel dauert in der Regel 4–8 Wochen. Nach Ihrer Kündigung übernehmen wir die Dokumentation, informieren alle Mieter und koordinieren die reibungslose Übergabe.",
+                },
+              ].map((faq) => (
+                <div key={faq.q} className="bg-warm-white rounded-xl p-6 border border-gray-100">
+                  <h3 className="font-bold text-navy mb-2">{faq.q}</h3>
+                  <p className="text-text-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>

@@ -205,6 +205,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "mietrecht-streitigkeiten-loesen",
     "hausverwaltung-qualitaet-kriterien",
     "immobilienverwaltung-software-2026",
+    "immobilienverwaltung-digitalisierung",
   ];
 
   const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

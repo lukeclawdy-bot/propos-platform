@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Hausverwaltung Kiel — einfach verwaltet.",
   description:
-    "Professionelle Hausverwaltung in Kiel: transparente Preise ab €24/Einheit, 24/7 Erreichbarkeit, lokales Handwerkernetzwerk. Für WEG und Mietverwaltung in der Fördestadt.",
+    "Professionelle Hausverwaltung in Kiel: transparente Preise ab €24/Einheit, 24/7 Erreichbarkeit, lokales Handwerkernetzwerk. Für WEG und Mietverwaltung in Kiel und der Region.",
   openGraph: {
     title: "Hausverwaltung Kiel — einfach verwaltet.",
     description: "Die moderne Hausverwaltung für Kiel. Lokales Know-how, transparente Preise, immer erreichbar.",
@@ -16,23 +16,23 @@ export const metadata: Metadata = {
   },
 };
 
-const serviceStructuredData = {
+const localBusinessData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "einfach verwaltet. — Hausverwaltung Kiel",
-  "description": "Professionelle Hausverwaltung in Kiel für WEG und Mietverwaltung. Transparente Preise ab 24€/Einheit, lokales Know-how, 24/7 Erreichbarkeit.",
+  "description": "Professionelle Hausverwaltung in Kiel für WEG und Mietverwaltung. Transparente Preise, lokales Know-how, 24/7 Erreichbarkeit.",
   "url": "https://einfach-verwaltet.de/hausverwaltung-kiel",
-  "telephone": "+49-40-000000",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Hamburg",
+    "addressLocality": "Kiel",
+    "addressRegion": "Schleswig-Holstein",
     "addressCountry": "DE"
   },
   "areaServed": {
     "@type": "City",
     "name": "Kiel"
   },
-  "priceRange": "ab 24€/Einheit/Monat",
+  "priceRange": "ab €24/Einheit",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -57,7 +57,15 @@ const faqStructuredData = {
       "name": "Was kostet eine Hausverwaltung in Kiel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bei einfach verwaltet. starten unsere Leistungen ab 24 € pro Einheit und Monat für Mietverwaltung, ab 28 € für WEG-Verwaltung. Alle Kernleistungen sind inklusive: Mieterkommunikation, Nebenkostenabrechnung nach §556 BGB, Mieterhöhungsmanagement, Instandhaltungskoordination und digitales Eigentümerportal. Keine versteckten Zusatzgebühren.",
+        "text": "In Kiel kosten professionelle Hausverwaltungsleistungen bei einfach verwaltet. ab 24 € pro Einheit und Monat für Mietverwaltung, ab 28 € für WEG-Verwaltung. Alle Leistungen inklusive: Mieterkommunikation, Nebenkostenabrechnung, Instandhaltungskoordination und digitales Eigentümer-Portal. Keine versteckten Kosten.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Stadtteile in Kiel betreuen Sie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir betreuen Immobilien in ganz Kiel: Innenstadt, Wik, Gaarden, Elmschenhagen, Meimersdorf, Rönne, Steenbek-Projensdorf, Pries-Friedrichsort, Suchsdorf und allen anderen Stadtbezirken. Auch Objekte im Kieler Umland sind möglich.",
       },
     },
     {
@@ -65,31 +73,31 @@ const faqStructuredData = {
       "name": "Gibt es in Kiel eine Mietpreisbremse?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja, Kiel gilt als Gebiet mit angespanntem Wohnungsmarkt im Sinne der Schleswig-Holsteinischen Mietpreisbremseverordnung. Bei Neuvermietungen darf die Miete in bestimmten Lagen die ortsübliche Vergleichsmiete um höchstens 10 % überschreiten (§556d BGB). Wir prüfen vor jeder Neuvermietung die geltenden Grenzen.",
+        "text": "Schleswig-Holstein hat eine Mietpreisbremsenverordnung erlassen, die in ausgewählten Gemeinden gilt. Kiel ist als Landeshauptstadt und angespannter Wohnungsmarkt einbezogen. Bei Neuvermietungen darf die Miete maximal 10 % über der ortsüblichen Vergleichsmiete liegen. Wir prüfen dies automatisch bei jeder Neuvermietung.",
       },
     },
     {
       "@type": "Question",
-      "name": "Welche Stadtteile in Kiel betreut einfach verwaltet.?",
+      "name": "Wie ist der Kieler Immobilienmarkt 2026?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Wir betreuen Objekte in allen Kieler Stadtteilen: Innenstadt, Gaarden, Ravensberg, Brunswik, Wik, Hassee, Neumühlen-Dietrichsdorf und alle weiteren Bezirke. Vom Altbau in der Fördepromenade bis zum Neubau in Hassee kennen wir den Kieler Markt.",
+        "text": "Kiel ist die Landeshauptstadt Schleswig-Holsteins mit ca. 250.000 Einwohnern. Die Christian-Albrechts-Universität sorgt für eine starke Studentennachfrage. Der Mietmarkt ist durch Küstenlage und Universitätsstadt-Dynamik geprägt — mit stabiler Nachfrage besonders für kleinere Einheiten.",
       },
     },
     {
       "@type": "Question",
-      "name": "Warum ist Kiel als Investitionsstandort interessant?",
+      "name": "Betreuen Sie auch Studentenwohnungen in Kiel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kiel ist Landeshauptstadt von Schleswig-Holstein und bietet als Universitätsstadt (CAU Kiel, FH Kiel) eine konstante Mietnachfrage durch Studierende. Die Nähe zu Hamburg (ca. 90 km) macht Kiel für Pendler attraktiv. Marine und maritime Wirtschaft bringen stabile Fachkräftenachfrage. Mietpreise: 9–14 €/m² nettokalt je nach Lage.",
+        "text": "Ja, wir haben Erfahrung mit der Verwaltung von Studentenwohnungen und kleinen Einheiten in Kiel. Besonderheiten wie häufigerer Mieterwechsel, spezifische Bonitätsprüfungen und befristete Mietverträge kennen wir aus dem Alltag.",
       },
     },
     {
       "@type": "Question",
-      "name": "Wie unterscheidet sich der Kieler Markt vom Hamburger Markt?",
+      "name": "Wie lange dauert der Verwalterwechsel in Kiel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kiel hat deutlich niedrigere Mietpreise als Hamburg, aber auch geringere Verwaltungskosten. Die Nachfrage ist stabiler und weniger spekulativ. Für Eigentümer bedeutet das: verlässliche Mietverhältnisse, überschaubare Leerstandsrisiken und gutes Preis-Rendite-Verhältnis gegenüber Hamburger Kaufpreisen.",
+        "text": "Ein Verwalterwechsel in Kiel dauert in der Regel 4–8 Wochen. Nach Ihrer Kündigung beim bisherigen Verwalter übernehmen wir die gesamte Dokumentation, informieren alle Mieter und koordinieren die reibungslose Übergabe.",
       },
     },
   ],
@@ -98,35 +106,44 @@ const faqStructuredData = {
 const features = [
   {
     title: "Kiel-lokales Know-how",
-    description: "Wir kennen den Kieler Immobilienmarkt — von der Fördepromenade über Gaarden bis Hassee. Mietpreisbremse Schleswig-Holstein, Kieler Mietspiegel und lokale Handwerker kennen wir gut.",
+    description: "Wir kennen Kiels Immobilienmarkt — von der Universitätsstadt-Dynamik mit hoher Studentennachfrage über die attraktiven Lagen in Wik und Gaarden bis zur wachsenden Nachfrage in Stadtrandlagen.",
   },
   {
-    title: "Hamburg-Expertise für Kiel",
-    description: "Als Hamburg-naher Anbieter bedienen wir die Schleswig-Holstein-Achse. Viele Kieler Eigentümer leben in Hamburg — wir liefern volle Transparenz über Ihr Kieler Portfolio aus der Ferne.",
+    title: "Transparente Pauschalpreise",
+    description: "Ab 24 €/Einheit/Monat für Mietverwaltung. Alle Leistungen inklusive — keine Sondervergütungen für Wohnungsübergaben, Mieterhöhungen oder Jahresgespräche. Kein Kleingedrucktes.",
   },
   {
     title: "24/7 Erreichbarkeit",
-    description: "Mieteranfragen werden innerhalb von 15 Minuten bestätigt. Notfälle sofort bearbeitet — auch in Kiel, auch nachts.",
+    description: "Mieteranfragen werden innerhalb von 15 Minuten bestätigt. Kein Anrufbeantworter — direkter Kontakt zu Ihrem persönlichen Verwalter an 365 Tagen im Jahr.",
   },
   {
-    title: "Digitales Eigentümerportal",
-    description: "Echtzeit-Einblick in Mieteingänge, Reparaturstatus und alle Dokumente — egal ob Sie in Kiel, Hamburg oder woanders wohnen.",
+    title: "Digitales Eigentümer-Portal",
+    description: "Echtzeit-Einblick in Mieteingänge, Reparaturstatus, Abrechnungen und alle Dokumente. Volle Transparenz über Ihr Kieler Portfolio — jederzeit, von überall.",
   },
 ];
 
 const localKnowledge = [
   {
-    title: "Mietpreisbremse SH",
-    description: "Kiel liegt im Geltungsbereich der Schleswig-Holsteinischen Mietpreisbremseverordnung. Wir prüfen bei jeder Neuvermietung die geltenden Grenzen und dokumentieren Ausnahmen sorgfältig.",
+    title: "Universitätsstadt-Dynamik",
+    description: "Die Christian-Albrechts-Universität Kiel mit ca. 27.000 Studierenden erzeugt eine starke Nachfrage nach kleinen Wohneinheiten. Wir kennen die spezifischen Anforderungen dieser Mietergruppe und die typischen Leerstandsrisiken zum Semesterwechsel.",
   },
   {
-    title: "Kieler Mietspiegel",
-    description: "Wir arbeiten mit dem aktuellen Kieler Mietspiegel für rechtssichere Mieterhöhungen nach §558 BGB — inklusive vollständiger Begründungsdokumentation und Fristwahrung.",
+    title: "Mietpreisbremse Schleswig-Holstein",
+    description: "Kiel ist als Landeshauptstadt in der schleswig-holsteinischen Mietpreisbremseverordnung erfasst. Wir prüfen bei jeder Neuvermietung die ortsübliche Vergleichsmiete und setzen Mieten rechtskonform und renditeoptimiert.",
   },
   {
-    title: "Marine + Uni: stabile Nachfrage",
-    description: "Bundeswehr, CAU und FH Kiel sorgen für eine verlässliche Mietnachfrage. Wir verstehen die Mieterprofile und finden passende Mieter für Ihr Objekt.",
+    title: "Lokales Handwerkernetzwerk Kiel",
+    description: "Von der Innenstadt bis nach Pries-Friedrichsort: Unser Netzwerk aus geprüften Kieler Handwerkern garantiert schnelle Reaktionszeiten bei Reparaturen — besonders wichtig bei winterlichen Witterungsschäden an der Küste.",
   },
+];
+
+const kielMarketData = [
+  { label: "Bevölkerung", value: "ca. 250.000 Einw." },
+  { label: "Bundesland", value: "Schleswig-Holstein" },
+  { label: "Ø Kaltmiete (2026)", value: "ca. 10–14 €/m²" },
+  { label: "Mietpreisbremse", value: "Aktiv (SH-Verordnung)" },
+  { label: "Betreute Stadtteile", value: "Alle Bezirke" },
+  { label: "Reaktionszeit", value: "< 15 Min." },
 ];
 
 export default function HausverwaltungKielPage() {
@@ -134,7 +151,7 @@ export default function HausverwaltungKielPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
       />
       <script
         type="application/ld+json"
@@ -154,9 +171,8 @@ export default function HausverwaltungKielPage() {
               <span className="text-teal">die funktioniert.</span>
             </h1>
             <p className="text-lg text-white/75 max-w-2xl mx-auto">
-              Professionelle Hausverwaltung für die Fördestadt. Lokales Know-how für Kiel, 
-              transparente Preise ab 24 €/Einheit, 24/7 Erreichbarkeit. 
-              Für WEG und Mietverwaltung — von Gaarden bis Brunswik.
+              Professionelle Hausverwaltung für Kiel. Lokales Know-how, transparente Preise ab 24 €/Einheit, 
+              24/7 Erreichbarkeit. Für WEG und Mietverwaltung — von der Innenstadt bis nach Gaarden und Wik.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               <a
@@ -175,30 +191,6 @@ export default function HausverwaltungKielPage() {
           </div>
         </section>
 
-        {/* Market Data */}
-        <section className="py-10 bg-teal/5 border-b border-teal/10">
-          <div className="max-w-[1100px] mx-auto px-6">
-            <div className="grid sm:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">~250.000</div>
-                <div className="text-text-light text-sm">Einwohner</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">9–14 €</div>
-                <div className="text-text-light text-sm">Nettokaltmiete/m²</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">Mietpreisbremse</div>
-                <div className="text-text-light text-sm">SH aktiv in Kiel</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-navy font-serif">~90 km</div>
-                <div className="text-text-light text-sm">Entfernung Hamburg</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Features */}
         <section className="py-16 lg:py-24 bg-warm-white">
           <div className="max-w-[1100px] mx-auto px-6">
@@ -207,8 +199,8 @@ export default function HausverwaltungKielPage() {
                 Warum Kieler Eigentümer einfach verwaltet. wählen
               </h2>
               <p className="text-text-light max-w-xl mx-auto">
-                Kiel bietet stabile Mietrenditen und ein verlässliches Mieterfeld. 
-                Mit einfach verwaltet. nutzen Sie das Potenzial der Fördestadt optimal.
+                In Kiels dynamischem Immobilienmarkt — geprägt durch Universitätsstadt, Küstenlage 
+                und wachsende Bevölkerung — zählt echte lokale Expertise.
               </p>
             </div>
 
@@ -232,9 +224,10 @@ export default function HausverwaltungKielPage() {
                   Kiel-Expertise, die sich auszahlt
                 </h2>
                 <p className="text-text-light leading-relaxed mb-8">
-                  Kiel ist als Universitäts- und Marinestadt ein verlässlicher Mietmarkt mit stabiler 
-                  Nachfrage. Von der Fördepromenade bis nach Hassee kennen wir die Stadtteile, Mietspiegel 
-                  und lokalen Handwerkernetzwerke.
+                  Kiel als Landeshauptstadt Schleswig-Holsteins und Universitätsstadt hat seinen 
+                  ganz eigenen Immobilienmarkt: starke Studentennachfrage, Küstenlage mit spezifischen 
+                  Instandhaltungsanforderungen, und eine Mietpreisbremse, die bei jeder Neuvermietung 
+                  zu beachten ist. Wir kennen alle diese Besonderheiten.
                 </p>
                 <div className="space-y-6">
                   {localKnowledge.map((item) => (
@@ -249,50 +242,89 @@ export default function HausverwaltungKielPage() {
                 </div>
               </div>
               <div className="bg-navy/5 rounded-2xl p-8 border border-navy/10">
-                <h3 className="text-xl font-bold text-navy mb-6 font-serif">Unser Kieler Service auf einen Blick</h3>
+                <h3 className="text-xl font-bold text-navy mb-6 font-serif">Kiel im Überblick</h3>
                 <div className="space-y-4 text-text-light">
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Geprüfte Handwerker</span>
-                    <span className="font-semibold text-navy">25+ Partner</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Betreute Stadtteile</span>
-                    <span className="font-semibold text-navy">Alle Bezirke</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Reaktionszeit Mieter</span>
-                    <span className="font-semibold text-navy">&lt; 15 Min.</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Nebenkostenabrechnung</span>
-                    <span className="font-semibold text-navy">Fristgerecht</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-navy/10">
-                    <span>Mietpreisbremse-Check</span>
-                    <span className="font-semibold text-navy">Automatisch</span>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <span>Verfügbarkeit</span>
-                    <span className="font-semibold text-navy">365 Tage/Jahr</span>
-                  </div>
+                  {kielMarketData.map((item, i) => (
+                    <div
+                      key={item.label}
+                      className={`flex justify-between py-2 ${i < kielMarketData.length - 1 ? "border-b border-navy/10" : ""}`}
+                    >
+                      <span>{item.label}</span>
+                      <span className="font-semibold text-navy">{item.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* Market Insight */}
         <section className="py-16 lg:py-24 bg-warm-white">
+          <div className="max-w-[1100px] mx-auto px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-navy mb-4 font-serif">
+                Der Kieler Immobilienmarkt 2026
+              </h2>
+              <p className="text-text-light max-w-2xl mx-auto">
+                Kiel wächst — die Universitätsstadt an der Förde verzeichnet stabile Nachfrage 
+                nach Mietwohnungen in allen Preissegmenten.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-teal mb-2">~250.000</div>
+                <div className="text-text-light text-sm">Einwohner — Landeshauptstadt Schleswig-Holsteins</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-teal mb-2">~27.000</div>
+                <div className="text-text-light text-sm">Studierende an der CAU Kiel — starke Nachfrage nach kleinen Einheiten</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-100 text-center">
+                <div className="text-3xl font-bold text-teal mb-2">Mietpreisbremse</div>
+                <div className="text-text-light text-sm">Kiel ist von der Schleswig-Holstein-Verordnung erfasst</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 lg:py-24 bg-white">
           <div className="max-w-[800px] mx-auto px-6">
             <h2 className="text-3xl font-bold text-navy mb-8 text-center font-serif">
               Häufige Fragen zur Hausverwaltung in Kiel
             </h2>
 
             <div className="space-y-4">
-              {faqStructuredData.mainEntity.map((faq, i) => (
-                <div key={i} className="bg-white rounded-xl p-6 border border-gray-100">
-                  <h3 className="font-bold text-navy mb-2">{faq.name}</h3>
-                  <p className="text-text-light text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+              {[
+                {
+                  q: "Was kostet eine Hausverwaltung in Kiel?",
+                  a: "Bei einfach verwaltet. kosten Hausverwaltungsleistungen ab 24 € pro Einheit und Monat für Mietverwaltung, ab 28 € für WEG-Verwaltung. Alle Leistungen inklusive — keine versteckten Kosten.",
+                },
+                {
+                  q: "Welche Stadtteile in Kiel betreuen Sie?",
+                  a: "Wir betreuen Immobilien in ganz Kiel: Innenstadt, Wik, Gaarden, Elmschenhagen, Meimersdorf, Suchsdorf und allen anderen Stadtbezirken. Auch Objekte im Kieler Umland sind möglich.",
+                },
+                {
+                  q: "Gibt es in Kiel eine Mietpreisbremse?",
+                  a: "Ja, Kiel ist als Landeshauptstadt in der schleswig-holsteinischen Mietpreisbremseverordnung erfasst. Bei Neuvermietungen darf die Miete maximal 10 % über der ortsüblichen Vergleichsmiete liegen. Wir prüfen dies automatisch bei jeder Neuvermietung.",
+                },
+                {
+                  q: "Betreuen Sie auch Studentenwohnungen in Kiel?",
+                  a: "Ja, wir haben Erfahrung mit Studentenwohnungen und kleinen Einheiten. Besonderheiten wie häufigerer Mieterwechsel, spezifische Bonitätsprüfungen und befristete Mietverträge kennen wir aus dem Alltag.",
+                },
+                {
+                  q: "Wie ist der Kieler Immobilienmarkt 2026?",
+                  a: "Kiel verzeichnet stabile Nachfrage durch Universität und Landeshauptstadt-Funktion. Besonders kleine Einheiten nahe der CAU Kiel sind begehrt. Die Mietpreisbremse begrenzt bei Neuvermietungen das Potenzial nach oben.",
+                },
+                {
+                  q: "Wie lange dauert der Verwalterwechsel in Kiel?",
+                  a: "Ein Verwalterwechsel dauert in der Regel 4–8 Wochen. Nach Ihrer Kündigung übernehmen wir die Dokumentation, informieren alle Mieter und koordinieren die reibungslose Übergabe.",
+                },
+              ].map((faq) => (
+                <div key={faq.q} className="bg-warm-white rounded-xl p-6 border border-gray-100">
+                  <h3 className="font-bold text-navy mb-2">{faq.q}</h3>
+                  <p className="text-text-light text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>

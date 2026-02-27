@@ -863,6 +863,15 @@ const posts = [
     readTime: "10 min",
     date: "Februar 2026",
   },
+  {
+    slug: "immobilienverwaltung-digitalisierung",
+    title: "Digitalisierung der Immobilienverwaltung 2026: Was moderne Vermieter erwarten können",
+    description:
+      "Eigentümerportal, automatisierte Nebenkostenabrechnung, digitale Mieterkommunikation: Was moderne Hausverwaltung 2026 technisch leisten kann — und was Sie einfordern sollten.",
+    keyword: "Immobilienverwaltung Digitalisierung 2026",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
 ];
 
 export default function BlogIndex() {
