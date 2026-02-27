@@ -51,9 +51,9 @@ export async function GET() {
     const allLeads = await db.query.leads.findMany();
     
     // Leads this week
-    const leadsThisWeek = allLeads.filter(l => new Date(l.createdAt) >= weekAgo);
+    const leadsThisWeek = allLeads.filter(l => l.createdAt && l.createdAt >= weekAgo);
     const leadsLastWeek = allLeads.filter(l => {
-      const date = new Date(l.createdAt);
+      const date = l.createdAt;if (!date) return false;
       return date >= twoWeeksAgo && date < weekAgo;
     });
 

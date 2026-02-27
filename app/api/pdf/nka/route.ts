@@ -73,24 +73,23 @@ function buildDemoInput(year: number, propertyName?: string): {
 
   const bkaInput: BKAInput = {
     property: bkaProperty,
-    year,
     periodStart: new Date(`${year}-01-01`),
     periodEnd: new Date(`${year}-12-31`),
     costs: [
-      { category: BKACostCategory.GRUNDSTEUER,          description: 'Grundsteuer',             totalAmount: 1240,  allocationKey: AllocationKey.WOHNFLAECHE },
-      { category: BKACostCategory.WASSER,               description: 'Frischwasser/Abwasser',   totalAmount: 980,   allocationKey: AllocationKey.VERBRAUCH },
-      { category: BKACostCategory.HEIZUNG,              description: 'Heizkosten Erdgas',       totalAmount: 3420,  allocationKey: AllocationKey.VERBRAUCH },
-      { category: BKACostCategory.AUFZUG,               description: 'Aufzugswartung',          totalAmount: 0,     allocationKey: AllocationKey.WOHNFLAECHE },
-      { category: BKACostCategory.TREPPENHAUSREINIGUNG, description: 'Treppenhausreinigung',    totalAmount: 480,   allocationKey: AllocationKey.WOHNFLAECHE },
-      { category: BKACostCategory.MUELL,                description: 'Müllabfuhr',              totalAmount: 620,   allocationKey: AllocationKey.PERSONENANZAHL },
-      { category: BKACostCategory.HAFTPFLICHT,          description: 'Gebäudehaftpflicht',      totalAmount: 340,   allocationKey: AllocationKey.WOHNFLAECHE },
-      { category: BKACostCategory.HAUSWART,             description: 'Hausmeisterdienst',       totalAmount: 720,   allocationKey: AllocationKey.WOHNFLAECHE },
-      { category: BKACostCategory.ALLGEMEINSTROM,       description: 'Allgemeinstrom/Flur',     totalAmount: 180,   allocationKey: AllocationKey.WOHNFLAECHE },
+      { category: BKACostCategory.STRASSENREINIGUNG,    description: 'Grundsteuer',             total_eur: 1240,  allocation_key: AllocationKey.WOHNFLAECHE },
+      { category: BKACostCategory.WASSERVERSORGUNG,     description: 'Frischwasser/Abwasser',   total_eur: 980,   allocation_key: AllocationKey.VERBRAUCH },
+      { category: BKACostCategory.HEIZUNG,              description: 'Heizkosten Erdgas',       total_eur: 3420,  allocation_key: AllocationKey.VERBRAUCH },
+      { category: BKACostCategory.AUFZUG,               description: 'Aufzugswartung',          total_eur: 0,     allocation_key: AllocationKey.WOHNFLAECHE },
+      { category: BKACostCategory.GARTENPFLEGE,         description: 'Treppenhausreinigung',    total_eur: 480,   allocation_key: AllocationKey.WOHNFLAECHE },
+      { category: BKACostCategory.MUELLBeseITIGUNG,    description: 'Müllabfuhr',              total_eur: 620,   allocation_key: AllocationKey.PERSONENZAHL },
+      { category: BKACostCategory.VERSICHERUNG,         description: 'Gebäudehaftpflicht',      total_eur: 340,   allocation_key: AllocationKey.WOHNFLAECHE },
+      { category: BKACostCategory.HAUSMEISTER,          description: 'Hausmeisterdienst',       total_eur: 720,   allocation_key: AllocationKey.WOHNFLAECHE },
+      { category: BKACostCategory.BETRIEBSSTROM,        description: 'Allgemeinstrom/Flur',     total_eur: 180,   allocation_key: AllocationKey.WOHNFLAECHE },
     ],
-    advancePayments: [
-      { unitId: 'demo-unit-1', totalPaid: 2400 },
-      { unitId: 'demo-unit-2', totalPaid: 2100 },
-    ],
+    unit_vorauszahlungen: {
+      'demo-unit-1': 2400,
+      'demo-unit-2': 2100,
+    },
   };
 
   return {

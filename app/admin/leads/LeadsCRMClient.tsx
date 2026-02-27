@@ -21,11 +21,11 @@ interface Lead {
   source: string | null;
   utmMedium: string | null;
   utmCampaign: string | null;
-  contactedAt: Date | null;
-  demoAt: Date | null;
-  proposalSentAt: Date | null;
-  wonAt: Date | null;
-  lostAt: Date | null;
+  contactedAt: Date | string | null;
+  demoAt: Date | string | null;
+  proposalSentAt: Date | string | null;
+  wonAt: Date | string | null;
+  lostAt: Date | string | null;
   lostReason: string | null;
   estimatedUnits: number | null;
   pipelineValueCents: number | null;
@@ -68,11 +68,11 @@ function PipelineDots({
   lostAt 
 }: { 
   status: string | null;
-  contactedAt: Date | null;
-  demoAt: Date | null;
-  proposalSentAt: Date | null;
-  wonAt: Date | null;
-  lostAt: Date | null;
+  contactedAt: Date | string | null;
+  demoAt: Date | string | null;
+  proposalSentAt: Date | string | null;
+  wonAt: Date | string | null;
+  lostAt: Date | string | null;
 }) {
   const steps = [
     { label: "Quiz", done: true },
