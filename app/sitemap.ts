@@ -110,6 +110,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "hausverwaltung-stuttgart-kosten",
     "vermieter-pflichten-checkliste",
     "mietvertrag-befristet",
+    // Sprint 13 — Hausordnung, Kaution, Verwaltervertrag, NKA, Kosten sparen
+    "hausordnung-vorlage-vermieter",
+    "mietkaution-zurueckhalten-vermieter",
+    "nebenkostenabrechnung-mieter-pruefen",
+    "hausverwaltung-kosten-sparen",
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     priority: 0.7,

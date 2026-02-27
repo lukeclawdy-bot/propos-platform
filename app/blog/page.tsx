@@ -22,6 +22,51 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "hausverwaltung-kosten-sparen",
+    title: "Hausverwaltung Kosten sparen: Weniger zahlen ohne Qualitätsabstriche",
+    description:
+      "Marktpreise (€24–34/Einheit), versteckte Gebühren erkennen, digitale Verwaltung und Mengenrabatte — der Leitfaden für Eigentümer, die sinnvoll sparen wollen.",
+    keyword: "Hausverwaltung Kosten sparen",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "nebenkostenabrechnung-mieter-pruefen",
+    title: "Nebenkostenabrechnung prüfen: Was eine gültige NKA enthalten muss",
+    description:
+      "Die 12-Monats-Frist nach §556 Abs. 3 BGB, Pflichtbestandteile, häufige Fehler und das Belegeinsichtsrecht — der vollständige Leitfaden für Vermieter und Hausverwaltungen.",
+    keyword: "Nebenkostenabrechnung prüfen Mieter",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "verwaltervertrag-kuendigen",
+    title: "Verwaltervertrag kündigen: Fristen, Ablauf und Verwalterwechsel",
+    description:
+      "§26 WEG und §621 BGB erklärt: Kündigungsfristen, Dokumentenübergabe-Pflichten und wie ein reibungsloser Verwalterwechsel gelingt — mit internem Link zu /wechseln.",
+    keyword: "Verwaltervertrag kündigen",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietkaution-zurueckhalten-vermieter",
+    title: "Mietkaution zurückhalten: Was Vermieter einbehalten dürfen (und was nicht)",
+    description:
+      "Zulässige Einbehalte (Schäden, Mietrückstände, Schlüssel), unzulässige Abzüge (Schönheitsreparaturen bei unwirksamen Klauseln) und die 6-Monats-Frist nach §551 BGB.",
+    keyword: "Mietkaution zurückhalten",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausordnung-vorlage-vermieter",
+    title: "Hausordnung Vorlage Vermieter: Muster, Inhalt und Rechtliches 2026",
+    description:
+      "Was muss eine Hausordnung enthalten? Musterklauseln zu Ruhezeiten, Müll, Rauchen, Tierhaltung und Gemeinschaftsräumen — rechtlich erklärt für Vermieter.",
+    keyword: "Hausordnung Vorlage Vermieter",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
     slug: "hausverwaltung-frankfurt-kosten",
     title: "Hausverwaltung Frankfurt: Kosten, Preise und Vergleich 2026",
     description:
