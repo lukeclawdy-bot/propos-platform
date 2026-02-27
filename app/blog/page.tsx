@@ -22,6 +22,51 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "hausverwaltung-kosten-vergleich-2026",
+    title: "Hausverwaltung Kosten 2026: Was kostet eine professionelle Verwaltung?",
+    description:
+      "Aktuelle Preisspannen für Hausverwaltung 2026 (€20-35/Einheit), was im Preis enthalten ist und worauf beim Vergleich zu achten ist.",
+    keyword: "Hausverwaltung Kosten 2026",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietrecht-kuendigungsschutz",
+    title: "Mietrecht Kündigungsschutz: Was Vermieter wissen müssen",
+    description:
+      "§573 BGB Kündigungsschutz erklärt: Eigenbedarfskündigung, Kündigungsfristen und Anforderungen an eine rechtmäßige Kündigung.",
+    keyword: "Mietrecht Kündigungsschutz",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieter-versicherungen",
+    title: "Vermieter Versicherungen: Welche Policen sind Pflicht?",
+    description:
+      "Die wichtigsten Versicherungen für Vermieter: Gebäudeversicherung, Haftpflicht, Mietausfall — was wirklich nötig ist.",
+    keyword: "Vermieter Versicherungen",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "nebenkostenabrechnung-widerspruch",
+    title: "Nebenkostenabrechnung Widerspruch: Rechte und Fristen nach §556 BGB",
+    description:
+      "12-Monats-Frist, Widerspruchsfristen und was Mieter und Vermieter bei Streitigkeiten um die NK-Abrechnung beachten müssen.",
+    keyword: "Nebenkostenabrechnung Widerspruch",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-aufgaben",
+    title: "Hausverwaltung Aufgaben: Was macht ein Verwalter?",
+    description:
+      "Vollständige Übersicht aller Hausverwaltungs-Aufgaben: Mietverwaltung, Nebenkostenabrechnung, technisches Management, Rechtsberatung.",
+    keyword: "Hausverwaltung Aufgaben",
+    readTime: "8 min",
+    date: "Februar 2026",
+  },
+  {
     slug: "hausverwaltung-kosten-sparen",
     title: "Hausverwaltung Kosten sparen: Weniger zahlen ohne Qualitätsabstriche",
     description:

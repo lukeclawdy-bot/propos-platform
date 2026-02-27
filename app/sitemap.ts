@@ -209,6 +209,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "hausverwaltung-qualitaet-kriterien",
     "immobilienverwaltung-software-2026",
     "immobilienverwaltung-digitalisierung",
+    // Sprint 21 — Cost guide, tenant protection, insurance, NK dispute, HV tasks
+    "hausverwaltung-kosten-vergleich-2026",
+    "mietrecht-kuendigungsschutz",
+    "vermieter-versicherungen",
+    "nebenkostenabrechnung-widerspruch",
+    "hausverwaltung-aufgaben",
   ];
 
   const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
