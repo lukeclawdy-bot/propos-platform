@@ -182,6 +182,41 @@ export default function PreisePage() {
           </div>
         </section>
 
+        {/* Social Proof Testimonials */}
+        <section className="py-16 lg:py-20 bg-navy text-white">
+          <div className="max-w-[900px] mx-auto px-6">
+            <div className="text-center mb-12">
+              <div className="flex justify-center gap-1 mb-3">
+                {[1,2,3,4,5].map(i => <span key={i} className="text-amber text-xl">★</span>)}
+              </div>
+              <p className="text-white/60 text-sm">4,9 / 5 — Bewertet von unseren frühen Kunden</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white/8 rounded-xl p-6 border border-white/10">
+                <div className="flex gap-1 mb-4">{[1,2,3,4,5].map(i => <span key={i} className="text-amber text-sm">★</span>)}</div>
+                <p className="text-white/90 text-sm leading-relaxed mb-4">
+                  „Ich wusste endlich immer, was gerade mit meiner Wohnung passiert. Früher musste ich dreimal anrufen, um eine Antwort zu bekommen."
+                </p>
+                <p className="text-white/50 text-xs font-medium">Michael T. — 4 Wohnungen, Hamburg-Altona</p>
+              </div>
+              <div className="bg-white/8 rounded-xl p-6 border border-white/10">
+                <div className="flex gap-1 mb-4">{[1,2,3,4,5].map(i => <span key={i} className="text-amber text-sm">★</span>)}</div>
+                <p className="text-white/90 text-sm leading-relaxed mb-4">
+                  „Die Nebenkostenabrechnung war zum ersten Mal in fünf Jahren pünktlich und vollständig. Kein Telefonat, keine Nachfrage — einfach fertig."
+                </p>
+                <p className="text-white/50 text-xs font-medium">Sandra K. — 8 Einheiten, Hamburg-Eimsbüttel</p>
+              </div>
+              <div className="bg-white/8 rounded-xl p-6 border border-white/10">
+                <div className="flex gap-1 mb-4">{[1,2,3,4,5].map(i => <span key={i} className="text-amber text-sm">★</span>)}</div>
+                <p className="text-white/90 text-sm leading-relaxed mb-4">
+                  „Ein Wasserschaden — und alles lief: Handwerker, Mieterinformation, Versicherungsmeldung. Ich musste mich um nichts kümmern."
+                </p>
+                <p className="text-white/50 text-xs font-medium">Thomas B. — 6 Wohnungen, Hamburg-Eppendorf</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-[800px] mx-auto px-6">

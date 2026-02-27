@@ -365,7 +365,7 @@ export default function BetaPage() {
           <div className="max-w-[800px] mx-auto px-6 text-center">
             <div className="inline-flex items-center gap-2 bg-amber/20 rounded-full px-4 py-2 mb-6 border border-amber/30">
               <div className="w-2 h-2 rounded-full bg-amber animate-pulse" />
-              <span className="text-amber text-sm font-medium">Nur noch 3 Plätze verfügbar</span>
+              <span className="text-amber text-sm font-medium">Nur noch 3 Plätze — Beta-Preis gilt bis 31. März 2026</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-serif">
@@ -380,7 +380,7 @@ export default function BetaPage() {
                 href="/anfrage?beta_program=true"
                 className="inline-flex items-center justify-center gap-2 bg-amber text-white px-10 py-5 rounded-xl font-semibold text-lg hover:bg-amber/90 transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
-                Jetzt Beta-Platz sichern
+                Jetzt sichern — Nur noch 3 Plätze
                 <ArrowRightIcon className="w-5 h-5" />
               </a>
             </div>

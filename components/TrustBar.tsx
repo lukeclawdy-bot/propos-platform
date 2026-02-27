@@ -1,9 +1,9 @@
 // TrustBar — social proof bar displayed below the Hero section
 const proofItems = [
+  "✓ §34c GewO lizenziert",
   "✓ DSGVO-konform",
-  "✓ Transparent",
-  "✓ Immer erreichbar",
   "✓ Festpreise ohne Überraschungen",
+  "✓ Immer erreichbar",
 ];
 
 export function TrustBar() {
