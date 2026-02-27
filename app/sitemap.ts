@@ -21,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/hausverwaltung-muenchen`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-frankfurt`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-duesseldorf`, priority: 0.9, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/hausverwaltung-hannover`, priority: 0.9, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/hausverwaltung-leipzig`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-hamburg`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/mietverwaltung-hamburg`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-wechseln`, priority: 0.8, changeFrequency: "monthly" as const },

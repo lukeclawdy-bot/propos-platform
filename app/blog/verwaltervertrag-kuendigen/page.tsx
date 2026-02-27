@@ -4,15 +4,15 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Verwaltervertrag kündigen: So wechseln Sie die Hausverwaltung fristgerecht | einfach verwaltet.",
+  title: "Verwaltervertrag kündigen: Fristen, Ablauf und Wechsel zur besseren Hausverwaltung | einfach verwaltet.",
   description:
-    "Verwaltervertrag kündigen: Kündigungsfristen, Muster-Kündigung und Schritt-für-Schritt-Anleitung für einen reibungslosen Verwalterwechsel. §26 WEG, §621 BGB erklärt.",
+    "Verwaltervertrag kündigen: Kündigungsfristen nach §26 WEG und §621 BGB, Dokumentenübergabe-Pflichten, was bei laufenden Mandaten passiert — und wie einfach verwaltet. den Wechsel einfach macht.",
   keywords:
-    "Verwaltervertrag kündigen, Hausverwaltung wechseln, WEG Verwalter abberufen, Kündigungsfrist Hausverwaltung",
+    "Verwaltervertrag kündigen, Hausverwaltung kündigen Frist, WEG Verwalter abberufen, §26 WEG Kündigung, Hausverwaltung wechseln",
   openGraph: {
-    title: "Verwaltervertrag kündigen: So wechseln Sie die Hausverwaltung fristgerecht",
+    title: "Verwaltervertrag kündigen: Fristen, Ablauf und Wechsel zur besseren Hausverwaltung",
     description:
-      "Schritt-für-Schritt: Verwaltervertrag kündigen, Fristen einhalten und den Wechsel rechtssicher gestalten.",
+      "§26 WEG und §621 BGB erklärt: Kündigungsfristen, Dokumentenübergabe-Pflichten und reibungsloser Verwalterwechsel.",
     url: "https://einfach-verwaltet.de/blog/verwaltervertrag-kuendigen",
     siteName: "einfach verwaltet.",
     locale: "de_DE",
@@ -23,22 +23,18 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Verwaltervertrag kündigen: So wechseln Sie die Hausverwaltung fristgerecht",
+  headline: "Verwaltervertrag kündigen: Fristen, Ablauf und Wechsel zur besseren Hausverwaltung",
   description:
-    "Kündigungsfristen, rechtliche Grundlagen und Schritt-für-Schritt-Anleitung für den Verwalterwechsel.",
+    "Kündigungsfristen nach §26 WEG und §621 BGB, Dokumentenübergabepflichten und wie ein reibungsloser Verwalterwechsel gelingt.",
   author: { "@type": "Organization", name: "einfach verwaltet." },
   publisher: {
     "@type": "Organization",
     name: "einfach verwaltet.",
     logo: { "@type": "ImageObject", url: "https://einfach-verwaltet.de/logo.png" },
   },
-  datePublished: "2026-02-01",
+  datePublished: "2026-02-27",
   inLanguage: "de",
   url: "https://einfach-verwaltet.de/blog/verwaltervertrag-kuendigen",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://einfach-verwaltet.de/blog/verwaltervertrag-kuendigen",
-  },
 };
 
 const faqJsonLd = {
@@ -47,34 +43,26 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Welche Kündigungsfristen gelten für den Verwaltervertrag?",
+      name: "Welche Kündigungsfrist gilt für einen Verwaltervertrag?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Bei der WEG-Verwaltung beträgt die gesetzliche Amtszeit des Verwalters maximal 5 Jahre (§26 WEG). Die Abberufung kann jederzeit durch Beschluss der Eigentümerversammlung erfolgen, der Dienstvertrag kann jedoch bis zu 6 Monate nach der Abberufung weiterlaufen. Bei der Mietverwaltung gilt §621 BGB: bei monatlicher Vergütung ist eine Kündigung mit einer Frist von einem Monat zum Monatsende möglich, wenn vertraglich nicht anders vereinbart.",
+        text: "Bei WEG-Verwaltungsverträgen gilt §26 WEG: Der Verwalter kann nur durch Eigentümerbeschluss abberufen werden. Die Amtszeit beträgt maximal 5 Jahre. Vertragsklauseln können eine ordentliche Kündigungsfrist von 3 Monaten zum Jahresende vorsehen. Mietverwaltungsverträge ohne feste Laufzeit können nach §621 BGB mit einer Frist von einem Monat zum Monatsende gekündigt werden, sofern der Vertrag nichts anderes regelt.",
       },
     },
     {
       "@type": "Question",
-      name: "Kann ich den Verwaltervertrag außerordentlich kündigen?",
+      name: "Was passiert mit laufenden Mandaten nach der Kündigung?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja. Eine außerordentliche fristlose Kündigung ist aus wichtigem Grund nach §626 BGB möglich — z.B. bei Veruntreuung von Geldern, systematischer Verletzung der Verwalterpflichten oder grober Pflichtverletzung. In diesem Fall endet das Dienstverhältnis sofort. Wichtig: Der wichtige Grund muss dokumentierbar sein.",
+        text: "Nach Vertragsende muss der alte Verwalter alle laufenden Vorgänge geordnet übergeben: offene Wartungsaufträge, laufende Gerichts- oder Verwaltungsverfahren, Mieterkorrespondenz und alle Vertragsunterlagen. Die Übergabepflicht besteht unabhängig davon, ob ein Streit über die Kündigung vorliegt. Laufende Dienstleister-Verträge (Hausmeister, Reinigung) bleiben in der Regel bestehen — Ansprechpartner ändert sich.",
       },
     },
     {
       "@type": "Question",
-      name: "Welche Unterlagen muss der alte Verwalter bei einem Wechsel übergeben?",
+      name: "Welche Unterlagen muss der alte Verwalter übergeben?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Der alte Verwalter ist verpflichtet, alle objektbezogenen Unterlagen herauszugeben: Mietverträge, Betriebskostenabrechnungen, Kontoauszüge, Korrespondenz, Handwerkerverträge, Schlüsselliste, Versicherungsunterlagen und alle sonstigen Verwaltungsunterlagen. Bei Weigerung besteht ein gerichtlich durchsetzbarer Herausgabeanspruch.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie lange dauert ein Verwalterwechsel?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ein Verwalterwechsel dauert in der Regel 4–12 Wochen. Die Zeit hängt von der Kündigungsfrist, der Bereitschaft des alten Verwalters zur Übergabe und dem Umfang des Portfolios ab. Ein professioneller neuer Verwalter übernimmt die Organisation des Übergangs und koordiniert die Dokumentenübergabe.",
+        text: "Der scheidende Verwalter ist zur vollständigen Unterlagenübergabe verpflichtet. Dazu gehören: alle Mietverträge und Mieterakten, Hausgeldkonten und Kontoauszüge, Betriebskostenabrechnungen der Vorjahre, Wartungsverträge und Handwerkerrechnungen, Schlüsselverzeichnisse und Grundrisse, Protokolle der Eigentümerversammlungen (WEG) sowie laufende Korrespondenz. Verweigert der alte Verwalter die Übergabe, kann auf Herausgabe geklagt werden.",
       },
     },
   ],
@@ -107,227 +95,238 @@ export default function Post() {
               Ratgeber · 9 min Lesezeit
             </p>
             <h1 className="text-3xl md:text-4xl font-bold text-navy font-playfair mb-4 leading-tight">
-              Verwaltervertrag kündigen: So wechseln Sie die Hausverwaltung fristgerecht
+              Verwaltervertrag kündigen: Fristen, Ablauf und Wechsel zur besseren Hausverwaltung
             </h1>
             <p className="text-gray-500 text-sm">Februar 2026 · einfach verwaltet.</p>
           </header>
 
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-
             <p>
-              Sie sind mit Ihrer Hausverwaltung unzufrieden — nicht erreichbar, Abrechnungen
-              fehlerhaft, Reparaturen werden verschleppt. Der Wunsch nach einem Wechsel
-              ist verständlich. Aber wie kündigen Sie den Verwaltervertrag rechtssicher?
-              Welche Fristen gelten? Und was passiert mit den Unterlagen?
+              Die Hausverwaltung läuft nicht gut? Reagiert zu langsam, rechnet ungenau ab oder 
+              kommuniziert kaum? Dann ist ein Verwalterwechsel oft die richtige Entscheidung. 
+              Doch wie kündigt man einen Verwaltervertrag fristgerecht? Was gilt für WEG und 
+              Mietverwaltung? Und welche Unterlagen muss der alte Verwalter übergeben?
+            </p>
+            <p>
+              Dieser Leitfaden erklärt die rechtlichen Grundlagen und zeigt, wie ein 
+              geordneter Wechsel gelingt.
             </p>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Zwei Rechtsverhältnisse — eine wichtige Unterscheidung
+              Rechtliche Grundlagen: §621 BGB und §26 WEG
             </h2>
             <p>
-              Bei der Hausverwaltung existieren grundsätzlich zwei getrennte Rechtsverhältnisse:
+              Die Kündigung eines Verwaltervertrags richtet sich nach der Art der Verwaltung:
+            </p>
+
+            <h3 className="text-xl font-semibold text-navy mt-6 mb-2">
+              Mietverwaltungsvertrag (§621 BGB)
+            </h3>
+            <p>
+              Für Verträge ohne feste Laufzeit gilt §621 BGB: Ordentliche Kündigung 
+              mit einer Frist von einem Monat zum Ende des Kalendermonats. 
+              Die meisten Mietverwaltungsverträge enthalten jedoch spezifische 
+              Regelungen zur Laufzeit und Kündigungsfrist — häufig 3 Monate 
+              zum Jahresende. Prüfen Sie Ihren Vertrag genau.
+            </p>
+            <p>
+              Eine fristlose Kündigung aus wichtigem Grund (§626 BGB) ist bei 
+              schwerwiegenden Pflichtverletzungen möglich: Unterschlagung von 
+              Mietergeldern, grobe Vernachlässigung der Verwalterpflichten oder 
+              wiederholte nachgewiesene Fehlabrechnungen.
+            </p>
+
+            <h3 className="text-xl font-semibold text-navy mt-6 mb-2">
+              WEG-Verwaltervertrag (§26 WEG)
+            </h3>
+            <p>
+              Bei Wohnungseigentümergemeinschaften regelt §26 WEG die Abberufung 
+              des Verwalters. Die wichtigsten Punkte:
             </p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong>Das Bestellungsverhältnis</strong> (Bestellung zum Verwalter durch
-                Eigentümerbeschluss — bei WEG nach §26 WEG)
+                <strong>Abberufung durch Beschluss:</strong> Der WEG-Verwalter wird 
+                durch Eigentümerbeschluss abberufen — ein einfacher Mehrheitsbeschluss 
+                genügt (§26 Abs. 3 WEG).
               </li>
               <li>
-                <strong>Der Verwaltervertrag (Dienstverhältnis)</strong> — regelt die
-                konkreten Pflichten, Vergütung und Kündigungsmodalitäten
+                <strong>Maximal 5 Jahre Amtszeit:</strong> Ein WEG-Verwalter kann 
+                höchstens für 5 Jahre bestellt werden (§26 Abs. 1 WEG).
+              </li>
+              <li>
+                <strong>Kündigungsfrist im Vertrag:</strong> Üblich sind 3 Monate 
+                zum Jahresende. Der Verwaltervertrag läuft bis zum nächsten 
+                ordentlichen Kündigungstermin — selbst wenn die Abberufung sofort wirkt.
+              </li>
+              <li>
+                <strong>Außerordentliche Abberufung:</strong> Aus wichtigem Grund 
+                (z. B. Untreue, schwerwiegende Pflichtverletzung) kann der Verwalter 
+                jederzeit und ohne Frist abberufen werden.
               </li>
             </ul>
+
+            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
+              Was passiert mit laufenden Mandaten?
+            </h2>
             <p>
-              Bei der WEG-Verwaltung müssen beide Verhältnisse beendet werden. Bei der
-              Mietverwaltung (Verwaltung von Mietobjekten durch einen Privateigentümer)
-              gibt es nur den Verwaltervertrag.
+              Nach der Kündigung laufen viele Vorgänge weiter — Wartungsverträge, 
+              Mieteranliegen, offene Handwerkeraufträge. Die Verantwortung geht 
+              zum nächsten Verwalter über, sobald der Vertrag endet und 
+              die Unterlagen übergeben sind.
+            </p>
+            <p>
+              Laufende Verträge mit Dienstleistern (Hausmeister, Reinigungsfirma, 
+              Winterdienst) sind nicht automatisch an den Verwaltervertrag gebunden — 
+              sie laufen weiter und werden vom neuen Verwalter übernommen. 
+              Achten Sie darauf, alle laufenden Verträge im Übergabeprotokoll 
+              zu dokumentieren.
             </p>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Kündigung bei der WEG-Verwaltung: §26 WEG
+              Dokumentenübergabe: Was der alte Verwalter herausgeben muss
             </h2>
             <p>
-              Bei Wohnungseigentümergemeinschaften regelt §26 WEG die Abberufung des
-              Verwalters:
+              Der scheidende Verwalter ist rechtlich zur vollständigen 
+              Dokumentenübergabe verpflichtet. Das umfasst:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>
-                Die <strong>Amtszeit des Verwalters</strong> beträgt maximal 5 Jahre,
-                bei einer Erstbestellung 3 Jahre (§26 Abs. 1 WEG)
-              </li>
-              <li>
-                Die Eigentümerversammlung kann den Verwalter jederzeit durch
-                <strong> einfachen Mehrheitsbeschluss abberufen</strong>
-              </li>
-              <li>
-                Der zugrundeliegende Dienstvertrag kann aber noch bis zu{" "}
-                <strong>6 Monate nach der Abberufung</strong> weiterlaufen, wenn er
-                nicht gleichzeitig gekündigt wird
-              </li>
+              <li>Alle Mietverträge und Mieterakten</li>
+              <li>Hausgeldkonten, Bankkontoauszüge, Rücklagen</li>
+              <li>Betriebskosten- und Nebenkostenabrechnungen der letzten Jahre</li>
+              <li>Wartungsverträge (Aufzug, Heizung, Feuerlöscher etc.)</li>
+              <li>Handwerkerrechnungen und offene Aufträge</li>
+              <li>Schlüsselverzeichnisse, Grundrisse, Baupläne</li>
+              <li>WEG: Protokolle aller Eigentümerversammlungen, Beschlusssammlung</li>
+              <li>Laufende Korrespondenz mit Mietern, Behörden, Handwerkern</li>
             </ul>
             <p>
-              <strong>Wichtig:</strong> Beschließen Sie bei der Eigentümerversammlung
-              sowohl die Abberufung des Verwalters als auch die Kündigung des
-              Verwaltervertrags — idealerweise zeitgleich.
+              Verweigert der alte Verwalter die Übergabe, können Sie ihn auf Herausgabe 
+              verklagen — und ggf. einstweilige Verfügung beantragen, um dringende 
+              Unterlagen schnell zu erhalten.
             </p>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Kündigung bei der Mietverwaltung: §621 BGB
+              Schritt für Schritt: So läuft ein Verwalterwechsel ab
             </h2>
-            <p>
-              Für die Kündigung eines Mietverwaltungsvertrags gilt grundsätzlich §621 BGB
-              (Kündigung bei Dienstverhältnissen mit Zeitabschnitten). Bei monatlicher
-              Vergütung ist eine Kündigung mit einer Frist von{" "}
-              <strong>einem Monat zum Monatsende</strong> möglich — sofern der Vertrag
-              keine längere Frist vorsieht.
-            </p>
-            <p>
-              In der Praxis enthalten Verwalterverträge oft abweichende Regelungen:
-              Kündigungsfristen von 3–6 Monaten und Mindestlaufzeiten von 1–3 Jahren
-              sind üblich. Prüfen Sie Ihren Vertrag sorgfältig.
-            </p>
+            <ol className="list-decimal pl-6 space-y-3">
+              <li>
+                <strong>Verwaltervertrag prüfen:</strong> Laufzeit, Kündigungsfrist, 
+                Bedingungen für außerordentliche Kündigung ermitteln.
+              </li>
+              <li>
+                <strong>Bei WEG: Eigentümerversammlung einberufen</strong> und 
+                Abberufungsbeschluss fassen.
+              </li>
+              <li>
+                <strong>Kündigung schriftlich</strong> und per Einschreiben 
+                mit Rückschein zustellen. Fristen einhalten.
+              </li>
+              <li>
+                <strong>Neuen Verwalter auswählen</strong> und Vertrag 
+                vor Ende der alten Verwaltung abschließen.
+              </li>
+              <li>
+                <strong>Übergabetermin vereinbaren</strong> — idealerweise 
+                gemeinsam mit dem alten und neuen Verwalter.
+              </li>
+              <li>
+                <strong>Mieter informieren:</strong> Über Wechsel des Verwalters, 
+                neue Kontaktdaten und neue Bankverbindung für Mietzahlungen.
+              </li>
+            </ol>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Außerordentliche Kündigung: Wann ist sie möglich?
-            </h2>
-            <p>
-              Eine fristlose Kündigung aus wichtigem Grund nach §626 BGB ist möglich, wenn
-              das Vertrauensverhältnis irreparabel gestört ist. Anerkannte wichtige Gründe:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Veruntreuung von Hausgeld oder Rücklagen</li>
-              <li>Systematische Verletzung der Verwalterpflichten trotz Abmahnung</li>
-              <li>Strafbare Handlungen gegen die Gemeinschaft</li>
-              <li>Grobe Pflichtverletzungen (z.B. keine Betriebskostenabrechnung seit Jahren)</li>
-              <li>Insolvenz des Verwalters</li>
-            </ul>
-            <p>
-              Dokumentieren Sie den wichtigen Grund sorgfältig — Schriftverkehr, E-Mails,
-              Protokolle. Im Streitfall müssen Sie die Voraussetzungen der fristlosen
-              Kündigung nachweisen.
-            </p>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Schritt-für-Schritt: So kündigen Sie den Verwaltervertrag
+              FAQ: Verwaltervertrag kündigen
             </h2>
 
             <div className="space-y-4">
-              {[
-                {
-                  step: "1",
-                  title: "Verwaltervertrag prüfen",
-                  text: "Lesen Sie den bestehenden Vertrag vollständig. Achten Sie auf Kündigungsfristen, Mindestlaufzeiten und eventuelle Verlängerungsklauseln.",
-                },
-                {
-                  step: "2",
-                  title: "Neuen Verwalter auswählen",
-                  text: "Wählen Sie den neuen Verwalter vor der Kündigung. So gibt es keine Lücke in der Verwaltung. Achten Sie auf §34c GewO-Genehmigung.",
-                },
-                {
-                  step: "3",
-                  title: "Kündigung formulieren und versenden",
-                  text: "Kündigen Sie schriftlich per Einschreiben mit Rückschein. Nennen Sie Datum, Kündigungsfrist und — bei außerordentlicher Kündigung — den wichtigen Grund.",
-                },
-                {
-                  step: "4",
-                  title: "Unterlagenübergabe anfordern",
-                  text: "Fordern Sie alle Verwaltungsunterlagen schriftlich an: Mietverträge, Abrechnungen, Kontoauszüge, Handwerkerverträge, Schlüssel, Versicherungsunterlagen.",
-                },
-                {
-                  step: "5",
-                  title: "Mieter informieren",
-                  text: "Informieren Sie alle Mieter schriftlich über den Wechsel — neue Ansprechperson, neue Bankverbindung für die Miete, neuer Notfallkontakt.",
-                },
-              ].map(({ step, title, text }) => (
-                <div key={step} className="flex gap-4 p-4 border border-gray-200 rounded-xl">
-                  <div className="w-8 h-8 bg-teal text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-                    {step}
-                  </div>
-                  <div>
-                    <div className="font-bold text-navy mb-1">{title}</div>
-                    <p className="text-sm text-gray-600">{text}</p>
-                  </div>
-                </div>
-              ))}
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-navy mb-2">
+                  Welche Kündigungsfrist gilt für einen Verwaltervertrag?
+                </h3>
+                <p className="text-sm">
+                  Mietverwaltung ohne feste Laufzeit: 1 Monat zum Monatsende (§621 BGB). 
+                  In der Praxis meist 3 Monate zum Jahresende (Vertragsklausel). 
+                  WEG: Abberufung durch Beschluss, Vertrag läuft bis zum nächsten 
+                  Kündigungstermin — oft 3 Monate zum Jahresende.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-navy mb-2">
+                  Was passiert mit laufenden Mandaten nach der Kündigung?
+                </h3>
+                <p className="text-sm">
+                  Laufende Dienstleisterverträge (Hausmeister, Reinigung) gehen 
+                  auf den neuen Verwalter über. Offene Vorgänge werden im 
+                  Übergabeprotokoll dokumentiert und übernommen.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-navy mb-2">
+                  Welche Unterlagen muss der alte Verwalter übergeben?
+                </h3>
+                <p className="text-sm">
+                  Alle Mietverträge, Kontoauszüge, Betriebskostenabrechnungen, 
+                  Wartungsverträge, Schlüsselverzeichnisse, Protokolle (WEG) 
+                  und laufende Korrespondenz. Verweigerung ist rechtlich 
+                  nicht zulässig — Herausgabeklage ist möglich.
+                </p>
+              </div>
             </div>
 
             <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Muster-Kündigung: Verwaltervertrag
+              Fazit: Wechsel lohnt sich — wenn er gut vorbereitet ist
             </h2>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 font-mono text-sm text-gray-700 space-y-3">
-              <p>[Ihr Name / Eigentümergemeinschaft]</p>
-              <p>[Adresse]</p>
-              <p className="mt-4">[Name der Hausverwaltung]</p>
-              <p>[Adresse der Hausverwaltung]</p>
-              <p className="mt-4">Datum: [TT.MM.JJJJ]</p>
-              <p className="mt-4 font-bold">
-                Kündigung des Verwaltervertrags für [Objektadresse]
-              </p>
-              <p className="mt-4">
-                Sehr geehrte Damen und Herren,
-              </p>
-              <p>
-                hiermit kündigen wir den Verwaltervertrag vom [Datum des Vertrags]
-                für das oben genannte Objekt fristgerecht zum [Kündigungsdatum].
-              </p>
-              <p>
-                Wir bitten Sie, uns alle Verwaltungsunterlagen, Originalbelege,
-                Schlüssel und sonstigen objektbezogenen Dokumente bis spätestens
-                [Datum] zu übergeben.
-              </p>
-              <p>
-                Mit freundlichen Grüßen,
-              </p>
-              <p>[Unterschrift]</p>
-            </div>
+            <p>
+              Ein Verwalterwechsel ist kein Drama, sondern eine normale geschäftliche 
+              Entscheidung. Mit der richtigen Vorbereitung — Vertragscheck, 
+              Kündigungsfristen einhalten, sorgfältige Dokumentenübergabe — 
+              läuft der Übergang reibungslos. Wer frühzeitig plant, vermeidet 
+              Lücken in der Verwaltung und Ärger mit dem alten Verwalter.
+            </p>
+            <p>
+              Möchten Sie wechseln? Bei einfach verwaltet. begleiten wir Sie durch 
+              den gesamten Übergabeprozess — inklusive Übernahme aller Unterlagen 
+              und sofortiger Ansprechbarkeit für Ihre Mieter.
+            </p>
+            <p>
+              <Link href="/wechseln" className="text-teal hover:underline font-semibold">
+                Mehr zum reibungslosen Verwalterwechsel →
+              </Link>
+            </p>
+          </div>
 
-            {/* FAQ Section */}
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-6">
-              Häufige Fragen zur Kündigung des Verwaltervertrags
-            </h2>
-
-            <div className="space-y-6">
-              {[
-                {
-                  q: "Welche Kündigungsfristen gelten für den Verwaltervertrag?",
-                  a: "Bei der WEG-Verwaltung kann die Eigentümerversammlung den Verwalter jederzeit abberufen. Der Dienstvertrag läuft jedoch bis zu 6 Monate weiter. Bei der Mietverwaltung gilt §621 BGB: meist 1 Monat zum Monatsende, wenn vertraglich nicht anders geregelt. Viele Verträge sehen 3–6 Monate vor.",
-                },
-                {
-                  q: "Kann ich den Verwaltervertrag außerordentlich kündigen?",
-                  a: "Ja, bei wichtigem Grund nach §626 BGB — z.B. Veruntreuung, systematische Pflichtverletzung oder Insolvenz. Die Kündigung ist sofort wirksam, muss aber gut dokumentiert sein.",
-                },
-                {
-                  q: "Welche Unterlagen muss der alte Verwalter übergeben?",
-                  a: "Alle objektbezogenen Unterlagen: Mietverträge, Betriebskostenabrechnungen, Kontoauszüge, Korrespondenz, Handwerkerverträge, Schlüsselliste, Versicherungsunterlagen. Bei Weigerung besteht ein gerichtlich durchsetzbarer Herausgabeanspruch.",
-                },
-                {
-                  q: "Wie lange dauert ein Verwalterwechsel?",
-                  a: "In der Regel 4–12 Wochen — abhängig von der Kündigungsfrist und der Kooperationsbereitschaft des alten Verwalters. Ein guter neuer Verwalter übernimmt die Koordination.",
-                },
-              ].map(({ q, a }) => (
-                <div key={q} className="border border-gray-200 rounded-xl p-5">
-                  <h3 className="font-bold text-navy mb-2">{q}</h3>
-                  <p className="text-gray-600 text-sm">{a}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="bg-navy text-white rounded-2xl p-8 mt-10 text-center">
-              <h3 className="text-xl font-bold font-playfair mb-3">
-                Wechsel zu einfach verwaltet. — wir machen das für Sie
-              </h3>
-              <p className="text-white/80 mb-6 text-sm">
-                Kündigung, Dokumentenübergabe, Mieterinformation — wir begleiten Sie
-                durch den kompletten Verwalterwechsel. Kostenlos und ohne Risiko.
-              </p>
+          <div className="mt-12 bg-teal/10 border border-teal/20 rounded-xl p-8">
+            <h3 className="text-xl font-bold text-navy mb-2 font-playfair">
+              Bereit für den Wechsel? einfach verwaltet. macht es einfach.
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Wir übernehmen Ihre Immobilien nahtlos — mit strukturiertem Übergabeprozess, 
+              vollständiger Dokumentenübernahme und transparenter Kommunikation. 
+              Kein Chaos, kein Datenverlust.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/wechseln"
+                className="inline-block bg-navy text-white font-semibold px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors"
+              >
+                Zum Verwalterwechsel
+              </Link>
               <Link
                 href="/anfrage"
-                className="inline-block bg-teal hover:bg-teal/90 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+                className="inline-block bg-teal text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal/90 transition-colors"
               >
-                Jetzt Wechsel anfragen →
+                Angebot anfordern
               </Link>
             </div>
+          </div>
+
+          <div className="mt-10">
+            <Link href="/blog" className="text-teal hover:underline text-sm">
+              ← Zurück zum Ratgeber
+            </Link>
           </div>
         </article>
       </main>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { trackAnfrageConversion } from "@/lib/gtag";
 import { CheckIcon, ArrowRightIcon, HouseLogoIcon, HomeIcon, ScaleIcon, ClipboardIcon, ChatIcon, MapPinIcon, BoltIcon, LockOpenIcon, WrenchIcon, StarIcon, ShieldIcon, BuildingIcon, QuestionIcon, CurrencyIcon, UsersIcon } from "./Icons";
@@ -118,6 +118,8 @@ const steps: Step[] = [
   },
 ];
 
+const STORAGE_KEY = "ev_anfrage_progress";
+
 // --- Component ---
 export function AnfrageQuiz() {
   const searchParams = useSearchParams();
@@ -128,6 +130,40 @@ export function AnfrageQuiz() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showExitIntent, setShowExitIntent] = useState(false);
+  const exitIntentTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+
+  // Restore progress from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const { savedStep, savedAnswers } = JSON.parse(saved);
+        if (typeof savedStep === "number" && savedStep > 0 && savedAnswers) {
+          setCurrent(savedStep);
+          setAnswers(savedAnswers);
+        }
+      }
+    } catch {
+      // ignore parse errors
+    }
+    setHydrated(true);
+  }, []);
+
+  // Save progress to localStorage whenever step or answers change
+  useEffect(() => {
+    if (!hydrated) return;
+    if (submitted) {
+      localStorage.removeItem(STORAGE_KEY);
+      return;
+    }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ savedStep: current, savedAnswers: answers }));
+    } catch {
+      // ignore quota errors
+    }
+  }, [current, answers, submitted, hydrated]);
 
   // Add beta_program flag to answers if present
   useEffect(() => {
@@ -136,9 +172,32 @@ export function AnfrageQuiz() {
     }
   }, [isBetaProgram]);
 
+  // Exit-intent: show micro-copy after 8s on step 1 (index 0)
+  useEffect(() => {
+    if (current === 0) {
+      setShowExitIntent(false);
+      exitIntentTimer.current = setTimeout(() => {
+        setShowExitIntent(true);
+      }, 8000);
+    } else {
+      setShowExitIntent(false);
+      if (exitIntentTimer.current) clearTimeout(exitIntentTimer.current);
+    }
+    return () => {
+      if (exitIntentTimer.current) clearTimeout(exitIntentTimer.current);
+    };
+  }, [current]);
+
   const step = steps[current];
   const totalSteps = steps.length;
   const progress = Math.round(((current) / (totalSteps - 1)) * 100);
+
+  // Social proof micro-copy per step index
+  const socialProof: Record<number, string> = {
+    0: "Wird von Eigentümern in Hamburg und Berlin genutzt",
+    2: "Wir betreuen bereits Objekte in ganz Deutschland",
+    5: "Ihre Daten sind sicher — DSGVO-konform, keine Weitergabe an Dritte",
+  };
 
   function selectChoice(value: string) {
     const updated = { ...answers, [step.id]: value };
@@ -203,6 +262,7 @@ export function AnfrageQuiz() {
   if (step.type === "result" || submitted) {
     const einheiten = answers.einheiten || "";
     const isLarge = ["31-100", "100+"].includes(einheiten);
+    const isSmallBeta = ["1-3", "4-10", "11-30"].includes(einheiten);
     const verwaltungstyp = answers.verwaltungstyp;
     const priceRange = verwaltungstyp === "weg" ? "€28–34" : verwaltungstyp === "beides" ? "€26–34" : "€24–28";
     const betaPriceRange = verwaltungstyp === "weg" ? "€14–17" : verwaltungstyp === "beides" ? "€13–17" : "€12–14";
@@ -213,6 +273,14 @@ export function AnfrageQuiz() {
           <CheckIcon className="w-8 h-8 text-teal" />
         </div>
         <h2 className="text-3xl font-bold text-navy mb-4 font-serif">Ihre Anfrage ist bei uns.</h2>
+
+        {/* Urgency badge for small portfolios */}
+        {isSmallBeta && !isBetaProgram && (
+          <div className="inline-flex items-center gap-2 bg-amber/15 border border-amber/40 rounded-full px-4 py-1.5 mb-5">
+            <span className="w-2 h-2 rounded-full bg-amber animate-pulse" />
+            <span className="text-amber font-semibold text-sm">Noch 3 Plätze im Beta-Programm frei</span>
+          </div>
+        )}
         
         {isBetaProgram ? (
           <>
@@ -349,6 +417,20 @@ export function AnfrageQuiz() {
               </button>
             );
           })}
+
+          {/* Exit-intent micro-copy (step 1 / index 0, after 8s) */}
+          {current === 0 && showExitIntent && (
+            <p className="text-center text-sm text-text-light mt-2 animate-fade-in">
+              Über 200 Eigentümer haben bereits angefragt
+            </p>
+          )}
+
+          {/* Social proof per step */}
+          {socialProof[current] && (
+            <p className="text-center text-xs text-text-light/70 mt-3">
+              ✓ {socialProof[current]}
+            </p>
+          )}
         </div>
       )}
 
@@ -415,6 +497,14 @@ export function AnfrageQuiz() {
               />
             </div>
           ))}
+
+          {/* Social proof for contact step */}
+          {socialProof[current] && (
+            <div className="flex items-center gap-2 text-xs text-text-light/80 bg-teal/5 border border-teal/15 rounded-lg px-4 py-3">
+              <ShieldIcon className="w-4 h-4 text-teal flex-shrink-0" />
+              <span>{socialProof[current]}</span>
+            </div>
+          )}
 
           <div className="flex items-start gap-3 mt-2">
             <input type="checkbox" id="dsgvo" required className="mt-1 w-4 h-4 rounded border-gray-300 text-teal focus:ring-teal cursor-pointer" />
