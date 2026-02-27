@@ -4,405 +4,303 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Wohnungsübergabe Protokoll: Checkliste für Mieter und Vermieter (2026)",
+  title: "Wohnungsübergabe Protokoll: Checkliste & Vorlage für Vermieter 2026 | einfach verwaltet.",
   description:
-    "Wohnungsübergabe Protokoll: Was muss dokumentiert werden? Checkliste Raum für Raum, Zählerstände, Schlüssel, Fotos und rechtliche Bedeutung.",
+    "Wohnungsübergabe Protokoll 2026: Was muss dokumentiert werden? Checkliste für Ein- und Auszug, Zählerstände, Schlüssel, Mängel — kostenlose Vorlage für Vermieter.",
   keywords:
-    "Wohnungsübergabe Protokoll, Übergabeprotokoll Wohnung, Wohnungsübergabe Checkliste, Wohnungsübergabe Mieter Vermieter, Übergabeprotokoll Vorlage",
+    "Wohnungsübergabe Protokoll, Übergabeprotokoll Wohnung, Wohnungsübergabe Checkliste, Auszug Protokoll, Einzug Protokoll",
   openGraph: {
-    title: "Wohnungsübergabe Protokoll: Checkliste für Mieter und Vermieter",
+    title: "Wohnungsübergabe Protokoll: Checkliste & Vorlage für Vermieter 2026",
     description:
-      "Alles zum Wohnungsübergabe Protokoll: Was dokumentieren, welche Checkliste nutzen und warum das Protokoll rechtlich entscheidend ist.",
+      "Rechtssichere Wohnungsübergabe: Was dokumentiert werden muss, wie Konflikte vermieden werden und was rechtlich gilt.",
     url: "https://einfach-verwaltet.de/blog/wohnungsuebergabe-protokoll",
     siteName: "einfach verwaltet.",
     locale: "de_DE",
     type: "article",
   },
+  alternates: {
+    canonical: "https://einfach-verwaltet.de/blog/wohnungsuebergabe-protokoll",
+  },
 };
 
-const jsonLdArticle = {
+const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Wohnungsübergabe Protokoll: Checkliste für Mieter und Vermieter",
+  headline: "Wohnungsübergabe Protokoll: Checkliste & Vorlage für Vermieter 2026",
   description:
-    "Alles zum Wohnungsübergabe Protokoll: Was dokumentieren, welche Checkliste nutzen und warum das Protokoll rechtlich entscheidend ist.",
-  author: {
-    "@type": "Person",
-    name: "Lukas Schmitz",
-    jobTitle: "Gründer",
-    worksFor: { "@type": "Organization", name: "einfach verwaltet." },
-  },
+    "Vollständige Anleitung zum Wohnungsübergabeprotokoll: Inhalt, Checkliste, rechtliche Bedeutung und häufige Fehler.",
+  author: { "@type": "Organization", name: "einfach verwaltet." },
   publisher: {
     "@type": "Organization",
     name: "einfach verwaltet.",
     logo: { "@type": "ImageObject", url: "https://einfach-verwaltet.de/logo.png" },
   },
-  datePublished: "2026-02-26",
+  datePublished: "2026-02-27",
   inLanguage: "de",
   url: "https://einfach-verwaltet.de/blog/wohnungsuebergabe-protokoll",
 };
 
-const jsonLdFaq = {
+const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "Ist ein Wohnungsübergabe Protokoll gesetzlich vorgeschrieben?",
+      name: "Was muss im Wohnungsübergabeprotokoll stehen?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ein Wohnungsübergabe Protokoll ist gesetzlich nicht vorgeschrieben, aber dringend empfohlen. Es ist das einzige Beweismittel bei Streitigkeiten über den Zustand der Wohnung bei Ein- und Auszug.",
+        text: "Ein vollständiges Wohnungsübergabeprotokoll enthält: Datum und Uhrzeit der Übergabe, Namen und Unterschriften beider Parteien, Zählerstände (Strom, Gas, Wasser), Anzahl und Zustand aller übergebenen Schlüssel, Zustand aller Räume mit genauen Beschreibungen vorhandener Mängel, Fotos der dokumentierten Schäden sowie Vereinbarungen über eventuelle Reparaturen und Fristen.",
       },
     },
     {
       "@type": "Question",
-      name: "Was muss im Wohnungsübergabe Protokoll stehen?",
+      name: "Ist ein Übergabeprotokoll rechtlich bindend?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Das Protokoll muss Datum und Uhrzeit, Namen beider Parteien, alle Räume mit Zustandsbeschreibung, Zählerstände (Strom, Gas, Wasser, Wärme), Anzahl der Schlüssel und alle festgestellten Mängel enthalten.",
+        text: "Ein beidseitig unterschriebenes Übergabeprotokoll hat hohe Beweiskraft. Im Streitfall gilt: Was im Protokoll steht, ist schwer zu widerlegen. Mängel, die beim Auszug nicht im Protokoll festgehalten wurden, kann der Vermieter kaum noch dem Mieter anlasten. Umgekehrt gilt: Mängel, die bei Einzug dokumentiert wurden, sind Vorschäden — der Mieter haftet nicht.",
       },
     },
     {
       "@type": "Question",
-      name: "Kann ich Mängel nach der Übergabe noch geltend machen?",
+      name: "Was darf der Vermieter nach dem Auszug einbehalten?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mängel, die im Protokoll nicht erfasst wurden, sind nachträglich schwer durchzusetzen. Bei arglistig verschwiegenen Mängeln gilt die Regelverjährung von 3 Jahren. Deshalb ist eine gründliche Protokollierung bei der Übergabe unerlässlich.",
+        text: "Der Vermieter darf von der Mietkaution einbehalten: Kosten für Schäden, die über normale Abnutzung hinausgehen, ausstehende Mietrückstände, fehlende Schlüssel (Kosten für Austauch des Schlosses), nicht durchgeführte vertraglich vereinbarte Schönheitsreparaturen (wenn die Klausel wirksam ist). Nicht einbehalten darf er: Kosten für normale Abnutzung, Schönheitsreparaturen bei unwirksamen Mietvertragsklauseln.",
       },
     },
     {
       "@type": "Question",
-      name: "Was passiert, wenn der Vermieter kein Protokoll ausstellen will?",
+      name: "Muss der Mieter beim Übergabeprotokoll anwesend sein?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Wenn der Vermieter kein Protokoll ausstellen möchte, sollte der Mieter selbst ein Protokoll erstellen, es dem Vermieter zukommen lassen und dessen Quittierung schriftlich anfordern. Fotos und Zeugen sind zusätzliche Beweismittel.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie lange ist das Übergabeprotokoll aufzubewahren?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Das Übergabeprotokoll sollte mindestens bis zum Ende der möglichen Verjährungsfristen aufbewahrt werden. Bei Wohnraum beträgt die Verjährungsfrist für Ansprüche aus dem Mietverhältnis in der Regel 3 Jahre.",
+        text: "Idealerweise ja — das Protokoll sollte von beiden Parteien gemeinsam erstellt und unterschrieben werden. Wenn der Mieter die Teilnahme verweigert, können Sie die Übergabe mit einem unabhängigen Zeugen durchführen und dem Mieter das Protokoll im Anschluss zustellen. Ein einseitig erstelltes Protokoll hat jedoch geringere Beweiskraft.",
       },
     },
   ],
 };
 
-export default function Post() {
+const checklistItems = [
+  {
+    category: "Grunddaten",
+    items: ["Datum und Uhrzeit", "Name und Unterschrift Vermieter", "Name und Unterschrift Mieter(in)", "Anschrift der Wohnung", "Art der Übergabe (Einzug / Auszug)"],
+  },
+  {
+    category: "Schlüssel",
+    items: ["Anzahl Wohnungsschlüssel", "Anzahl Briefkastenschlüssel", "Anzahl Haustürschlüssel", "Anzahl Keller-/Garagenschlüssel", "Sonstige Schlüssel (z.B. Gemeinschaftsraum)"],
+  },
+  {
+    category: "Zählerstände",
+    items: ["Stromzähler (Nummer und Stand)", "Gaszähler (Nummer und Stand)", "Wasserzähler (Nummer und Stand)", "Wärmemengenzähler falls vorhanden"],
+  },
+  {
+    category: "Räume und Zustand",
+    items: ["Wohnzimmer: Wände, Böden, Decke, Fenster", "Schlafzimmer: Wände, Böden, Decke, Fenster", "Küche: Einbauküche, Geräte, Fliesen", "Bad/WC: Sanitärobjekte, Fliesen, Schimmel", "Flur/Diele: Wände, Bodenbelag", "Balkon/Terrasse: Zustand, Reinigung"],
+  },
+  {
+    category: "Dokumentation",
+    items: ["Fotos aller relevanten Räume", "Fotos aller festgestellten Mängel", "Benennung des Mangels mit genauem Ort", "Vereinbarte Nachbesserungsfristen schriftlich"],
+  },
+];
+
+export default function WohnungsuebergabeProtokollPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Navbar />
-      <main className="bg-warm-white min-h-screen pt-16">
-        <article className="max-w-3xl mx-auto px-4 py-16">
-          <nav className="text-sm text-gray-500 mb-8">
-            <Link href="/" className="hover:text-teal">Startseite</Link>
+      <main className="pt-20 min-h-screen bg-warm-white">
+        <article className="max-w-[800px] mx-auto px-6 py-12">
+          <nav className="text-sm text-text-light mb-6" aria-label="Breadcrumb">
+            <Link href="/blog" className="hover:text-teal transition-colors">Ratgeber</Link>
             <span className="mx-2">›</span>
-            <Link href="/blog" className="hover:text-teal">Ratgeber</Link>
-            <span className="mx-2">›</span>
-            <span className="text-gray-700">Wohnungsübergabe Protokoll</span>
+            <span>Wohnungsübergabe Protokoll</span>
           </nav>
 
           <header className="mb-10">
-            <p className="text-teal text-sm font-semibold uppercase tracking-wider mb-3">
-              Ratgeber · 9 min Lesezeit · Mieter &amp; Vermieter
-            </p>
-            <h1 className="text-3xl md:text-4xl font-bold text-navy font-playfair mb-4 leading-tight">
-              Wohnungsübergabe Protokoll: Checkliste für die Übergabe
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="bg-teal/10 text-teal text-xs font-semibold px-3 py-1 rounded-full">Praxis-Leitfaden</span>
+              <span className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">9 min Lesezeit</span>
+              <span className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Februar 2026</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-navy leading-tight mb-4">
+              Wohnungsübergabe Protokoll: Checkliste & Anleitung für Vermieter
             </h1>
-            <p className="text-gray-500 text-sm">
-              Februar 2026 · Lukas Schmitz, Gründer einfach verwaltet.
+            <p className="text-lg text-text-light leading-relaxed">
+              Ein vollständiges Übergabeprotokoll ist Ihr wichtigstes Schutzinstrument bei Mieterwechseln. Wir zeigen, was hinein muss, wie die Übergabe abläuft und wie Sie Konflikte über Schäden und Kaution vermeiden.
             </p>
           </header>
 
-          {/* Quick Answer Box */}
-          <div className="bg-teal/5 border-l-4 border-teal rounded-r-xl p-6 mb-10">
-            <p className="font-semibold text-navy mb-2">Kurzantwort</p>
-            <p className="text-gray-700">
-              Das Wohnungsübergabe Protokoll dokumentiert den Zustand der Wohnung bei Ein- und Auszug.
-              Es muss Zählerstände, alle Räume, Mängel, Schlüsselübergabe und die Unterschriften
-              beider Parteien enthalten. Das Protokoll ist das wichtigste Beweismittel bei späteren
-              Streitigkeiten über Schäden oder Kaution.
-            </p>
-          </div>
+          <div className="prose prose-navy max-w-none text-gray-700 leading-relaxed space-y-8">
 
-          <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
-            <p>
-              Die Wohnungsübergabe ist ein rechtlich bedeutsamer Moment — sowohl beim Einzug als
-              auch beim Auszug. Ein lückenloses Protokoll schützt Mieter vor unberechtigten
-              Kautionseinbehalten und Vermieter vor der Haftung für Schäden, die sie nicht
-              verursacht haben. Dieser Leitfaden zeigt, wie Sie ein rechtssicheres
-              Übergabeprotokoll erstellen.
-            </p>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Warum das Protokoll so wichtig ist
-            </h2>
-            <p>
-              Das Übergabeprotokoll ist kein bürokratischer Formalismus — es ist das wichtigste
-              Beweismittel bei Streitigkeiten. Ohne Protokoll gilt im Zweifel: Der Vermieter kann
-              Schäden nur schwer einem bestimmten Mieter zuordnen; der Mieter kann die ordnungsgemäße
-              Rückgabe nicht belegen.
-            </p>
-            <p>
-              Gerichte verlassen sich auf das Protokoll, wenn Vermieter Kautionseinbehalte
-              begründen oder Mieter Schadenersatzforderungen zurückweisen wollen. Ein fehlendes
-              oder unvollständiges Protokoll kann daher beide Seiten teuer zu stehen kommen.
-            </p>
-
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 my-4 text-sm">
-              <strong>⚠️ Praxishinweis:</strong> Auch wenn kein gesetzliches Schriftformerfordernis
-              gilt, sollte das Protokoll immer schriftlich erstellt und von beiden Parteien
-              unterzeichnet werden. Eine digitale Fassung mit Fotos ist besonders gut geeignet.
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Pflichtangaben im Übergabeprotokoll
-            </h2>
-            <p>Diese Angaben gehören in jedes Protokoll:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Datum und Uhrzeit</strong> der Übergabe</li>
-              <li><strong>Namen und Adressen</strong> von Vermieter und Mieter</li>
-              <li><strong>Anschrift der Wohnung</strong> mit Wohnungsnummer und Stockwerk</li>
-              <li><strong>Art der Übergabe:</strong> Einzug oder Auszug</li>
-              <li><strong>Zählerstände</strong> für alle Verbraucher (Strom, Gas, Wasser, Wärme)</li>
-              <li><strong>Schlüsselübergabe:</strong> Anzahl und Art aller ausgehändigten Schlüssel</li>
-              <li><strong>Zustandsbeschreibung aller Räume</strong></li>
-              <li><strong>Unterschriften</strong> beider Parteien</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Checkliste: Raum für Raum
-            </h2>
-            <p>
-              Gehen Sie die Wohnung systematisch Raum für Raum durch. Notieren Sie für jeden Raum:
-              Wände, Decken, Böden, Fenster, Türen, Einbauteile.
-            </p>
-
-            {/* Room by room */}
-            <div className="space-y-4 not-prose">
-              {[
-                {
-                  room: "Eingangsbereich / Flur",
-                  items: ["Wände und Decke auf Risse und Flecken", "Bodenbelag (Kratzer, Abnutzung)", "Eingangstür: Schloss, Rahmen, Dichtung", "Garderobenhaken, Briefkasteneinsatz"],
-                },
-                {
-                  room: "Wohnzimmer",
-                  items: ["Alle Wände und Decke vollständig", "Bodenbelag: Parkett, Fliesen, Teppich", "Fenster: Glas, Rahmen, Griffe, Dichtungen", "Steckdosen und Lichtschalter", "Heizkörper inkl. Thermostat"],
-                },
-                {
-                  room: "Schlafzimmer",
-                  items: ["Wände auf Schimmelspuren (besonders Ecken)", "Bodenbelag und Sockelleisten", "Einbauschränke: innen und außen", "Fenster und Rolladen"],
-                },
-                {
-                  room: "Küche",
-                  items: ["Einbauküche: alle Schränke, Schubladen, Scharniere", "Herd, Backofen, Dunstabzug: Funktion und Sauberkeit", "Spüle und Armatur: Dichtheit, Flecken", "Arbeitsplatte: Kratzer, Verfärbungen", "Fliesenspiegel: vollständig, keine Risse"],
-                },
-                {
-                  room: "Badezimmer / WC",
-                  items: ["Sanitärobjekte: Wanne, Dusche, WC, Waschbecken", "Armaturen auf Dichtheit und Kalkschäden", "Fliesen: komplett, keine Risse", "Silikon-Fugen: Zustand und Schimmel", "Lüftung: Funktion prüfen"],
-                },
-                {
-                  room: "Keller / Abstellraum",
-                  items: ["Feuchtigkeit und Schimmelspuren", "Tür und Schloss", "Beleuchtung funktionsfähig"],
-                },
-              ].map((section) => (
-                <div key={section.room} className="bg-white border border-gray-200 rounded-xl p-5">
-                  <h3 className="font-semibold text-navy mb-3">{section.room}</h3>
-                  <ul className="space-y-2">
-                    {section.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                        <svg className="w-4 h-4 text-teal flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Zählerstände ablesen
-            </h2>
-            <p>
-              Zählerstände sind besonders wichtig für die spätere Nebenkostenabrechnung.
-              Notieren Sie exakt:
-            </p>
-            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden my-6">
-              <table className="w-full text-sm">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-4 py-3 text-left font-semibold text-navy">Zähler</th>
-                    <th className="px-4 py-3 text-left font-semibold text-navy">Zählernummer</th>
-                    <th className="px-4 py-3 text-left font-semibold text-navy">Stand</th>
-                    <th className="px-4 py-3 text-left font-semibold text-navy">Einheit</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {[
-                    { name: "Strom", einheit: "kWh" },
-                    { name: "Gas", einheit: "m³" },
-                    { name: "Kaltwasser", einheit: "m³" },
-                    { name: "Warmwasser", einheit: "m³" },
-                    { name: "Wärme (Heizung)", einheit: "kWh" },
-                  ].map((z) => (
-                    <tr key={z.name}>
-                      <td className="px-4 py-3">{z.name}</td>
-                      <td className="px-4 py-3 text-gray-400 italic">________</td>
-                      <td className="px-4 py-3 text-gray-400 italic">________</td>
-                      <td className="px-4 py-3">{z.einheit}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Fotos als Beweis
-            </h2>
-            <p>
-              Fotos ergänzen das schriftliche Protokoll und sind im Streitfall unersetzlich.
-              So dokumentieren Sie richtig:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Jeden Raum vollständig fotografieren (4 Ecken + Decke + Boden)</li>
-              <li>Alle festgestellten Mängel aus nächster Nähe fotografieren</li>
-              <li>Datum und Uhrzeit in den Kamera-Metadaten sichern</li>
-              <li>Fotos mit dem Protokoll zusammen aufbewahren</li>
-              <li>Zählerstände fotografieren — mit gut lesbarer Ziffernfolge</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Schlüsselübergabe dokumentieren
-            </h2>
-            <p>
-              Notieren Sie jeden einzelnen Schlüssel nach Typ und Anzahl:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Wohnungsschlüssel (Anzahl)</li>
-              <li>Hauseingangsschlüssel (Anzahl)</li>
-              <li>Briefkastenschlüssel (Anzahl)</li>
-              <li>Kellerschlüssel (Anzahl)</li>
-              <li>Garagenschlüssel oder -fernbedienung (Anzahl)</li>
-              <li>Sonstige Schlüssel (z.B. Dachboden, Fahrradkeller)</li>
-            </ul>
-
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 my-4 text-sm">
-              <strong>⚠️ Wichtig:</strong> Wenn ein Mieter bei Auszug nicht alle Schlüssel zurückgibt,
-              kann der Vermieter die Kosten für einen Schlosswechsel in Rechnung stellen — auch aus
-              der Kaution. Deshalb ist die genaue Dokumentation der Schlüsselanzahl beim Einzug
-              so entscheidend.
-            </div>
-
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Rechtliche Bedeutung des Protokolls
-            </h2>
-            <p>
-              Das unterzeichnete Übergabeprotokoll hat folgende rechtliche Wirkung:
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>
-                <strong>Beweislast umkehren:</strong> Im Streitfall muss derjenige, der Ansprüche
-                geltend macht, Abweichungen vom Protokoll beweisen.
-              </li>
-              <li>
-                <strong>Kautionseinbehalt begrenzen:</strong> Vermieter können nur Schäden geltend
-                machen, die im Protokoll dokumentiert oder nachweislich nach Einzug entstanden sind.
-              </li>
-              <li>
-                <strong>Normalen Verschleiß ausschließen:</strong> Was als normaler Gebrauchsverschleiß
-                dokumentiert ist, kann nicht als Schaden abgezogen werden.
-              </li>
-            </ul>
-
-            {/* FAQ Section */}
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Häufig gestellte Fragen
-            </h2>
-
-            <div className="space-y-6 not-prose">
-              <div className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="font-semibold text-navy mb-2">Ist ein Wohnungsübergabe Protokoll gesetzlich vorgeschrieben?</h3>
-                <p className="text-gray-600 text-sm">
-                  Ein Wohnungsübergabe Protokoll ist gesetzlich nicht vorgeschrieben, aber dringend empfohlen. Es ist das einzige Beweismittel bei Streitigkeiten über den Zustand der Wohnung bei Ein- und Auszug.
+            <section>
+              <h2 className="text-2xl font-bold text-navy mb-4">Warum das Übergabeprotokoll so wichtig ist</h2>
+              <p>
+                Das Wohnungsübergabeprotokoll ist kein bürokratisches Pflichtformular — es ist Ihr Beweisdokument für alle möglichen Streitigkeiten nach dem Mietverhältnis. Wer bei der Übergabe sorgfältig dokumentiert, hat bei Kautionsstreitigkeiten eine solide Grundlage. Wer es nicht tut, steht im Streitfall oft mit leeren Händen da.
+              </p>
+              <p>
+                Laut einer Studie des Deutschen Mieterbunds entstehen rund 40 % aller Rechtsstreitigkeiten zwischen Vermietern und Mietern im Zusammenhang mit Kautionsrückgabe und Schäden bei Auszug. Ein lückenloses Protokoll reduziert dieses Risiko erheblich.
+              </p>
+              <div className="bg-teal/5 border border-teal/20 rounded-xl p-5 my-4">
+                <p className="text-sm font-semibold text-teal mb-1">💡 Kernprinzip</p>
+                <p className="text-sm text-gray-700">
+                  Was beim Einzug dokumentiert wurde, ist <strong>Vorschaden</strong> — der Mieter haftet nicht. Was beim Auszug neu festgestellt wird und nicht im Einzugsprotokoll steht, trägt der Mieter. Deshalb: Beide Übergaben gleich sorgfältig protokollieren.
                 </p>
               </div>
+            </section>
 
-              <div className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="font-semibold text-navy mb-2">Was muss im Wohnungsübergabe Protokoll stehen?</h3>
-                <p className="text-gray-600 text-sm">
-                  Das Protokoll muss Datum und Uhrzeit, Namen beider Parteien, alle Räume mit Zustandsbeschreibung, Zählerstände (Strom, Gas, Wasser, Wärme), Anzahl der Schlüssel und alle festgestellten Mängel enthalten.
-                </p>
+            <section>
+              <h2 className="text-2xl font-bold text-navy mb-4">Checkliste: Was ins Übergabeprotokoll muss</h2>
+              <div className="space-y-6 mt-4">
+                {checklistItems.map((section, si) => (
+                  <div key={si} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div className="bg-navy/5 px-5 py-3 border-b border-gray-200">
+                      <h3 className="font-semibold text-navy text-sm">{section.category}</h3>
+                    </div>
+                    <ul className="px-5 py-3 space-y-2">
+                      {section.items.map((item, ii) => (
+                        <li key={ii} className="flex items-center gap-3 text-sm">
+                          <span className="w-4 h-4 rounded border border-gray-300 shrink-0 flex items-center justify-center text-xs">□</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
+            </section>
 
-              <div className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="font-semibold text-navy mb-2">Kann ich Mängel nach der Übergabe noch geltend machen?</h3>
-                <p className="text-gray-600 text-sm">
-                  Mängel, die im Protokoll nicht erfasst wurden, sind nachträglich schwer durchzusetzen. Bei arglistig verschwiegenen Mängeln gilt die Regelverjährung von 3 Jahren. Deshalb ist eine gründliche Protokollierung bei der Übergabe unerlässlich.
-                </p>
+            <section>
+              <h2 className="text-2xl font-bold text-navy mb-4">Ablauf einer rechtssicheren Übergabe</h2>
+              <div className="space-y-4 mt-4">
+                {[
+                  {
+                    step: "Termin rechtzeitig vereinbaren",
+                    desc: "Vereinbaren Sie den Übergabetermin mindestens eine Woche im Voraus. Wählen Sie einen Zeitpunkt mit gutem Tageslicht — am besten tagsüber. Beide Parteien sollten Zeit für eine gründliche Begehung mitbringen.",
+                  },
+                  {
+                    step: "Protokollformular vorbereiten",
+                    desc: "Drucken Sie das Protokollformular aus oder nutzen Sie eine digitale Variante. Alle Räume sollten vorab aufgeführt sein, damit nichts vergessen wird.",
+                  },
+                  {
+                    step: "Systematische Begehung durchführen",
+                    desc: "Gehen Sie jeden Raum einzeln durch — von links nach rechts, von oben nach unten. Notieren Sie Zustand von Wänden, Böden, Decken, Fenstern, Türen und Sanitärobjekten. Prüfen Sie alle Einbaugeräte auf Funktion.",
+                  },
+                  {
+                    step: "Alles fotografieren",
+                    desc: "Dokumentieren Sie jeden Mangel mit mindestens einem Foto. Nennen Sie Raum und genaue Position im Bild oder in der Beschriftung. Fotos sind das stärkste Beweisinstrument.",
+                  },
+                  {
+                    step: "Zählerstände ablesen",
+                    desc: "Lesen Sie alle Zähler gemeinsam ab und notieren Sie Datum, Zählernummer und Stand. Diese Daten werden für die Nebenkostenabrechnung benötigt.",
+                  },
+                  {
+                    step: "Schlüssel übergeben und dokumentieren",
+                    desc: "Zählen und dokumentieren Sie alle Schlüssel. Lassen Sie den Empfang schriftlich quittieren. Bei Auszug: Fehlende Schlüssel berechtigen zur Einbehaltung von Schlosstauschkosten.",
+                  },
+                  {
+                    step: "Protokoll unterzeichnen",
+                    desc: "Beide Parteien unterschreiben das Protokoll. Jede Partei erhält eine Kopie. Das Original verwahren Sie dauerhaft.",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-4 bg-white rounded-xl border border-gray-200">
+                    <span className="w-7 h-7 rounded-full bg-teal text-white text-sm font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                    <div>
+                      <p className="font-semibold text-navy">{item.step}</p>
+                      <p className="text-sm text-gray-600 mt-0.5">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </section>
 
-              <div className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="font-semibold text-navy mb-2">Was passiert, wenn der Vermieter kein Protokoll ausstellen will?</h3>
-                <p className="text-gray-600 text-sm">
-                  Wenn der Vermieter kein Protokoll ausstellen möchte, sollte der Mieter selbst ein Protokoll erstellen, es dem Vermieter zukommen lassen und dessen Quittierung schriftlich anfordern. Fotos und Zeugen sind zusätzliche Beweismittel.
-                </p>
+            <section>
+              <h2 className="text-2xl font-bold text-navy mb-4">Häufige Fehler und wie Sie sie vermeiden</h2>
+              <div className="space-y-3 mt-4">
+                {[
+                  {
+                    fehler: "Zu wenig Zeit eingeplant",
+                    loesung: "Rechnen Sie für eine 3-Zimmer-Wohnung mindestens 60–90 Minuten ein. Hektik führt zu Lücken.",
+                  },
+                  {
+                    fehler: "Keine Fotos gemacht",
+                    loesung: "Fotos sind Beweis. Ohne Bilder ist ein Mangel im Streitfall kaum nachweisbar — auch wenn er im Protokoll steht.",
+                  },
+                  {
+                    fehler: "Zu vage Beschreibungen",
+                    loesung: "Statt 'Wand beschädigt' lieber: 'Wohnzimmer, Nordwand, ca. 30cm unter Fenster, Riss in Verputz, ca. 15cm Länge'.",
+                  },
+                  {
+                    fehler: "Normale Abnutzung als Schaden deklariert",
+                    loesung: "Normale Abnutzung (z.B. verblasste Farbe nach 5 Jahren) ist kein Schaden. Übertriebene Forderungen schaden im Streitfall.",
+                  },
+                  {
+                    fehler: "Protokoll ohne Mieterunterschrift",
+                    loesung: "Verweigert der Mieter die Unterschrift, vermerken Sie das im Protokoll und lassen Sie einen Zeugen unterschreiben.",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4 p-4 bg-white rounded-xl border border-red-100">
+                    <span className="text-red-500 font-bold text-lg shrink-0">✗</span>
+                    <div>
+                      <p className="font-semibold text-navy text-sm">{item.fehler}</p>
+                      <p className="text-sm text-gray-600 mt-0.5">
+                        <span className="text-teal font-medium">Lösung: </span>{item.loesung}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </section>
 
-              <div className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="font-semibold text-navy mb-2">Wie lange ist das Übergabeprotokoll aufzubewahren?</h3>
-                <p className="text-gray-600 text-sm">
-                  Das Übergabeprotokoll sollte mindestens bis zum Ende der möglichen Verjährungsfristen aufbewahrt werden. Bei Wohnraum beträgt die Verjährungsfrist für Ansprüche aus dem Mietverhältnis in der Regel 3 Jahre.
-                </p>
+            {/* FAQ */}
+            <section className="bg-white rounded-2xl border border-gray-200 p-8 mt-10">
+              <h2 className="text-2xl font-bold text-navy mb-6">Häufige Fragen zum Wohnungsübergabe Protokoll</h2>
+              <div className="space-y-6">
+                {[
+                  {
+                    q: "Was muss im Wohnungsübergabeprotokoll stehen?",
+                    a: "Datum, Namen, Unterschriften beider Parteien, Zählerstände, Schlüsselanzahl, Zustand aller Räume mit Mängelbeschreibungen, Fotos und etwaige Vereinbarungen über Reparaturen.",
+                  },
+                  {
+                    q: "Ist ein Übergabeprotokoll rechtlich bindend?",
+                    a: "Ein beidseitig unterschriebenes Protokoll hat hohe Beweiskraft. Was dokumentiert ist, ist schwer zu widerlegen — in beide Richtungen.",
+                  },
+                  {
+                    q: "Was darf der Vermieter nach dem Auszug einbehalten?",
+                    a: "Kosten für Schäden über normale Abnutzung hinaus, Mietrückstände, fehlende Schlüssel. Nicht: Kosten für normale Abnutzung oder bei unwirksamen Schönheitsreparaturklauseln.",
+                  },
+                  {
+                    q: "Muss der Mieter beim Protokoll anwesend sein?",
+                    a: "Idealerweise ja. Verweigert der Mieter die Teilnahme, Protokoll mit Zeugen erstellen und dem Mieter zustellen. Ein einseitiges Protokoll hat geringere Beweiskraft.",
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="border-b border-gray-100 pb-5 last:border-0 last:pb-0">
+                    <h3 className="font-semibold text-navy mb-2">{item.q}</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed">{item.a}</p>
+                  </div>
+                ))}
               </div>
-            </div>
+            </section>
 
-            <h2 className="text-2xl font-bold text-navy font-playfair mt-10 mb-4">
-              Fazit: Kein Aufwand, kein Streit
-            </h2>
-            <p>
-              Ein sorgfältig ausgefülltes Übergabeprotokoll dauert 30 bis 60 Minuten — und spart
-              im Streitfall möglicherweise Monate und tausende Euro. Gehen Sie die Checkliste
-              konsequent durch, fotografieren Sie alles und lassen Sie das Protokoll von beiden
-              Seiten unterschreiben.
-            </p>
-            <p>
-              Professionelle Hausverwaltungen führen Übergaben strukturiert durch und stellen
-              rechtssichere Protokolle aus — damit weder Mieter noch Vermieter unangenehme
-              Überraschungen erleben.
-            </p>
-          </div>
-
-          <div className="mt-12 bg-teal/10 border border-teal/20 rounded-xl p-8">
-            <h3 className="text-xl font-bold text-navy mb-2 font-playfair">
-              Lassen Sie einfach verwaltet.
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Ihre Immobilie professionell verwalten. Rechtssichere Wohnungsübergaben,
-              vollständige Dokumentation und kein Kautions-Ärger mehr.
-            </p>
-            <Link
-              href="/anfrage"
-              className="inline-block bg-teal text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal/90 transition-colors"
-            >
-              Jetzt anfragen →
-            </Link>
-          </div>
-
-          <div className="mt-10">
-            <Link href="/blog" className="text-teal hover:underline text-sm">
-              ← Zurück zum Ratgeber
-            </Link>
+            {/* CTA */}
+            <section className="bg-navy rounded-2xl p-8 text-white text-center mt-10">
+              <h2 className="text-2xl font-bold mb-3">Mieterwechsel professionell abwickeln</h2>
+              <p className="text-white/80 mb-6 max-w-md mx-auto">
+                Professionelle Hausverwaltung führt vollständige Übergaben durch, dokumentiert lückenlos und schützt Ihr Eigentum.
+              </p>
+              <Link
+                href="/anfrage"
+                className="inline-flex items-center gap-2 bg-teal text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-teal/90 transition-all hover:shadow-lg"
+              >
+                Kostenlos anfragen →
+              </Link>
+              <p className="text-white/50 text-xs mt-4">Kostenlos & unverbindlich · Antwort am selben Tag</p>
+            </section>
           </div>
         </article>
       </main>

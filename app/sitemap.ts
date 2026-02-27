@@ -43,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "hausverwaltung-koeln",
     "hausverwaltung-leipzig",
     "hausverwaltung-stuttgart",
+    "hausverwaltung-nuernberg",
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
     priority: 0.8,
@@ -154,6 +155,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "wasserschaden-mietrecht-rechte-pflichten",
     "weg-verwaltung-hamburg-kosten-vergleich",
     "wohnungsmaengel-melden",
+    // Sprint 14 — Cost guide, landlord obligations, tenant rights
+    "hausverwaltung-kosten-2026",
+    "mietminderung-gruende",
+    "eigentuemer-pflichten-vermietung",
+    "wohnungsuebergabe-protokoll",
+    "hausverwaltung-kuendigen-frist",
   ];
 
   const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

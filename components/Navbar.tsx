@@ -31,6 +31,7 @@ const standorte = [
   { href: "/hausverwaltung-hannover", label: "Hausverwaltung Hannover", sub: "Miet- & WEG-Verwaltung in Hannover" },
   { href: "/hausverwaltung-leipzig", label: "Hausverwaltung Leipzig", sub: "Miet- & WEG-Verwaltung in Leipzig" },
   { href: "/hausverwaltung-stuttgart", label: "Hausverwaltung Stuttgart", sub: "Miet- & WEG-Verwaltung in Stuttgart" },
+  { href: "/hausverwaltung-nuernberg", label: "Hausverwaltung Nürnberg", sub: "Miet- & WEG-Verwaltung in Nürnberg" },
   { href: "/wechseln", label: "Hausverwaltung wechseln", sub: "Wechsel-Guide + Kündigung Generator" },
   { href: "/hausverwaltung-hamburg-vergleich", label: "Vergleich 2026", sub: "einfach verwaltet. vs. Markt" },
   { href: "/nachfolge", label: "Nachfolge", sub: "Für Verwalter im Ruhestand" },

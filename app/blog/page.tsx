@@ -643,6 +643,52 @@ const posts = [
     readTime: "8 min",
     date: "Februar 2026",
   },
+  // Sprint 14 — Cost guide, landlord obligations, tenant rights
+  {
+    slug: "hausverwaltung-kosten-2026",
+    title: "Hausverwaltung Kosten 2026: Was kostet eine Hausverwaltung wirklich?",
+    description:
+      "Vollständiger Kostenguide: Mietverwaltung €22–38/Einheit, WEG-Verwaltung €20–34/Einheit. Preismodelle, was inklusive ist, versteckte Kosten und Bewertungskriterien.",
+    keyword: "Hausverwaltung Kosten 2026",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietminderung-gruende",
+    title: "Mietminderung Gründe: Was Mieter mindern dürfen — Vermieter-Leitfaden",
+    description:
+      "§536 BGB erklärt: Heizungsausfall, Schimmel, Lärmbelästigung — Minderungsquoten, Voraussetzungen und wie Sie als Vermieter Konflikte lösen.",
+    keyword: "Mietminderung Gründe",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "eigentuemer-pflichten-vermietung",
+    title: "Eigentümer Pflichten Vermietung: Die vollständige Checkliste 2026",
+    description:
+      "Alle gesetzlichen Vermieterpflichten: Instandhaltung, Verkehrssicherungspflicht, Energieausweis, Rauchmelder, Nebenkostenabrechnung und DSGVO.",
+    keyword: "Eigentümer Pflichten Vermietung",
+    readTime: "11 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "wohnungsuebergabe-protokoll",
+    title: "Wohnungsübergabe Protokoll: Checkliste & Vorlage für Vermieter 2026",
+    description:
+      "Rechtssichere Übergabe: Was dokumentiert werden muss, Checkliste für Ein- und Auszug, Zählerstände, Schlüssel und häufige Fehler vermeiden.",
+    keyword: "Wohnungsübergabe Protokoll",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-kuendigen-frist",
+    title: "Hausverwaltung kündigen: Fristen, Ablauf und Checkliste für den Wechsel",
+    description:
+      "Hausverwalter kündigen 2026: Kündigungsfristen für WEG (§26 WEG) und Mietverwaltung, außerordentliche Kündigung und vollständige Übergabe-Checkliste.",
+    keyword: "Hausverwaltung kündigen Frist",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
 ];
 
 export default function BlogIndex() {
