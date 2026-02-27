@@ -55,6 +55,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "hausverwaltung-augsburg",
     "hausverwaltung-wiesbaden",
     "hausverwaltung-freiburg",
+    "hausverwaltung-mannheim",
+    "hausverwaltung-magdeburg",
+    "hausverwaltung-kiel",
     "checkliste",
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
@@ -196,6 +199,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "mietvertrag-sonderklauseln",
     "vermieter-pflichten-mietminderung",
     "nebenkostenabrechnung-frist-vermieter",
+    // Sprint 20 — Mannheim city blog, Vermieter-Handbuch, Mietrechtsstreit, Qualitätskriterien, Software
+    "hausverwaltung-mannheim",
+    "vermieter-handbuch-2026",
+    "mietrecht-streitigkeiten-loesen",
+    "hausverwaltung-qualitaet-kriterien",
+    "immobilienverwaltung-software-2026",
   ];
 
   const blogPosts: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

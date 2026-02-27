@@ -817,6 +817,52 @@ const posts = [
     readTime: "8 min",
     date: "Februar 2026",
   },
+  // Sprint 20 — Mannheim, Vermieter-Handbuch 2026, Mietrechtsstreit, Qualitätskriterien, Software
+  {
+    slug: "hausverwaltung-mannheim",
+    title: "Hausverwaltung Mannheim: Kosten, Markt und Tipps für Vermieter 2026",
+    description:
+      "Der Mannheimer Immobilienmarkt 2026: Mietpreise in den Quadraten und Lindenhof, Mietpreisbremse Baden-Württemberg, Kosten der Hausverwaltung und wie Sie den richtigen Verwalter finden.",
+    keyword: "Hausverwaltung Mannheim",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieter-handbuch-2026",
+    title: "Vermieter-Handbuch 2026: Alle gesetzlichen Änderungen und Pflichten im Überblick",
+    description:
+      "§558 Mieterhöhung, §556 Nebenkostenabrechnung, Energieausweis-Pflicht (GEG), Mietpreisbremse 2026: Das komplette Handbuch für Vermieter — kompakt und praxisnah.",
+    keyword: "Vermieter Handbuch 2026",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietrecht-streitigkeiten-loesen",
+    title: "Mietrechtsstreitigkeiten lösen ohne Gericht: Mediation und praktische Schritte",
+    description:
+      "Wie Vermieter Konflikte mit Mietern außergerichtlich lösen: direkte Gespräche, Abmahnung, Mediation und rechtssichere Dokumentation — Schritt-für-Schritt-Leitfaden.",
+    keyword: "Mietrechtsstreit lösen ohne Gericht",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-qualitaet-kriterien",
+    title: "10 Kriterien für eine gute Hausverwaltung: Qualität erkennen und bewerten",
+    description:
+      "Praxisnahe Checkliste für Eigentümer: Transparenz, Erreichbarkeit, digitales Portal, Rechtskompetenz — mit diesen 10 Kriterien wählen Sie den richtigen Hausverwalter.",
+    keyword: "Hausverwaltung Qualität Kriterien",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "immobilienverwaltung-software-2026",
+    title: "Immobilienverwaltung Software 2026: Vergleich und warum digital-first gewinnt",
+    description:
+      "Überblick über Immobilienverwaltungssoftware 2026: DOMUS, immoware24, digitale Full-Service-Anbieter im Vergleich. Pflicht-Funktionen und warum moderne Verwaltung anders ist.",
+    keyword: "Immobilienverwaltung Software 2026",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
 ];
 
 export default function BlogIndex() {

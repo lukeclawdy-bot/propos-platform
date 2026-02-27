@@ -32,6 +32,9 @@ const standorte = [
   { href: "/hausverwaltung-augsburg", label: "Hausverwaltung Augsburg", sub: "Miet- & WEG-Verwaltung in Augsburg" },
   { href: "/hausverwaltung-wiesbaden", label: "Hausverwaltung Wiesbaden", sub: "Miet- & WEG-Verwaltung in Wiesbaden" },
   { href: "/hausverwaltung-freiburg", label: "Hausverwaltung Freiburg", sub: "Miet- & WEG-Verwaltung in Freiburg" },
+  { href: "/hausverwaltung-mannheim", label: "Hausverwaltung Mannheim", sub: "Miet- & WEG-Verwaltung in Mannheim" },
+  { href: "/hausverwaltung-magdeburg", label: "Hausverwaltung Magdeburg", sub: "Miet- & WEG-Verwaltung in Magdeburg" },
+  { href: "/hausverwaltung-kiel", label: "Hausverwaltung Kiel", sub: "Miet- & WEG-Verwaltung in Kiel" },
   { href: "/standorte", label: "Weitere Städte →", sub: "Alle Standorte ansehen" },
 ];
 
