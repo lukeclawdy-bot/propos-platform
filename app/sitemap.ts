@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/hausverwaltung-hamburg-vergleich`, priority: 0.8, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-berlin`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-muenchen`, priority: 0.9, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/hausverwaltung-frankfurt`, priority: 0.9, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/hausverwaltung-duesseldorf`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-hamburg`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/mietverwaltung-hamburg`, priority: 0.9, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/hausverwaltung-wechseln`, priority: 0.8, changeFrequency: "monthly" as const },
@@ -91,6 +93,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "wohnungsuebergabeprotokoll",
     "hausmeisterservice-hamburg",
     "betriebskosten-senken",
+    // Sprint 11 — Frankfurt/Düsseldorf SEO + new blog posts
+    "hausverwaltung-frankfurt-kosten",
+    "mietverwaltung-oder-wohnungseigentumsverwaltung",
+    "vermieter-pflichten-winter-heizung-schnee",
+    "hausverwaltung-wechseln-checkliste",
+    "betriebskosten-senken-tipps",
   ].map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
     priority: 0.7,

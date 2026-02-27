@@ -22,6 +22,51 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "hausverwaltung-frankfurt-kosten",
+    title: "Hausverwaltung Frankfurt: Kosten, Preise und Vergleich 2026",
+    description:
+      "Hausverwaltung Frankfurt Kosten 2026: Mietverwaltung €25–38/Einheit, WEG-Verwaltung €24–34/Einheit. Preisvergleich mit Hamburg, München, Berlin und Tipps zur Verwalterwahl.",
+    keyword: "Hausverwaltung Frankfurt Kosten",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietverwaltung-oder-wohnungseigentumsverwaltung",
+    title: "WEG oder Mietverwaltung: Was brauchen Sie?",
+    description:
+      "WEG-Verwaltung vs. Mietverwaltung: Der vollständige Vergleich — Aufgaben, Rechtsgrundlagen (§26 WEG / §675 BGB), Kosten und wann Sie welche Form benötigen.",
+    keyword: "WEG Verwaltung vs Mietverwaltung",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieter-pflichten-winter-heizung-schnee",
+    title: "Vermieter Pflichten im Winter: Heizung, Schneeräumen und mehr",
+    description:
+      "Welche Winterpflichten hat der Vermieter? Heiztemperaturen (20–22°C tagsüber), Streupflicht, Dachlawinen, Rohrsicherung — alle gesetzlichen Anforderungen im Überblick.",
+    keyword: "Vermieter Pflichten Winter",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-wechseln-checkliste",
+    title: "Hausverwaltung wechseln: Die ultimative Checkliste",
+    description:
+      "Hausverwaltung wechseln Schritt für Schritt: Kündigung (§621 BGB), Unterlagenübergabe-Checkliste, Mieterinformation und reibungsloser Start mit der neuen Verwaltung.",
+    keyword: "Hausverwaltung wechseln Checkliste",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "betriebskosten-senken-tipps",
+    title: "Betriebskosten senken: 10 Tipps für Vermieter",
+    description:
+      "10 bewährte Strategien um Betriebskosten zu senken: Versicherungsvergleich, LED-Umrüstung, hydraulischer Abgleich, smarte Heizsteuerung — mit konkreten Einsparpotenzialen.",
+    keyword: "Betriebskosten senken",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
     slug: "weg-verwaltung-hamburg-kosten-vergleich",
     title: "WEG-Verwaltung Hamburg: Was kostet ein Hausverwalter für WEG?",
     description:
@@ -470,6 +515,51 @@ const posts = [
     keyword: "Schönheitsreparaturen Vermieter BGH",
     readTime: "8 min",
     date: "Januar 2026",
+  },
+  {
+    slug: "hausverwaltung-frankfurt-kosten",
+    title: "Hausverwaltung Frankfurt: Kosten, Preise und Vergleich 2026",
+    description:
+      "Aktuelle Kosten für Hausverwaltung in Frankfurt am Main. Mietverwaltung €25-38/Einheit, WEG €24-34/Einheit. Preisvergleich und Tipps.",
+    keyword: "Hausverwaltung Frankfurt Kosten",
+    readTime: "7 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietverwaltung-oder-wohnungseigentumsverwaltung",
+    title: "WEG oder Mietverwaltung: Was brauchen Sie?",
+    description:
+      "Unterschiede zwischen WEG-Verwaltung und Mietverwaltung erklärt. Kosten, Leistungen und wann welche Form sinnvoll ist.",
+    keyword: "WEG Verwaltung vs Mietverwaltung",
+    readTime: "6 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieter-pflichten-winter-heizung-schnee",
+    title: "Vermieter Pflichten im Winter: Heizung, Schneeräumen & mehr",
+    description:
+      "Heizpflicht, Schneeräumung, Streupflicht — alle Winterpflichten für Vermieter nach §535 BGB und Verkehrssicherungspflicht.",
+    keyword: "Vermieter Pflichten Winter",
+    readTime: "6 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "hausverwaltung-wechseln-checkliste",
+    title: "Hausverwaltung wechseln: Die ultimative Checkliste",
+    description:
+      "Schritt-für-Schritt Anleitung zum Verwalterwechsel: Fristen, Kündigungsvorlage, Übergabe-Checkliste und typische Fehler.",
+    keyword: "Hausverwaltung wechseln Checkliste",
+    readTime: "7 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "betriebskosten-senken-tipps",
+    title: "Betriebskosten senken: 10 Tipps für Vermieter",
+    description:
+      "10 erprobte Strategien zur Senkung der Nebenkosten. Versicherungen, Energiekosten und Wartungsverträge optimieren.",
+    keyword: "Betriebskosten senken",
+    readTime: "8 min",
+    date: "Februar 2026",
   },
 ];
 
