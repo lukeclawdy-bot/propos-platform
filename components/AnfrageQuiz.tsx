@@ -238,11 +238,21 @@ export function AnfrageQuiz() {
 
         <div className="bg-white rounded-2xl border border-gray-100 p-6 text-left space-y-3 mb-8">
           <div className="text-xs font-semibold text-text-light uppercase tracking-wide mb-4">Ihre Angaben</div>
-          {answers.verwaltungstyp && <SummaryRow label="Verwaltungstyp" value={answers.verwaltungstyp} />}
-          {answers.einheiten && <SummaryRow label="Einheiten" value={answers.einheiten} />}
-          {answers.standort && <SummaryRow label="Standort" value={answers.standort} />}
-          {answers.situation && <SummaryRow label="Situation" value={answers.situation} />}
-          {answers.prioritaet && <SummaryRow label="Priorität" value={answers.prioritaet} />}
+          {answers.verwaltungstyp && <SummaryRow label="Verwaltungstyp" value={{
+            miet: "Mietverwaltung", weg: "WEG-Verwaltung", beides: "Miet- & WEG-Verwaltung", unsicher: "Noch unklar"
+          }[answers.verwaltungstyp] || answers.verwaltungstyp} />}
+          {answers.einheiten && <SummaryRow label="Einheiten" value={{
+            "1-3": "1–3 Einheiten", "4-10": "4–10 Einheiten", "11-30": "11–30 Einheiten", "31-100": "31–100 Einheiten", "100+": "Über 100 Einheiten"
+          }[answers.einheiten] || answers.einheiten} />}
+          {answers.standort && <SummaryRow label="Standort" value={{
+            hamburg: "Hamburg & Umland", "hamburg-umland": "Hamburger Umland", berlin: "Berlin", muenchen: "München", mehrere: "Mehrere Standorte", andere: "Anderer Standort"
+          }[answers.standort] || answers.standort} />}
+          {answers.situation && <SummaryRow label="Situation" value={{
+            unzufrieden: "Unzufrieden mit aktueller Verwaltung", "neue-immobilie": "Neue Immobilie", selbstverwaltet: "Selbstverwaltung abgeben", vergleich: "Angebote vergleichen"
+          }[answers.situation] || answers.situation} />}
+          {answers.prioritaet && <SummaryRow label="Priorität" value={answers.prioritaet.split(",").map((v: string) => ({
+            erreichbarkeit: "Reaktionszeiten", transparenz: "Kostentransparenz", qualitaet: "Handwerkerqualität", preis: "Preis-Leistung", digital: "Digitales Portal"
+          }[v] || v)).join(", ")} />}
           {isBetaProgram && <SummaryRow label="Beta-Programm" value="Ja" />}
         </div>
 
@@ -253,11 +263,11 @@ export function AnfrageQuiz() {
           }
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <a href="/portal/onboarding" className="inline-block bg-teal text-white px-6 py-3 rounded-xl font-semibold hover:bg-navy transition-colors">
+        <div className="mt-8 flex flex-col gap-3 items-center">
+          <a href="/portal/onboarding" className="w-full text-center bg-teal text-white px-6 py-3.5 rounded-xl font-semibold hover:bg-navy transition-colors">
             Portal einrichten →
           </a>
-          <a href="/" className="inline-block text-teal text-sm font-medium hover:underline flex items-center justify-center">
+          <a href="/" className="text-sm text-text-light hover:text-navy transition-colors">
             ← Zurück zur Startseite
           </a>
         </div>
