@@ -113,14 +113,14 @@ export function Navbar() {
             </svg>
             Portal
           </a>
-          <a href="/portal/onboarding" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors whitespace-nowrap">
+          <a href="/anfrage" className="bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy transition-colors whitespace-nowrap">
             Angebot anfragen
           </a>
         </div>
 
         {/* Mobile: CTA + burger */}
         <div className="flex md:hidden items-center gap-3">
-          <a href="/portal/onboarding" className="bg-teal text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
+          <a href="/anfrage" className="bg-teal text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-navy transition-colors">
             Angebot
           </a>
           <button
@@ -204,11 +204,11 @@ export function Navbar() {
 
             <div className="pt-3 space-y-2">
               <a
-                href="/portal/onboarding"
+                href="/anfrage"
                 onClick={() => setMobileOpen(false)}
                 className="block w-full text-center bg-teal text-white py-3.5 rounded-xl font-semibold hover:bg-navy transition-colors"
               >
-                Angebot anfragen →
+                Angebot anfragen
               </a>
               <a
                 href="/portal/login"
