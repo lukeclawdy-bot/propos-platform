@@ -232,7 +232,8 @@ export default async function DokumentePage() {
               { label: "Partner", href: "/portal/partner", active: false },
               { label: "Dokumente", href: "/portal/dokumente", active: true },
               { label: "Finanzen", href: "/portal/finanzen", active: false },
-              { label: "Mieterhöhung", href: "/portal/mieterhohung", active: false },
+              { label: "Analysen", href: "/portal/analytics", active: false },
+            { label: "Mieterhöhung", href: "/portal/mieterhohung", active: false },
             ].map((item) => (
               <a
                 key={item.href}

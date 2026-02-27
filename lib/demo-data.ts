@@ -768,6 +768,59 @@ export function getDemoFinanzenData() {
   };
 }
 
+// Demo Analytics Data
+export function getDemoAnalyticsData() {
+  const monthNames = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+  const today = new Date();
+
+  // Revenue trend for last 6 months
+  const revenueTrend = [];
+  const baseRevenue = 692500; // cents
+  const offsets = [18000, -22000, 12000, -8000, 25000, 0];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
+    revenueTrend.push({
+      month: `${monthNames[d.getMonth()]}`,
+      amountCents: baseRevenue + offsets[5 - i],
+    });
+  }
+
+  return {
+    // Portfolio Overview
+    portfolio: {
+      propertiesCount: 2,
+      totalUnits: 10,
+      occupiedUnits: 7,
+      monthlyRevenueCents: 692500,
+    },
+    // Ticket Resolution
+    tickets: {
+      total: 24,
+      resolved: 18,
+      open: 4,
+      inProgress: 2,
+      resolutionRate: 75,
+      avgResolutionHours: 28,
+    },
+    // Rent Collection
+    rentCollection: {
+      totalTenants: 7,
+      paidOnTime: 5,
+      overdue: 2,
+      collectionRate: 71,
+      outstandingCents: 185000,
+    },
+    // Revenue Trend
+    revenueTrend,
+    // AI Automation
+    aiAutomation: {
+      totalTickets: 24,
+      aiHandled: 17,
+      automationRate: 71,
+    },
+  };
+}
+
 // Demo Landlord Settings
 export function getDemoLandlord() {
   return {

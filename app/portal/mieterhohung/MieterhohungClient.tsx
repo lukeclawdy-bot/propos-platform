@@ -240,6 +240,7 @@ export function MieterhohungClient({ initialProperties, initialUnits, isDemo }: 
             { label: 'Tickets', href: '/portal/tickets' },
             { label: 'Dokumente', href: '/portal/dokumente' },
             { label: 'Finanzen', href: '/portal/finanzen' },
+            { label: 'Analysen', href: '/portal/analytics', active: false },
             { label: 'Mieterhöhung', href: '/portal/mieterhohung', active: true },
           ].map((item) => (
             <Link
