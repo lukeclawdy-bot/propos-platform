@@ -689,6 +689,51 @@ const posts = [
     readTime: "9 min",
     date: "Februar 2026",
   },
+  {
+    slug: "hausverwaltung-bremen",
+    title: "Hausverwaltung Bremen: Kosten, Vergleich und Tipps für Vermieter 2026",
+    description:
+      "Hausverwaltung Bremen 2026: Aktuelle Kosten ab €24/Einheit, Preisvergleich, lokale Tipps für Vermieter in Viertel, Überseestadt und Schwachhausen.",
+    keyword: "Hausverwaltung Bremen",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietrecht-aenderungen-2026",
+    title: "Mietrecht 2026: Wichtige Änderungen für Vermieter in Deutschland",
+    description:
+      "Was Vermieter 2026 wissen müssen: Mietpreisbremse, Energieausweis-Pflichten, WEG-Reform und CO2-Kostenaufteilung — kompakt und verständlich erklärt.",
+    keyword: "Mietrecht 2026 Änderungen",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "vermieter-erklaerung-steuern",
+    title: "Steuererklärung als Vermieter: Was kann man absetzen? (2025/2026)",
+    description:
+      "Vollständiger Steuerratgeber für Vermieter: Werbungskosten, AfA, Erhaltungsaufwand, Finanzierungszinsen und Hausverwaltungsgebühren — alle Abzugsmöglichkeiten erklärt.",
+    keyword: "Steuererklärung Vermieter absetzen",
+    readTime: "11 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "eigenbedarfskuendigung-anforderungen",
+    title: "Eigenbedarfskündigung: Voraussetzungen, Fristen und was Vermieter beachten müssen",
+    description:
+      "§573 BGB Eigenbedarf: Wer darf kündigen, welche Fristen gelten, wie sieht ein korrektes Kündigungsschreiben aus und welche Fehler müssen Vermieter unbedingt vermeiden?",
+    keyword: "Eigenbedarfskündigung Voraussetzungen",
+    readTime: "10 min",
+    date: "Februar 2026",
+  },
+  {
+    slug: "mietminderung-tabelle",
+    title: "Mietminderungstabelle: Welche Mängel berechtigen zur Mietminderung?",
+    description:
+      "Umfassende Mietminderungstabelle 2026: Minderungsquoten für Heizungsausfall, Schimmel, Wasserschaden, Lärm und defekte Fenster — mit rechtlicher Grundlage.",
+    keyword: "Mietminderungstabelle 2026",
+    readTime: "9 min",
+    date: "Februar 2026",
+  },
 ];
 
 export default function BlogIndex() {
