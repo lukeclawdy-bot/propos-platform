@@ -1,18 +1,24 @@
-import { DemoStartButton } from "./components/DemoStartButton";
 import Link from "next/link";
 
 export const metadata = {
   title: "Demo — einfach verwaltet.",
-  description: "Testen Sie unsere Hausverwaltungssoftware kostenlos und ohne Registrierung. Erleben Sie die Zukunft der Immobilienverwaltung.",
+  description: "Sehen Sie einfach verwaltet. in Aktion. Testen Sie das Demo-Portal sofort — keine Registrierung, alle Daten fiktiv.",
 };
+
+// ─── LOOM VIDEO ────────────────────────────────────────────────────────────────
+// Wenn leer: Platzhalter wird angezeigt.
+// Wenn ausgefüllt: Video wird als iframe eingebettet.
+// Beispiel: "https://www.loom.com/embed/abc123"
+const LOOM_URL = "";
+// ──────────────────────────────────────────────────────────────────────────────
 
 export default function DemoPage() {
   return (
-    <div className="min-h-screen bg-light-gray">
-      {/* Header */}
+    <div className="min-h-screen bg-white">
+      {/* ── Header ── */}
       <header className="bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <Link href="/" className="flex items-center gap-2">
+        <div className="max-w-5xl mx-auto px-6 py-4">
+          <Link href="/" className="flex items-center gap-2 w-fit">
             <div className="w-8 h-8 bg-navy rounded-lg flex items-center justify-center">
               <span className="text-teal font-bold text-sm">ev</span>
             </div>
@@ -23,224 +29,162 @@ export default function DemoPage() {
         </div>
       </header>
 
-      {/* Hero */}
-      <main className="max-w-6xl mx-auto px-6 py-16 md:py-24">
-        {/* Two-column layout: main content + floating CTA */}
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
-          {/* Main column */}
-          <div className="flex-1 min-w-0">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal/10 text-teal rounded-full text-sm font-medium mb-6">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                Kostenlos testen
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6">
-                Erleben Sie die Zukunft der <span className="text-teal">Hausverwaltung</span>
-              </h1>
-              <p className="text-lg text-text-light max-w-2xl mx-auto">
-                Testen Sie alle Funktionen unseres Vermieter-Portals ohne Registrierung. 
-                Die Demo zeigt Ihnen, wie einfach Immobilienverwaltung sein kann.
-              </p>
-            </div>
+      <main>
+        {/* ══════════════════════════════════════════════════════════
+            SECTION 1 — VIDEO
+        ══════════════════════════════════════════════════════════ */}
+        <section className="bg-gray-50 py-16 px-6">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-center text-sm font-semibold text-teal uppercase tracking-widest mb-3">
+              Demo
+            </p>
+            <h1 className="text-3xl md:text-4xl font-bold text-navy text-center mb-10">
+              Sehen Sie einfach verwaltet. in Aktion
+            </h1>
 
-            {/* "Was Sie als echter Kunde sehen" info box */}
-            <div className="bg-navy/5 border border-navy/15 rounded-2xl p-6 mb-8">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-navy mb-3">Was Sie als echter Kunde sehen</h3>
-                  <div className="grid sm:grid-cols-2 gap-3 text-sm">
-                    <div>
-                      <p className="font-semibold text-navy mb-1.5">🎭 In der Demo (jetzt):</p>
-                      <ul className="space-y-1 text-text-light">
-                        <li>• Fiktive Musterobjekte & Mieter</li>
-                        <li>• Simulierte KI-Vorschläge</li>
-                        <li>• 1-Stunden-Session, kein Konto</li>
-                        <li>• Keine echten Dokumente</li>
-                        <li>• Keine DATEV-Anbindung</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-navy mb-1.5">✅ Als echter Kunde:</p>
-                      <ul className="space-y-1 text-text-light">
-                        <li>• Ihre echten Objekte & Mieter</li>
-                        <li>• KI analysiert Ihre Daten</li>
-                        <li>• Volles Portal, kein Ablauf</li>
-                        <li>• Rechtssichere Dokumente</li>
-                        <li>• DATEV + Banking Integration</li>
-                      </ul>
-                    </div>
+            {/* Video area */}
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200"
+              style={{ paddingBottom: "56.25%" /* 16:9 */ }}>
+              {LOOM_URL ? (
+                <iframe
+                  src={LOOM_URL}
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; fullscreen"
+                />
+              ) : (
+                /* Placeholder */
+                <div className="absolute inset-0 bg-navy flex flex-col items-center justify-center gap-4">
+                  {/* Play button */}
+                  <div className="w-20 h-20 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
+                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
                   </div>
+                  <p className="text-white/50 text-sm">Video wird geladen…</p>
                 </div>
-              </div>
+              )}
             </div>
 
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="bg-white p-6 rounded-2xl border border-gray-100">
-                <div className="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            {/* Developer hint */}
+            <p className="text-center text-xs text-gray-400 mt-3 italic">
+              ← Platzhalter für Ihr Loom-Video. URL in{" "}
+              <code className="bg-gray-100 px-1 rounded">app/demo/page.tsx</code>{" "}
+              Zeile&nbsp;~30 eintragen.
+            </p>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════
+            SECTION 2 — KEY BENEFITS (3 columns)
+        ══════════════════════════════════════════════════════════ */}
+        <section className="py-16 px-6 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Benefit 1 */}
+              <div className="text-center">
+                <div className="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-navy mb-2">Dashboard & Übersicht</h3>
-                <p className="text-sm text-text-light">
-                  Alle wichtigen Kennzahlen auf einen Blick: Belegung, Mieteinnahmen, offene Tickets
+                <h3 className="text-lg font-bold text-navy mb-2">24/7 Erreichbar</h3>
+                <p className="text-text-light text-sm leading-relaxed">
+                  Mieter immer versorgt — jede Anfrage wird sofort entgegengenommen, rund um die Uhr.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-gray-100">
-                <div className="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              {/* Benefit 2 */}
+              <div className="text-center">
+                <div className="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-navy mb-2">KI-gestützte Aktionen</h3>
-                <p className="text-sm text-text-light">
-                  Unsere KI schlägt Ihnen intelligente nächste Schritte vor — von Mieterhöhungen bis zur Wartung
+                <h3 className="text-lg font-bold text-navy mb-2">Echtzeit-Dashboard</h3>
+                <p className="text-text-light text-sm leading-relaxed">
+                  Sie sehen alles sofort — Mieteinnahmen, offene Tickets, Dokumente auf einen Blick.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-gray-100">
-                <div className="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              {/* Benefit 3 */}
+              <div className="text-center">
+                <div className="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8}
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-navy mb-2">Ticket-Management</h3>
-                <p className="text-sm text-text-light">
-                  Behalten Sie Mieteranliegen im Blick — priorisiert nach Dringlichkeit
+                <h3 className="text-lg font-bold text-navy mb-2">Transparente Kosten</h3>
+                <p className="text-text-light text-sm leading-relaxed">
+                  €27–29/Einheit/Monat — keine versteckten Gebühren, keine Überraschungen.
                 </p>
-              </div>
-            </div>
-
-            {/* Demo Preview */}
-            <div className="bg-navy rounded-3xl p-8 md:p-12 mb-12 text-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Bereit für die Demo?
-              </h2>
-              <p className="text-white/70 mb-8 max-w-xl mx-auto">
-                In wenigen Sekunden sind Sie im Demo-Modus. Keine E-Mail-Adresse nötig, 
-                keine Verpflichtungen. Testen Sie in Ruhe.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <DemoStartButton />
-                <Link
-                  href="/anfrage"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-200 text-lg"
-                >
-                  Persönliche Beratung
-                </Link>
-              </div>
-              <p className="text-white/40 text-sm mt-6">
-                Demo läuft 1 Stunde • Keine Registrierung erforderlich • Testdaten
-              </p>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-navy mb-1">500+</div>
-                <div className="text-sm text-text-light">Verwaltete Einheiten</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-navy mb-1">98%</div>
-                <div className="text-sm text-text-light">Kundenzufriedenheit</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-navy mb-1">DSGVO</div>
-                <div className="text-sm text-text-light">Konform & sicher</div>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Floating CTA Card (right sidebar on desktop) */}
-          <aside className="lg:w-72 lg:sticky lg:top-8 flex-shrink-0">
-            <div className="bg-white rounded-3xl border-2 border-teal/30 shadow-lg shadow-teal/10 p-6">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-teal/10 text-teal rounded-full text-xs font-semibold mb-4">
-                <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
-                Für Vermieter & Hausverwalter
-              </div>
+        {/* ══════════════════════════════════════════════════════════
+            SECTION 3 — DEMO PORTAL CTA
+        ══════════════════════════════════════════════════════════ */}
+        <section className="py-16 px-6 bg-gray-50 border-t border-b border-gray-100">
+          <div className="max-w-xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3">
+              Selbst ausprobieren
+            </h2>
+            <p className="text-text-light mb-8">
+              Klicken Sie sich durch das vollständige Vermieter-Portal — mit echten Beispieldaten.
+            </p>
+            <Link
+              href="/portal/dashboard?demo=true"
+              className="inline-flex items-center gap-2 bg-teal text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-teal/90 transition-colors shadow-lg"
+            >
+              Demo-Portal öffnen
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <p className="text-sm text-gray-400 mt-3">
+              Keine Registrierung. Sofort. Alle Daten fiktiv.
+            </p>
+          </div>
+        </section>
 
-              <h3 className="text-xl font-bold text-navy mb-2">
-                Bereit für echte Verwaltung?
-              </h3>
-              <p className="text-sm text-text-light mb-5">
-                Erleben Sie, wie einfach verwaltet. Ihre echten Objekte verwaltet — 
-                mit Ihren Mietern, Ihren Dokumenten und Ihren Finanzen.
-              </p>
+        {/* ══════════════════════════════════════════════════════════
+            SECTION 4 — ANGEBOT ANNEHMEN CTA (full-width, navy bg)
+        ══════════════════════════════════════════════════════════ */}
+        <section className="bg-navy py-20 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Bereit loszulegen?
+            </h2>
+            <p className="text-white/70 text-lg mb-10">
+              Füllen Sie die Anfrage aus — Ihr persönliches Angebot kommt in 3 Minuten.
+            </p>
+            <Link
+              href="/anfrage"
+              className="inline-flex items-center gap-2 bg-teal text-white font-bold px-10 py-4 rounded-xl text-lg hover:bg-teal/90 transition-colors shadow-xl"
+            >
+              Jetzt Angebot anfordern
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
 
-              {/* Benefits */}
-              <ul className="space-y-2.5 mb-6">
-                {[
-                  "Onboarding in 48 Stunden",
-                  "Keine Einrichtungsgebühr",
-                  "KI-Assistent inklusive",
-                  "DATEV-Export ready",
-                  "Kündigung jederzeit möglich",
-                ].map((benefit) => (
-                  <li key={benefit} className="flex items-center gap-2 text-sm text-navy">
-                    <svg
-                      className="w-4 h-4 text-teal flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA Button */}
-              <Link
-                href="/anfrage"
-                className="block w-full py-3.5 bg-teal text-white text-center font-semibold rounded-xl hover:bg-navy transition-all duration-200 text-sm"
-              >
-                Kostenlose Beratung anfragen
-              </Link>
-
-              <p className="text-xs text-center text-text-light mt-3">
-                Kostenlos & unverbindlich · Antwort in 24h
-              </p>
+            {/* Trust signals */}
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-white/40 text-sm">
+              <span>§34c GewO lizenziert</span>
+              <span className="hidden sm:inline">·</span>
+              <span>Hamburg &amp; Berlin</span>
+              <span className="hidden sm:inline">·</span>
+              <span>Seit 2026</span>
             </div>
-
-            {/* Pricing hint */}
-            <div className="mt-4 bg-navy/5 rounded-2xl p-4 text-center">
-              <p className="text-xs text-text-light">
-                Ab <strong className="text-navy">14 €/Einheit/Monat</strong>
-              </p>
-              <p className="text-xs text-text-light">
-                Inkl. Portal, KI & Support
-              </p>
-              <Link href="/preise" className="text-xs text-teal hover:underline mt-1 block">
-                Alle Preise ansehen →
-              </Link>
-            </div>
-          </aside>
-        </div>
+          </div>
+        </section>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-100 py-8">
-        <div className="max-w-6xl mx-auto px-6 text-center text-sm text-text-light">
-          © 2025 einfach verwaltet. Alle Rechte vorbehalten.
-        </div>
-      </footer>
     </div>
   );
 }
