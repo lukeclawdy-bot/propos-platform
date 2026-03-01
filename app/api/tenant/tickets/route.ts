@@ -64,11 +64,57 @@ export async function GET(request: NextRequest) {
   }
 }
 
+// Urgency levels — used by v2 wizard
+export type UrgencyLevel = 'notfall' | 'dringend' | 'normal' | 'kann-warten';
+
+const URGENCY_SLA: Record<UrgencyLevel, { hours: number; label: string; priority: string; numericUrgency: number }> = {
+  'notfall':      { hours: 1,    label: 'Sofort (innerhalb 1 Stunde)',  priority: 'urgent', numericUrgency: 1 },
+  'dringend':     { hours: 24,   label: 'Innerhalb von 24 Stunden',     priority: 'high',   numericUrgency: 2 },
+  'normal':       { hours: 168,  label: 'Innerhalb von 7 Tagen',        priority: 'normal', numericUrgency: 3 },
+  'kann-warten':  { hours: 720,  label: 'Innerhalb von 30 Tagen',       priority: 'low',    numericUrgency: 4 },
+};
+
+const CATEGORY_TITLES: Record<string, string> = {
+  heating:  'Heizung & Warmwasser',
+  water:    'Wasser & Abwasser',
+  electric: 'Elektro & Licht',
+  window:   'Fenster & Türen',
+  mold:     'Schimmel & Feuchtigkeit',
+  other:    'Sonstiges',
+  // legacy v1 categories
+  repair:   'Reparatur',
+  lock:     'Schloss / Schlüssel',
+  noise:    'Lärm',
+};
+
+function resolveUrgency(urgency: number | string | undefined): UrgencyLevel {
+  if (typeof urgency === 'string') {
+    if (['notfall', 'dringend', 'normal', 'kann-warten'].includes(urgency)) {
+      return urgency as UrgencyLevel;
+    }
+  }
+  // Legacy numeric urgency (v1 portal)
+  const n = Number(urgency);
+  if (n === 1) return 'notfall';
+  if (n === 2) return 'dringend';
+  if (n === 3) return 'normal';
+  return 'normal';
+}
+
 // POST /api/tenant/tickets - Create new ticket
+// Supports both v1 (numeric urgency) and v2 (string urgency, source, photoUrls) formats
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, description, category, urgency, photos } = body;
+    const {
+      title,
+      description,
+      category,
+      urgency,         // number (v1) or 'notfall'|'dringend'|'normal'|'kann-warten' (v2)
+      source = 'portal',
+      photoUrls = [],  // v2: array of uploaded photo URLs
+      answers,         // v2: raw answers object (stored in aiTriage)
+    } = body;
     
     // Get tenantId from header (injected by middleware)
     const tenantId = request.headers.get('x-tenant-id');
@@ -100,14 +146,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Property not found' }, { status: 404 });
     }
 
-    // Calculate SLA deadline based on urgency
-    const now = Date.now();
-    let slaHours = 120; // 5 Werktage default
-    if (urgency === 1) slaHours = 24; // Dringend
-    if (urgency === 2) slaHours = 120; // Normal
-    if (urgency === 3) slaHours = 336; // Nicht dringend (14 Tage)
-    
-    const slaDeadline = new Date(now + slaHours * 60 * 60 * 1000);
+    // Resolve urgency to SLA
+    const urgencyLevel = resolveUrgency(urgency);
+    const slaConfig = URGENCY_SLA[urgencyLevel];
+    const slaDeadline = new Date(Date.now() + slaConfig.hours * 3600_000);
+
+    // Auto-generate title from category if not provided
+    const ticketTitle = title?.slice(0, 200) || CATEGORY_TITLES[category] || 'Schadensmeldung';
+
+    // Build AI triage metadata
+    const aiTriage = {
+      category: category || 'other',
+      urgency: urgencyLevel,
+      summary: description?.slice(0, 300) || ticketTitle,
+      ...(answers ? { answers } : {}),
+      ...(photoUrls?.length ? { photoUrls } : {}),
+      source,
+    };
 
     // Create ticket
     const [ticket] = await db
@@ -117,32 +172,42 @@ export async function POST(request: NextRequest) {
         unitId: tenant.unitId,
         landlordId: property.landlordId,
         propertyId: property.id,
-        title: title.slice(0, 200),
+        title: ticketTitle,
         description: description?.slice(0, 2000) || null,
-        category,
-        urgency: urgency || 2,
-        priority: urgency === 1 ? 'high' : urgency === 2 ? 'normal' : 'low',
+        category: category || 'other',
+        urgency: slaConfig.numericUrgency,
+        priority: slaConfig.priority,
         status: 'open',
         slaDeadline,
+        aiTriage,
       })
       .returning();
 
     // Create initial conversation message from tenant
+    const conversationBody = [
+      `Kategorie: ${CATEGORY_TITLES[category] || 'Sonstiges'}`,
+      `Dringlichkeit: ${slaConfig.label}`,
+      answers ? `\nAngaben:\n${Object.entries(answers).map(([k, v]) => `• ${k}: ${v}`).join('\n')}` : '',
+      description ? `\nBeschreibung:\n${description}` : '',
+      photoUrls?.length ? `\n${photoUrls.length} Foto(s) hochgeladen.` : '',
+    ].filter(Boolean).join('\n');
+
     await db.insert(conversations).values({
-      ...(tenantId ? { tenantId } : {}),
+      tenantId,
       landlordId: property.landlordId!,
       ticketId: ticket.id,
-      channel: 'portal',
+      channel: source === 'portal' ? 'portal' : 'email',
       direction: 'inbound',
-      body: `Kategorie: ${getCategoryLabel(category)}\nDringlichkeit: ${getUrgencyLabel(urgency)}\n\n${description || title}`,
+      body: conversationBody,
       aiClassification: category || 'other',
-      aiUrgency: urgency || 2,
+      aiUrgency: slaConfig.numericUrgency,
     });
 
-    // Fire notification event for landlord
+    // Fire Inngest event
     await inngest.send({
-      name: "ticket.created",
+      name: "tenant/message.received",
       data: {
+        source,
         ticketId: ticket.id,
         tenantId,
         unitId: tenant.unitId,
@@ -151,33 +216,21 @@ export async function POST(request: NextRequest) {
         title: ticket.title,
         description: ticket.description,
         category: ticket.category,
+        urgency: urgencyLevel,
+        priority: slaConfig.priority,
+        photoUrls,
       },
     });
 
-    return NextResponse.json({ data: ticket }, { status: 201 });
+    return NextResponse.json({
+      ticketId: ticket.id,
+      urgency: urgencyLevel,
+      urgencyLabel: slaConfig.label,
+      responseTime: slaConfig.label,
+      data: ticket,
+    }, { status: 201 });
   } catch (e) {
     console.error('[tenant/tickets] Error:', e);
     return NextResponse.json({ error: String(e) }, { status: 500 });
   }
-}
-
-function getCategoryLabel(category: string): string {
-  const labels: Record<string, string> = {
-    'repair': 'Reparatur',
-    'water': 'Wasserschaden',
-    'heating': 'Heizung',
-    'lock': 'Schloss/Schlüssel',
-    'noise': 'Lärm',
-    'other': 'Sonstiges',
-  };
-  return labels[category] || 'Sonstiges';
-}
-
-function getUrgencyLabel(urgency: number): string {
-  const labels: Record<number, string> = {
-    1: 'Dringend',
-    2: 'Normal',
-    3: 'Nicht dringend',
-  };
-  return labels[urgency] || 'Normal';
 }
