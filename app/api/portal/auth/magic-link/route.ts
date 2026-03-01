@@ -17,13 +17,8 @@ const GENERIC_MSG =
   "Wenn Sie ein Konto haben, erhalten Sie in Kürze einen Link.";
 
 function generatePin(): string {
-  // 6 uppercase alphanumeric characters (excluding confusing chars 0/O/I/1)
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let pin = "";
-  for (let i = 0; i < 6; i++) {
-    pin += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return pin;
+  // 6-digit numeric PIN — easy to type on mobile
+  return String(Math.floor(100000 + Math.random() * 900000));
 }
 
 export async function POST(req: NextRequest) {
@@ -102,8 +97,8 @@ export async function POST(req: NextRequest) {
 
             <!-- PIN box -->
             <div style="background:#f8fafc;border:2px dashed #cbd5e1;border-radius:12px;padding:20px;text-align:center;margin-bottom:24px">
-              <p style="margin:0 0 6px;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:1px">Ihr Einmal-Code</p>
-              <p style="margin:0;font-size:36px;font-weight:700;color:#1e3a5f;letter-spacing:6px;font-family:monospace">${pin}</p>
+              <p style="margin:0 0 6px;font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:1px">Ihr 6-stelliger Code</p>
+              <p style="margin:0;font-size:40px;font-weight:700;color:#1e3a5f;letter-spacing:8px;font-family:monospace">${pin}</p>
               <p style="margin:8px 0 0;font-size:12px;color:#94a3b8">Gültig für 10 Minuten · Einmalig verwendbar</p>
             </div>
 
