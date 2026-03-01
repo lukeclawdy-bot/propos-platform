@@ -3,6 +3,7 @@ import { cookies, headers } from "next/headers";
 import { getTokenFromCookie } from "@/lib/auth/jwt";
 import { getDemoRentCollectionData } from "@/lib/demo-data";
 import { DemoBanner } from "@/components/DemoBanner";
+import { MieteFilters } from "./MieteFilters";
 
 // Types
 interface RentCollectionItem {
@@ -249,48 +250,11 @@ export default async function MietePage({ searchParams }: { searchParams: Promis
             )}
 
             {/* Filters */}
-            <div className="bg-white rounded-xl border border-gray-100 p-4 mb-6">
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <label className="text-sm text-text-light">Status:</label>
-                  <select
-                    className="px-3 py-1.5 border border-gray-200 rounded-lg text-sm bg-white"
-                    defaultValue={statusFilter}
-                    onChange={(e) => {
-                      const url = new URL(window.location.href);
-                      if (e.target.value === "all") url.searchParams.delete("filter");
-                      else url.searchParams.set("filter", e.target.value);
-                      window.location.href = url.toString();
-                    }}
-                  >
-                    <option value="all">Alle</option>
-                    <option value="paid">Bezahlt</option>
-                    <option value="pending">Ausstehend</option>
-                    <option value="overdue">Überfällig</option>
-                  </select>
-                </div>
-                <div className="flex items-center gap-2">
-                  <label className="text-sm text-text-light">Objekt:</label>
-                  <select
-                    className="px-3 py-1.5 border border-gray-200 rounded-lg text-sm bg-white"
-                    defaultValue={propertyFilter}
-                    onChange={(e) => {
-                      const url = new URL(window.location.href);
-                      if (e.target.value === "all") url.searchParams.delete("property");
-                      else url.searchParams.set("property", e.target.value);
-                      window.location.href = url.toString();
-                    }}
-                  >
-                    <option value="all">Alle Objekte</option>
-                    {properties.map((p) => (
-                      <option key={p} value={p}>
-                        {p}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
+            <MieteFilters
+              properties={properties}
+              statusFilter={statusFilter}
+              propertyFilter={propertyFilter}
+            />
 
             {/* Rent Collection Table */}
             <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
