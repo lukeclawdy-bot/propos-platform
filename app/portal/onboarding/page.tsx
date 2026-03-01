@@ -6,11 +6,6 @@ import Link from "next/link";
 // ─── Types ────────────────────────────────────────────────────────────────────
 type EigentuemerTyp = "privat" | "profi" | null;
 
-interface TenantEntry {
-  vorname: string;
-  nachname: string;
-  email: string;
-}
 
 interface WizardData {
   // Step 1
@@ -26,9 +21,6 @@ interface WizardData {
   verwaltungstyp: string; // miet | weg | sev
   einheitenAnzahl: number;
   // Step 5
-  mieterOption: "manuell" | "csv" | "spaeter" | null;
-  mieter: TenantEntry[];
-  csvFile: File | null;
   // Step 6
   vorname: string;
   nachname: string;
@@ -39,9 +31,9 @@ interface WizardData {
 }
 
 const DRAFT_KEY = "ev-onboarding-draft";
-const TOTAL_STEPS = 7;
+const TOTAL_STEPS = 6;
 
-const STEP_LABELS = ["Typ", "Größe", "Struktur", "Objekt", "Mieter", "Kontakt", "Fertig"];
+const STEP_LABELS = ["Typ", "Größe", "Struktur", "Objekt", "Kontakt", "Fertig"];
 
 function defaultData(): WizardData {
   return {
@@ -53,9 +45,6 @@ function defaultData(): WizardData {
     stadt: "",
     verwaltungstyp: "miet",
     einheitenAnzahl: 1,
-    mieterOption: null,
-    mieter: [{ vorname: "", nachname: "", email: "" }],
-    csvFile: null,
     vorname: "",
     nachname: "",
     telefon: "",
@@ -485,204 +474,6 @@ function Step4({
   );
 }
 
-// ─── STEP 5: Mieter-Import ────────────────────────────────────────────────────
-function Step5({
-  data,
-  update,
-}: {
-  data: WizardData;
-  update: (d: Partial<WizardData>) => void;
-}) {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const maxMieter = data.einheitenAnzahl || 10;
-
-  function addMieter() {
-    if (data.mieter.length >= maxMieter) return;
-    update({ mieter: [...data.mieter, { vorname: "", nachname: "", email: "" }] });
-  }
-
-  function updateMieter(idx: number, patch: Partial<TenantEntry>) {
-    const arr = [...data.mieter];
-    arr[idx] = { ...arr[idx], ...patch };
-    update({ mieter: arr });
-  }
-
-  return (
-    <div>
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-navy mb-3">Haben Sie bereits Mieter?</h1>
-        <p className="text-text-light">Optional — Sie können das auch später im Portal erledigen.</p>
-      </div>
-
-      {/* Option cards */}
-      <div className="space-y-3 mb-6">
-        {/* Manuell */}
-        <div
-          className={`rounded-2xl border-2 transition-all cursor-pointer ${
-            data.mieterOption === "manuell"
-              ? "border-teal bg-teal/5"
-              : "border-gray-200 bg-white hover:border-teal/30"
-          }`}
-        >
-          <button
-            type="button"
-            className="w-full text-left px-5 py-4"
-            onClick={() => update({ mieterOption: "manuell" })}
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-                  data.mieterOption === "manuell" ? "border-teal bg-teal" : "border-gray-300"
-                }`}
-              >
-                {data.mieterOption === "manuell" && <div className="w-2 h-2 rounded-full bg-white" />}
-              </div>
-              <span className="font-semibold text-navy">Ja, ich trage sie jetzt ein</span>
-            </div>
-          </button>
-
-          {data.mieterOption === "manuell" && (
-            <div className="px-5 pb-5 space-y-4 border-t border-teal/20 mt-1 pt-4">
-              {data.mieter.map((m, idx) => (
-                <div key={idx} className="grid grid-cols-3 gap-3">
-                  <input
-                    type="text"
-                    placeholder="Vorname"
-                    value={m.vorname}
-                    onChange={(e) => updateMieter(idx, { vorname: e.target.value })}
-                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal/30"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Nachname"
-                    value={m.nachname}
-                    onChange={(e) => updateMieter(idx, { nachname: e.target.value })}
-                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal/30"
-                  />
-                  <input
-                    type="email"
-                    placeholder="E-Mail"
-                    value={m.email}
-                    onChange={(e) => updateMieter(idx, { email: e.target.value })}
-                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal/30"
-                  />
-                </div>
-              ))}
-              {data.mieter.length < maxMieter && (
-                <button
-                  type="button"
-                  onClick={addMieter}
-                  className="text-sm text-teal font-medium hover:underline"
-                >
-                  + Weiteren Mieter hinzufügen
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* CSV Import */}
-        <div
-          className={`rounded-2xl border-2 transition-all cursor-pointer ${
-            data.mieterOption === "csv"
-              ? "border-teal bg-teal/5"
-              : "border-gray-200 bg-white hover:border-teal/30"
-          }`}
-        >
-          <button
-            type="button"
-            className="w-full text-left px-5 py-4"
-            onClick={() => update({ mieterOption: "csv" })}
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-                  data.mieterOption === "csv" ? "border-teal bg-teal" : "border-gray-300"
-                }`}
-              >
-                {data.mieterOption === "csv" && <div className="w-2 h-2 rounded-full bg-white" />}
-              </div>
-              <span className="font-semibold text-navy">Ja, ich importiere per CSV</span>
-            </div>
-          </button>
-
-          {data.mieterOption === "csv" && (
-            <div className="px-5 pb-5 border-t border-teal/20 mt-1 pt-4">
-              <div
-                className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-teal/40 transition-colors cursor-pointer"
-                onClick={() => fileInputRef.current?.click()}
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  const file = e.dataTransfer.files[0];
-                  if (file && file.name.endsWith(".csv")) {
-                    update({ csvFile: file });
-                  }
-                }}
-              >
-                <svg className="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                </svg>
-                {data.csvFile ? (
-                  <p className="text-sm text-teal font-medium">{data.csvFile.name}</p>
-                ) : (
-                  <>
-                    <p className="text-sm text-text-light">
-                      CSV hierher ziehen oder{" "}
-                      <span className="text-teal font-medium">auswählen</span>
-                    </p>
-                    <p className="text-xs text-gray-400 mt-1">.csv</p>
-                  </>
-                )}
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept=".csv"
-                  className="hidden"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) update({ csvFile: file });
-                  }}
-                />
-              </div>
-              <p className="mt-3 text-sm text-center">
-                <a
-                  href="/api/portal/onboarding/csv-template"
-                  className="text-teal hover:underline text-xs"
-                  download
-                >
-                  CSV-Vorlage herunterladen →
-                </a>
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Nein, später */}
-        <button
-          type="button"
-          onClick={() => update({ mieterOption: "spaeter" })}
-          className={`w-full rounded-2xl border-2 px-5 py-4 text-left transition-all ${
-            data.mieterOption === "spaeter"
-              ? "border-teal bg-teal/5"
-              : "border-gray-200 bg-white hover:border-teal/30"
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <div
-              className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-                data.mieterOption === "spaeter" ? "border-teal bg-teal" : "border-gray-300"
-              }`}
-            >
-              {data.mieterOption === "spaeter" && <div className="w-2 h-2 rounded-full bg-white" />}
-            </div>
-            <span className="font-semibold text-navy">Nein, später</span>
-          </div>
-        </button>
-      </div>
-    </div>
-  );
-}
 
 // ─── STEP 6: Kontaktdaten & Vertrag ───────────────────────────────────────────
 function Step6({
@@ -1098,20 +889,8 @@ export default function OnboardingWizardPage() {
             />
           )}
 
-          {step === 5 && (
-            <div>
-              <Step5 data={data} update={update} />
-              <button
-                type="button"
-                onClick={next}
-                className="w-full py-3 bg-teal text-white font-semibold rounded-xl hover:bg-teal/90 transition-colors"
-              >
-                Weiter →
-              </button>
-            </div>
-          )}
 
-          {step === 6 && (
+          {step === 5 && (
             <Step6
               data={data}
               update={update}
@@ -1121,7 +900,7 @@ export default function OnboardingWizardPage() {
             />
           )}
 
-          {step === 7 && <Step7 />}
+          {step === 6 && <Step7 />}
 
           {/* Back button (steps 2-6, not on auto-advance steps) */}
           {step >= 2 && step <= 6 && step !== 4 && (
