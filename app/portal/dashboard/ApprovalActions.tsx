@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Approval {
@@ -26,6 +27,43 @@ function Toast({ message, kind }: { message: string; kind: "success" | "error" }
   );
 }
 
+// ─── One-Click Confirmation Banner ───────────────────────────────────────────
+function OneClickConfirmation({
+  action,
+  approvalId,
+  timestamp,
+}: {
+  action: "approved" | "rejected";
+  approvalId: string;
+  timestamp: string;
+}) {
+  const isApproved = action === "approved";
+  return (
+    <div
+      className={`rounded-xl border p-5 mb-4 text-sm font-medium flex items-center gap-3 ${
+        isApproved
+          ? "bg-green-50 border-green-200 text-green-800"
+          : "bg-red-50 border-red-200 text-red-800"
+      }`}
+    >
+      <span className="text-2xl">{isApproved ? "✓" : "✗"}</span>
+      <div>
+        <p className="font-bold text-base">
+          {isApproved ? "Genehmigt ✓" : "Abgelehnt ✗"}
+        </p>
+        <p className="text-xs opacity-75 mt-0.5">
+          {new Date(timestamp).toLocaleString("de-DE", {
+            dateStyle: "medium",
+            timeStyle: "short",
+          })}
+          {" — "}
+          ID: {approvalId.slice(0, 8)}…
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ─── Approval Type Badges ─────────────────────────────────────────────────────
 const APPROVAL_TYPE_LABEL: Record<string, string> = {
   repair_cost: "Reparatur",
@@ -33,6 +71,8 @@ const APPROVAL_TYPE_LABEL: Record<string, string> = {
   investment: "Abrechnung",
   tenant_change: "Mieterwechsel",
   eviction: "Kündigung",
+  contractor_hire: "Handwerker",
+  legal_action: "Rechtliche Maßnahme",
 };
 
 const APPROVAL_TYPE_COLOR: Record<string, string> = {
@@ -41,6 +81,8 @@ const APPROVAL_TYPE_COLOR: Record<string, string> = {
   investment: "bg-purple-50 text-purple-700 border-purple-200",
   tenant_change: "bg-orange-50 text-orange-700 border-orange-200",
   eviction: "bg-red-50 text-red-700 border-red-200",
+  contractor_hire: "bg-teal-50 text-teal-700 border-teal-200",
+  legal_action: "bg-red-50 text-red-700 border-red-200",
 };
 
 const URGENCY_COLOR: Record<number, string> = {
@@ -119,6 +161,72 @@ export function ApprovalsSection({
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; kind: "success" | "error" } | null>(null);
 
+  // One-click from email URL params
+  const [oneClick, setOneClick] = useState<{
+    action: "approved" | "rejected";
+    approvalId: string;
+    timestamp: string;
+  } | null>(null);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const approveId = searchParams.get("approve");
+    const rejectId = searchParams.get("reject");
+    const actionId = approveId ?? rejectId;
+    const actionType = approveId ? "approve" : rejectId ? "reject" : null;
+
+    if (!actionId || !actionType) return;
+
+    // Clean URL params immediately (no reload)
+    const url = new URL(window.location.href);
+    url.searchParams.delete("approve");
+    url.searchParams.delete("reject");
+    url.searchParams.delete("token");
+    window.history.replaceState({}, "", url.toString());
+
+    // Fire the approval/reject action
+    void (async () => {
+      setLoadingId(actionId);
+      try {
+        const res = await fetch(`/api/portal/approvals/${actionId}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: actionType }),
+        });
+
+        const resultAction = actionType === "approve" ? "approved" : "rejected";
+
+        if (res.ok) {
+          // Remove from list if present
+          setApprovals((cur) => cur.filter((a) => a.id !== actionId));
+          setOneClick({
+            action: resultAction,
+            approvalId: actionId,
+            timestamp: new Date().toISOString(),
+          });
+        } else {
+          const data = await res.json().catch(() => ({}));
+          // If already decided, still show confirmation (idempotent)
+          if (res.status === 409) {
+            setOneClick({
+              action: resultAction,
+              approvalId: actionId,
+              timestamp: new Date().toISOString(),
+            });
+          } else {
+            showToast(data.error ?? "Fehler beim Verarbeiten", "error");
+          }
+        }
+      } catch {
+        showToast("Fehler beim Verarbeiten der Aktion aus der E-Mail", "error");
+      } finally {
+        setLoadingId(null);
+      }
+    })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function showToast(message: string, kind: "success" | "error") {
     setToast({ message, kind });
     setTimeout(() => setToast(null), 3500);
@@ -158,26 +266,33 @@ export function ApprovalsSection({
     }
   }
 
-  if (approvals.length === 0) {
-    return (
-      <div className="bg-green-50 border border-green-100 rounded-xl p-5 text-sm text-green-700 font-medium text-center">
-        Keine ausstehenden Genehmigungen — alles erledigt ✅
-      </div>
-    );
-  }
-
   return (
     <>
-      <div className="space-y-3">
-        {approvals.map((approval) => (
-          <ApprovalCard
-            key={approval.id}
-            approval={approval}
-            onAction={handleAction}
-            loading={loadingId === approval.id}
-          />
-        ))}
-      </div>
+      {/* One-click confirmation from email link */}
+      {oneClick && (
+        <OneClickConfirmation
+          action={oneClick.action}
+          approvalId={oneClick.approvalId}
+          timestamp={oneClick.timestamp}
+        />
+      )}
+
+      {approvals.length === 0 && !oneClick ? (
+        <div className="bg-green-50 border border-green-100 rounded-xl p-5 text-sm text-green-700 font-medium text-center">
+          Keine ausstehenden Genehmigungen — alles erledigt ✅
+        </div>
+      ) : approvals.length === 0 ? null : (
+        <div className="space-y-3">
+          {approvals.map((approval) => (
+            <ApprovalCard
+              key={approval.id}
+              approval={approval}
+              onAction={handleAction}
+              loading={loadingId === approval.id}
+            />
+          ))}
+        </div>
+      )}
 
       {toast && <Toast message={toast.message} kind={toast.kind} />}
     </>

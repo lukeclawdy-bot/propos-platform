@@ -12,6 +12,7 @@ import { ownerNotifications } from "@/lib/inngest/functions/owner-notifications"
 import { whatsappHandler } from "@/lib/inngest/functions/whatsapp-handler";
 import { propertyOnboarded } from "@/lib/inngest/functions/property.onboarded";
 import { jobCompleted } from "@/lib/inngest/functions/job.completed";
+import { approvalNotify } from "@/lib/inngest/functions/approval.notify";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
@@ -30,5 +31,6 @@ export const { GET, POST, PUT } = serve({
     whatsappHandler,       // WhatsApp 360dialog message handler
     propertyOnboarded,     // Objekt onboarding — tenant welcome emails + admin alert
     jobCompleted,          // Photo QA via Gemini Vision when freelancer completes job
+    approvalNotify,        // Sprint A: Eigentümer approval email notifications
   ],
 });
