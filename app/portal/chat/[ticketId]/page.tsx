@@ -188,44 +188,10 @@ export default function ChatDetailPage({ params }: { params: Promise<{ ticketId:
   const priority = PRIORITY_CONFIG[ticket.priority] || PRIORITY_CONFIG.normal;
 
   return (
-    <div className="min-h-screen bg-light-gray flex">
-      {/* Sidebar */}
-      <aside className="w-56 bg-navy min-h-screen flex flex-col fixed left-0 top-0 bottom-0 z-10">
-        <div className="px-5 py-5 border-b border-white/10">
-          <a href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-teal rounded-md flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-            </div>
-            <span className="text-white text-sm font-bold">einfach <span className="text-teal">verwaltet.</span></span>
-          </a>
-        </div>
-        <nav className="flex-1 px-3 py-4 space-y-1">
-          {[
-            { label: "Übersicht", href: "/portal/dashboard" },
-            { label: "Chat", href: "/portal/chat", active: true },
-            { label: "Einheiten", href: "/portal/einheiten" },
-            { label: "Mieter", href: "/portal/mieter" },
-            { label: "Tickets", href: "/portal/tickets" },
-            { label: "Partner", href: "/portal/partner" },
-            { label: "Dokumente", href: "/portal/dokumente" },
-            { label: "Vertrag", href: "/portal/vertrag" },
-            { label: "Finanzen", href: "/portal/finanzen" },
-            { label: "Mieterhöhung", href: "/portal/mieterhohung" },
-            { label: "NKA", href: "/portal/nka", active: false },
-          ].map((item) => (
-            <Link key={item.href} href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors
-                ${item.active ? "bg-teal/20 text-teal font-medium" : "text-white/60 hover:bg-white/5 hover:text-white"}`}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </aside>
+          {/* Sidebar */}
 
       {/* Main Content */}
-      <div className="flex-1 ml-56">
+      <div className="flex-1">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="bg-white border-b border-gray-100 px-6 py-4 sticky top-0 z-10">
