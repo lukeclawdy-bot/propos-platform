@@ -5,6 +5,10 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "🏠 Übersicht", href: "/admin" },
+  { label: "🎫 Tickets", href: "/admin/tickets" },
+  { label: "🏢 Eigentümer", href: "/admin/landlords" },
+  { label: "🔨 Freelancer", href: "/admin/freelancers" },
+  { label: "✅ Genehmigungen", href: "/admin/approvals" },
   { label: "👥 Leads", href: "/admin/leads" },
   { label: "📤 Outreach", href: "/admin/outreach" },
   { label: "📊 Funnel", href: "/admin/funnel" },
