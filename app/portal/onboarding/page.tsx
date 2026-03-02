@@ -489,13 +489,13 @@ function Step6({
   submitting: boolean;
   submitError: string | null;
 }) {
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim());
-  const phoneValid = data.telefon.trim() === "" || /^[+0-9][0-9 ()\-]{6,}$/.test(data.telefon.trim());
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((data.email ?? "").trim());
+  const phoneValid = !data.telefon?.trim() || /^[+0-9][0-9 ()\-]{6,}$/.test(data.telefon.trim());
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const canSubmit =
-    data.vorname.trim().length > 0 &&
-    data.nachname.trim().length > 0 &&
+    (data.vorname ?? "").trim().length > 0 &&
+    (data.nachname ?? "").trim().length > 0 &&
     emailValid &&
     phoneValid &&
     data.agbAkzeptiert;
@@ -717,12 +717,26 @@ export default function OnboardingWizardPage() {
     try {
       const saved = localStorage.getItem(DRAFT_KEY);
       if (saved) {
-        const parsed = JSON.parse(saved) as Partial<WizardData>;
-          setData((prev) => ({ ...prev, ...parsed }));
-        // Restore step if in-progress (but not step 7 — start fresh)
-        const savedStep = (parsed as { _step?: number })._step;
-        if (savedStep && savedStep > 1 && savedStep < 7) {
-          setStep(savedStep);
+        const parsed = JSON.parse(saved) as Partial<WizardData> & { mieterOption?: unknown; mieter?: unknown; _step?: number };
+        // If draft has stale keys from old schema, discard it entirely
+        if ('mieterOption' in parsed || 'mieter' in parsed) {
+          localStorage.removeItem(DRAFT_KEY);
+        } else {
+          // Merge safely — ensure all string fields are strings, not undefined
+          setData((prev) => ({
+            ...prev,
+            ...parsed,
+            email: typeof parsed.email === 'string' ? parsed.email : prev.email,
+            telefon: typeof parsed.telefon === 'string' ? parsed.telefon : prev.telefon,
+            vorname: typeof parsed.vorname === 'string' ? parsed.vorname : prev.vorname,
+            nachname: typeof parsed.nachname === 'string' ? parsed.nachname : prev.nachname,
+            unternehmen: typeof parsed.unternehmen === 'string' ? parsed.unternehmen : prev.unternehmen,
+          }));
+          // Restore step if in-progress (not on success step)
+          const savedStep = parsed._step;
+          if (savedStep && savedStep > 1 && savedStep < TOTAL_STEPS) {
+            setStep(savedStep);
+          }
         }
       }
     } catch {
