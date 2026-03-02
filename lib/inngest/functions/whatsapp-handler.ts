@@ -89,7 +89,7 @@ Regeln:
         "HTTP-Referer": "https://einfach-verwaltet.de",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash-preview",
+        model: "google/gemini-2.5-flash",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 300,
         temperature: 0.1,
