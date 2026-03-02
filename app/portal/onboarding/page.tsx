@@ -718,8 +718,7 @@ export default function OnboardingWizardPage() {
       const saved = localStorage.getItem(DRAFT_KEY);
       if (saved) {
         const parsed = JSON.parse(saved) as Partial<WizardData>;
-        // Don't restore File objects (not serializable), clear csvFile
-        setData((prev) => ({ ...prev, ...parsed, csvFile: null }));
+          setData((prev) => ({ ...prev, ...parsed }));
         // Restore step if in-progress (but not step 7 — start fresh)
         const savedStep = (parsed as { _step?: number })._step;
         if (savedStep && savedStep > 1 && savedStep < 7) {
@@ -733,7 +732,7 @@ export default function OnboardingWizardPage() {
 
   const saveDraft = useCallback((d: WizardData, currentStep: number) => {
     try {
-      localStorage.setItem(DRAFT_KEY, JSON.stringify({ ...d, csvFile: null, _step: currentStep }));
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ ...d, _step: currentStep }));
     } catch {
       // ignore quota errors
     }
@@ -798,15 +797,14 @@ export default function OnboardingWizardPage() {
         strasse: data.strasse,
         plz: data.plz,
         stadt: data.stadt,
-        mieterOption: data.mieterOption,
-        mieter: data.mieterOption === "manuell" ? data.mieter : [],
+
         vorname: data.vorname,
         nachname: data.nachname,
         name: `${data.vorname} ${data.nachname}`.trim(),
         telefon: data.telefon || null,
         unternehmen: data.unternehmen || null,
         firma: data.unternehmen || null,
-        email: "", // email not collected in this wizard — handled server-side or via magic link
+        email: data.email || "",
       };
 
       const res = await fetch("/api/portal/onboarding/complete", {
@@ -824,7 +822,7 @@ export default function OnboardingWizardPage() {
       try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
       // Advance to success step
-      goTo(7);
+      goTo(6);
     } catch (err) {
       setSubmitError(
         err instanceof Error ? err.message : "Unbekannter Fehler — bitte erneut versuchen"
@@ -885,7 +883,7 @@ export default function OnboardingWizardPage() {
               data={data}
               update={update}
               onWeiter={next}
-              onSkip={() => goTo(6)}
+              onSkip={() => goTo(5)}
             />
           )}
 
